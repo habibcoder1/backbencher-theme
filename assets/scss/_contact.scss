@@ -1,0 +1,75 @@
+// contact page
+
+.contact-form{
+    form{
+        .service-choose{
+            margin: 50px 0 20px 0;
+            label{
+                text-transform: capitalize;
+                font-size: 35px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: 38px;
+                letter-spacing: 0.19px;
+                color: #8E8EA0;
+                border: 1px solid #4C4E57;
+                padding: 30px 35px;
+                margin-bottom: 20px;
+                margin-right: 20px;
+                cursor: pointer;
+                border-radius: 100px;
+                -webkit-border-radius: 100px;
+                -moz-border-radius: 100px;
+                -ms-border-radius: 100px;
+                -o-border-radius: 100px;
+                transition: .4s ease all;
+                -webkit-transition: .4s ease all;
+                -moz-transition: .4s ease all;
+                -ms-transition: .4s ease all;
+                -o-transition: .4s ease all;
+                &:hover{
+                    background-color: $bbsPrimaryColor;
+                    color: $bbsWhiteColor;
+                }
+            }
+            input[type="checkbox"]{
+                display: none;
+            }
+        }
+        input{
+            font-size: 20px;
+        }
+        textarea#projectdetails{
+            font-size: 20px;
+            border: none;
+            border-bottom: 1px solid #C0C0C0;
+            height: 42px;
+            border-radius: 0;
+            -webkit-border-radius: 0;
+            -moz-border-radius: 0;
+            -ms-border-radius: 0;
+            -o-border-radius: 0;
+        }
+        label.budget-label{
+            margin: 25px 0 40px;
+            font-size: 35px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+            letter-spacing: 0.19px;
+            text-transform: capitalize;
+        }
+        .budgetrange-heared{
+            margin-bottom: 35px;
+            select{
+                font-size: 20px;
+                background-color: $bbsBlackColor;
+                color: $bbsWhiteColor;
+                text-transform: capitalize;
+                width: 100%;  
+                padding-bottom: 10px;
+            }
+        }
+        
+    }
+}

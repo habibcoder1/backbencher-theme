@@ -1,0 +1,18 @@
+@charset "UTF-8";
+/* ====================================
+Theme Name:        Backbencher Studio
+Theme URI:         https://backbencher.studio
+Author:            bdCalling
+Author URI:        https://bdcalling.com/
+Version:           1.0.0
+Tested up to:      6.4.1
+Required at least: 6.0
+Required PHP:      7.0
+License:           GNU General Public License v-2 or later
+License URI:       http://www.gnu.org/licenses/gpl-2.0.html
+Tags:              backbencher, backbencher studio, bdCalling, bdCalling it, backbencher, web development, ui/ux design, branding 
+Description:       Backbencher Studio is a IT company in Bangladesh. We provide Ui/Ux Design, Web Development, Branding Services.
+Text Domain:       backbencher
+==================================== */
+
+/* all styles will load from assets/css directory */
