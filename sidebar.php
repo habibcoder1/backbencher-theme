@@ -1,6 +1,6 @@
 <?php 
 /**
- * @package AllThe Shop BD
+ * @package Backbercher Studio
  * Version: 1.0.0
  * 
  * Template for displaying Sidebar

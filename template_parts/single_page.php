@@ -1,6 +1,6 @@
 <?php 
 /**
- * @package AllThe Shop BD
+ * @package Backbencher Studio
  * Version: 1.0.0
  * 
  * Template for displaying Single Blog Page
@@ -15,21 +15,21 @@ if(have_posts()) :
 
     <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
         <div class="post-title">
-            <h2 class="font-semibold text-[34px] leading-10"><?php the_title(); ?></h2>
+            <h2><?php the_title(); ?></h2>
         </div>
-        <div class="post_date_author_category flex mt-2 mb-3">
+        <div class="post_date_author_category">
             <?php 
             $the_date = mysql2date( get_option( 'date_format' ), $post->post_date );
             ?>
-            <a href="<?php echo get_day_link(get_post_time('Y'), get_post_time('m'), get_post_time('j')); ?>" class="date capitalize mr-2 sm:mr-3 md:mr-2 lg:mr-5 transition-all hover:text-[#DD3627]"> <?php echo $the_date; ?></a>
-            <p class="author sm:mr-3 md:mr-2 lg:mr-5 flex items-center">
+            <a href="<?php echo get_day_link(get_post_time('Y'), get_post_time('m'), get_post_time('j')); ?>" class="date text-capitalize"> <?php echo $the_date; ?></a>
+            <p class="author">
                 <?php echo get_avatar(get_the_author_meta('ID'), 21); //21 is avatar size ?>
-                <a href="<?php echo get_author_posts_url(get_the_author_meta('ID')); ?>" class="capitalize transition-all hover:text-[#DD3627]"> <?php _e('By', 'insurance-seba'); ?> <?php the_author(); ?></a>
+                <a href="<?php echo get_author_posts_url(get_the_author_meta('ID')); ?>" class="text-capitalize"> <?php _e('By', 'backbencher'); ?> <?php the_author(); ?></a>
             </p>
-            <p class="tags hidden sm:block sm:mr-3 md:mr-2 lg:mr-5"><?php the_tags('', ' / ', ''); ?></p>
-            <p class="comments hidden lg:block sm:mr-3 md:mr-1 lg:mr-5">
-                <i class="fa-regular fa-comment mr-1"></i>
-                <a href="<?php comments_link(); ?>" class="capitalize transition-all hover:text-[#DD3627]"> <?php comments_number( 'Leave a Comment', '1 Comment', '% Comments' ); ?></a>
+            <p class="tags"><?php the_tags('', ' / ', ''); ?></p>
+            <p class="comments">
+                <i class="fa-regular fa-comment"></i>
+                <a href="<?php comments_link(); ?>" class="text-capitalize"> <?php comments_number( 'Leave a Comment', '1 Comment', '% Comments' ); ?></a>
             </p>
             
         </div>
@@ -41,7 +41,7 @@ if(have_posts()) :
             <?php the_content(); ?>
         </div>
     </article>
-    <hr class="mt-5 mb-7">
+    <hr>
     <!-- post social -->
     <div class="post-social mb-6">
         <?php 
@@ -81,11 +81,11 @@ if(have_posts()) :
     if ($isebarecommend_posts->have_posts()) : //if have related post ?>
 
     <div class="recommended-post">
-        <h3 class="title uppercase text-lg font-extrabold"><?php _e('recommended for you', 'insurance-seba'); ?></h3>
+        <h3 class="title text-uppercase"><?php _e('recommended for you', 'backbencher'); ?></h3>
         <hr class="mb-6">
-        <div class="recommended-post_details grid grid-cols-1 sm:grid-cols-2 sm:gap-6 mb-3">
+        <div class="recommended-post_details">
             <?php while ($isebarecommend_posts->have_posts()) : $isebarecommend_posts->the_post() ; //loop for post ?>
-            <article class="mb-5 sm:mb-0">
+            <article class="recommended-blogpost">
                 <div class="post-thumb mb-3">
                     <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_post_thumbnail(); ?></a>
                 </div>
@@ -102,5 +102,5 @@ if(have_posts()) :
    <?php endwhile; //end loop
 
 else:
-    _e('No Posts', 'atsbd');
+    _e('No Posts', 'backbencher');
 endif;

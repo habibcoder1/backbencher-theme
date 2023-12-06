@@ -85,26 +85,19 @@
         /* ========================
             About Service Slider
         ======================== */
-        var swiper = new Swiper(".aboutservice-slider", {
-            direction: "vertical",
-            spaceBetween: 30,
-            loop: true,
-            centeredSlides: true,
-            slidesPerView: 6,
+        jQuery('.aboutservice-slider .serviceitems').slick({
+            autoplay: true,
+            autoplaySpeed: 3000,
             speed: 500,
-            autoplay:{
-                delay: 3000,
-                disableOnInteraction: false,
-            },
-            breakpoints: {
-                // here count min-width
-                300:{
-                    spaceBetween: 20,
-                },
-                768:{
-                    spaceBetween: 30,
-                },
-            },
+            infinite: true,
+            slidesToShow: 6,
+            slidesToScroll: 1,
+            vertical: true,
+            verticalSwiping: true,
+            dots: false,
+            arrows: false,
+            pauseOnHover: false,
+            centerMode: true,
         });
         
         /* ========================
@@ -123,18 +116,13 @@
         });        
         
        /* ==================
-            Blog Mixitup (only load which page will set mixitup)
+            Blog Mixitup 
         ================== */
         let blogItems = document.querySelector('.allblog-items');
         if(blogItems){
             var mixer = mixitup(blogItems);
         }
 
-
-        
-        
-       
-        
 
     });
 })(jQuery);

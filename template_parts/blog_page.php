@@ -1,6 +1,6 @@
 <?php 
 /**
- * @package AllThe Shop BD
+ * @package Backbencher Studio
  * Version: 1.0.0
  * 
  * Template for displaying Blog Page
@@ -11,26 +11,55 @@ if (!defined('ABSPATH')){
 };
 
 
-if(have_posts()) :
-    while(have_posts()) : the_post() ; ?>
+if(have_posts()) : ?>
 
-    <article class="mb-6" id="post-<?php the_ID(); ?>" <?php post_class(); ?> >
-        <div class="post-thumb">
-            <a href="<?php the_permalink(); ?>" class="block overflow-hidden"><?php the_post_thumbnail(); ?></a>
+    <section class="blog_slider-area" style="background-image: url('<?php echo esc_url( get_template_directory_uri() . '/assets/img/blog-sliderbg.svg' ); ?>');">
+        <div class="container">
+            <div class="blog-slider_details swiper mySwiper">
+                <div class="blog-slider swiper-wrapper">
+                    <?php while(have_posts()) : the_post() ; ?>
+                    <!-- single blog -->
+                    <article class="single-item swiper-slide blog-post" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+                        <!-- thumb -->
+                        <div class="thumb-img">
+                            <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+                                <?php the_post_thumbnail(); ?>
+                            </a>
+                        </div>
+                        <!-- title -->
+                        <div class="blog-title">
+                            <a href="<?php the_permalink(); ?>"><h2 class="text-uppercase"><?php the_title(); ?></h2></a>
+                        </div>
+                        <!-- blog content -->
+                        <div class="blog-content">
+                            <p><?php echo wp_trim_words( get_the_content(), 80, '' ); ?> </p>
+                        </div>
+                        <!-- category -->
+                        <div class="category-name">
+                            <h4 class="text-uppercase"><?php the_category(' / ', '', ''); ?></h4>
+                        </div>
+                        <!-- reading time -->
+                        <div class="reading-time">
+                            <p class="text-capitalize"><?php global $post; echo get_post_meta(get_the_ID(), '_readingtime', true); ?></p>
+                        </div>
+                    </article> <!-- end single blog -->
+                    <?php endwhile; wp_reset_postdata(); //end loop ?>
+                </div>
+            </div>  
+            </div>
         </div>
-        <div class="tag mt-2">
-            <a href="#"><p class="uppercase"><?php the_tags('', ' / ', ''); ?></p></a>
+        <!-- pagination //number -->
+        <div class="swiper-pagination"></div>
+        <!-- autoplay round -->
+        <div class="autoplay-progress">
+            <svg viewBox="0 0 48 48">
+                <circle cx="24" cy="24" r="20"></circle>
+            </svg>
+            <span></span>
         </div>
-        <div class="title mb-1">
-            <a href="<?php the_permalink(); ?>"><h2 class="font-semibold text-xl leading-7 transition-all hover:text-[#DD3627]"><?php the_title(); ?></h2></a>
-        </div>
-        <div class="description">
-            <p><?php echo wp_trim_words( get_the_content(), 30, '' ); ?></p>
-        </div>
-    </article>
+    </section>
 
-   <?php endwhile; //end loop
-
+   <?php 
 else:
     _e('No Posts', 'atsbd');
 endif;

@@ -131,9 +131,24 @@
                         color: $bbsWhiteColor;
                         font-size: 32px;
                         font-weight: 900;
-                        @media(max-width: 992px){
-                            font-size: 26px;
+                        a{
+                            color: $bbsWhiteColor;
+                            font-size: 32px;
+                            font-weight: 900;
+                            text-decoration: none;
+                            transition: .4s ease all;
+                            -webkit-transition: .4s ease all;
+                            -moz-transition: .4s ease all;
+                            -ms-transition: .4s ease all;
+                            -o-transition: .4s ease all;
+                            &:hover{
+                                color: $bbsPrimaryColor;
+                            }
+                            @media(max-width: 992px){
+                                font-size: 26px;
+                            }
                         }
+                        
                     }
                 }
                 .reading-time{

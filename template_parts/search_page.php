@@ -1,6 +1,6 @@
 <?php 
 /**
- * @package AllThe Shop BD
+ * @package Backbencher Studio
  * Version: 1.0.0
  * 
  * Template for displaying Blog Page
@@ -13,20 +13,20 @@ if (!defined('ABSPATH')) {
 
 if(have_posts()) : ?>
     <!-- Search Title -->
-    <div class="blog-hero mt-1">
-        <h2 class="title uppercase bg-[#EEEEEE] pl-2 text-[26px] search-title">
-            <?php printf( __( 'Search Results for: %s', 'insurance-seba'), '<span>' . get_search_query() . '</span>' ); ?>
+    <div class="blog-her">
+        <h2 class="text-uppercase search-title">
+            <?php printf( __( 'Search Results for: %s', 'backbencher'), '<span>' . get_search_query() . '</span>' ); ?>
         </h2>
     </div>
 
     <!-- blog details -->
-    <div class="blog-details border-l-8 border-[#EEEEEE] p-4">
+    <div class="blog-details">
         <!-- blog post -->
         
 
 
         <!-- Pagination -->
-        <div class="post-pagination text-center mt-3">
+        <div class="post-pagination text-center">
             <?php 
             if (function_exists('the_posts_pagination')) {
                 the_posts_pagination(array(
@@ -44,7 +44,7 @@ if(have_posts()) : ?>
 else: ?>
     <!-- No Search Result -->
     <div class="search-result">
-        <h2 class="title uppercase bg-[#EEEEEE] pl-2 text-[26px] search-title"><?php printf( __( 'Sorry, No Result Found For: %s', 'atsbd'), '<span>' . get_search_query() . '</span>' ); ?></h2>
+        <h2 class="text-uppercase search-title"><?php printf( __( 'Sorry, No Result Found For: %s', 'atsbd'), '<span>' . get_search_query() . '</span>' ); ?></h2>
     </div>
 <?php
 endif; ?>

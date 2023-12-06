@@ -1,13 +1,7 @@
 // about page style
-
-.about_service-area{
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    padding: 100px 0;
-    position: relative;
-    @media(max-width: 768px){
-        padding: 50px 0;
+div#aboutvertical-slider{
+    .e-con-inner{
+        max-width: 100%;
     }
     &::after{
         content: "";
@@ -55,47 +49,48 @@
             height: 300px;
         }
     }
-    .container{
-        .aboutservice-slider{
-            ul{
-                padding-left: 0;
-                height: 650px;
+}
+.about_service-area{
+    position: relative;
+    height: 750px;
+    overflow: hidden;
+    @media(max-width: 1400px){
+        height: 650px;
+    }
+    @media(max-width: 992px){
+        height: 500px;
+    }
+    @media(max-width: 768px){
+        height: 330px;
+    }
+    @media(max-width: 500px){
+        height: 250px;
+    }
+    .aboutservice-slider{
+        ul{
+            padding-left: 0;
+            li{
+                color: $bbsWhiteColor;
+                font-size: 98px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: normal;
+                letter-spacing: -6.37px;
                 @media(max-width: 1400px){
-                    height: 350px;
+                    font-size: 75px;
+                    letter-spacing: -4.37px;
                 }
                 @media(max-width: 992px){
-                    height: 350px;
+                    font-size: 50px;
+                    letter-spacing: -2.37px;
                 }
                 @media(max-width: 768px){
-                    height: 300px;
+                    font-size: 32px;
+                    letter-spacing: -1px;
                 }
-                @media(max-width: 575px){
-                    height: 200px;
-                }
-                li{
-                    color: var(--White-Color, #FFF);
-                    font-family: Urbanist;
-                    font-size: 98px;
-                    font-style: normal;
-                    font-weight: 600;
-                    line-height: normal;
-                    letter-spacing: -6.37px;
-                    @media(max-width: 1400px){
-                        font-size: 75px;
-                        letter-spacing: -4.37px;
-                    }
-                    @media(max-width: 992px){
-                        font-size: 50px;
-                        letter-spacing: -2.37px;
-                    }
-                    @media(max-width: 768px){
-                        font-size: 32px;
-                        letter-spacing: -1px;
-                    }
-                    @media(max-width: 550px){
-                        font-size: 20px;
-                        letter-spacing: 0px;
-                    }
+                @media(max-width: 550px){
+                    font-size: 20px;
+                    letter-spacing: 0px;
                 }
             }
         }

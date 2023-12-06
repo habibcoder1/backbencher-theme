@@ -6,7 +6,6 @@
  * This template for displaying header section
  */
 
-
 if(!defined('ABSPATH')){
     exit('not valid');
 }; ?>
@@ -32,7 +31,7 @@ if(!defined('ABSPATH')){
     <!-- =========================
         Header Area Start
     ========================== -->
-    <?php if(get_theme_mod('bbs_sticky_header') == 'yes') : ?>
+    <?php if(get_theme_mod('bbs_sticky_header') !== 'not') : ?>
     <!-- sticky menu -->
     <header class="header-area sticky-menu d-none" style="background-color: <?php echo esc_attr( get_theme_mod('backbencher_header_bgcolor') ); ?>;">
         <div class="container">
@@ -89,48 +88,19 @@ if(!defined('ABSPATH')){
                         <div class="menu-address">
                             <!-- main menu -->
                             <nav  class="main-menu">
-                                <ul class="primary-menu">
-                                    <li>
-                                        <a href="#">About 
+                            <?php 
+                                wp_nav_menu([
+                                    'theme_location'  => 'bbsprimanymenu',
+                                    'container'       => '',
+                                    'menu_class'      => 'primary-menu',
+                                    'menu_id'         => '',
+                                    'link_after'      => '
+                                        <i class="fa-solid fa-arrow-right"></i>
+                                        <div class="second-arrow">
                                             <i class="fa-solid fa-arrow-right"></i>
-                                            <div class="second-arrow">
-                                                <i class="fa-solid fa-arrow-right"></i>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Service 
-                                            <i class="fa-solid fa-arrow-right"></i>
-                                            <div class="second-arrow">
-                                                <i class="fa-solid fa-arrow-right"></i>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Our Works 
-                                            <i class="fa-solid fa-arrow-right"></i>
-                                            <div class="second-arrow">
-                                                <i class="fa-solid fa-arrow-right"></i>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">blog 
-                                            <i class="fa-solid fa-arrow-right"></i>
-                                            <div class="second-arrow">
-                                                <i class="fa-solid fa-arrow-right"></i>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">career 
-                                            <i class="fa-solid fa-arrow-right"></i>
-                                            <div class="second-arrow">
-                                                <i class="fa-solid fa-arrow-right"></i>
-                                            </div>
-                                        </a>
-                                    </li>
-                                </ul>
+                                        </div>',
+                                ]);
+                            ?>
                             </nav>
                             <!-- address -->
                             <div class="address_contact">
@@ -229,48 +199,19 @@ if(!defined('ABSPATH')){
                         <div class="menu-address">
                             <!-- main menu -->
                             <nav  class="main-menu">
-                                <ul class="primary-menu">
-                                    <li>
-                                        <a href="#">About 
+                            <?php 
+                                wp_nav_menu([
+                                    'theme_location'  => 'bbsprimanymenu',
+                                    'container'       => '',
+                                    'menu_class'      => 'primary-menu',
+                                    'menu_id'         => '',
+                                    'link_after'      => '
+                                        <i class="fa-solid fa-arrow-right"></i>
+                                        <div class="second-arrow">
                                             <i class="fa-solid fa-arrow-right"></i>
-                                            <div class="second-arrow">
-                                                <i class="fa-solid fa-arrow-right"></i>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Service 
-                                            <i class="fa-solid fa-arrow-right"></i>
-                                            <div class="second-arrow">
-                                                <i class="fa-solid fa-arrow-right"></i>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Our Works 
-                                            <i class="fa-solid fa-arrow-right"></i>
-                                            <div class="second-arrow">
-                                                <i class="fa-solid fa-arrow-right"></i>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">blog 
-                                            <i class="fa-solid fa-arrow-right"></i>
-                                            <div class="second-arrow">
-                                                <i class="fa-solid fa-arrow-right"></i>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">career 
-                                            <i class="fa-solid fa-arrow-right"></i>
-                                            <div class="second-arrow">
-                                                <i class="fa-solid fa-arrow-right"></i>
-                                            </div>
-                                        </a>
-                                    </li>
-                                </ul>
+                                        </div>',
+                                ]);
+                            ?>
                             </nav>
                             <!-- address -->
                             <div class="address_contact">

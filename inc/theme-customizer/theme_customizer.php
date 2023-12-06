@@ -53,7 +53,7 @@ function bbs_theme_customizer($wp_customize){
 
     // header button text
     $wp_customize->add_setting('bbs_headercontact_btntext', [
-        'default'           => 'get a quote',
+        'default'           => 'contact us',
         'capability'        => 'edit_theme_options',
         'sanitize_callback' => 'sanitize_header_btntext',
     ]);

@@ -1,6 +1,6 @@
 <?php 
 /**
- * @package AllThe Shop BD
+ * @package Backbencher Studio
  * Version: 1.0.0
  * 
  * Template for displaying Comments Page
@@ -19,7 +19,7 @@ if ( post_password_required() ) {
 	return;
 }
 
-$atsbd_comment_count = get_comments_number(); ?>
+$bbs_comment_count = get_comments_number(); ?>
 
 <div id="comments" class="comments-area default-max-width <?php echo get_option( 'show_avatars' ) ? 'show-avatars' : ''; ?>">
 
@@ -27,14 +27,14 @@ $atsbd_comment_count = get_comments_number(); ?>
 	if ( have_comments() ) :
 		?>
 		<h2 class="comments-title">
-			<?php if ( '1' === $atsbd_comment_count ) : ?>
-				<?php esc_html_e( '1 comment', 'twentytwentyone' ); ?>
+			<?php if ( '1' === $bbs_comment_count ) : ?>
+				<?php esc_html_e( '1 comment', 'backbencher' ); ?>
 			<?php else : ?>
 				<?php
 				printf(
 					/* translators: %s: Comment count number. */
-					esc_html( _nx( '%s comment', '%s comments', $atsbd_comment_count, 'Comments title', 'twentytwentyone' ) ),
-					esc_html( number_format_i18n( $atsbd_comment_count ) )
+					esc_html( _nx( '%s comment', '%s comments', $bbs_comment_count, 'Comments title', 'backbencher' ) ),
+					esc_html( number_format_i18n( $bbs_comment_count ) )
 				);
 				?>
 			<?php endif; ?>
@@ -55,16 +55,16 @@ $atsbd_comment_count = get_comments_number(); ?>
 		<?php
 		the_comments_pagination(
 			array(
-				'before_page_number' => esc_html__( 'Page', 'twentytwentyone' ) . ' ',
+				'before_page_number' => esc_html__( 'Page', 'backbencher' ) . ' ',
 				'mid_size'           => 0,
 				'prev_text'          => sprintf(
 					'%s <span class="nav-prev-text">%s</span>',
 					is_rtl() ? twenty_twenty_one_get_icon_svg( 'ui', 'arrow_right' ) : twenty_twenty_one_get_icon_svg( 'ui', 'arrow_left' ),
-					esc_html__( 'Older comments', 'twentytwentyone' )
+					esc_html__( 'Older comments', 'backbencher' )
 				),
 				'next_text'          => sprintf(
 					'<span class="nav-next-text">%s</span> %s',
-					esc_html__( 'Newer comments', 'twentytwentyone' ),
+					esc_html__( 'Newer comments', 'backbencher' ),
 					is_rtl() ? twenty_twenty_one_get_icon_svg( 'ui', 'arrow_left' ) : twenty_twenty_one_get_icon_svg( 'ui', 'arrow_right' )
 				),
 			)
@@ -72,14 +72,14 @@ $atsbd_comment_count = get_comments_number(); ?>
 		?>
 
 		<?php if ( ! comments_open() ) : ?>
-			<p class="no-comments"><?php esc_html_e( 'Comments are closed.', 'twentytwentyone' ); ?></p>
+			<p class="no-comments"><?php esc_html_e( 'Comments are closed.', 'backbencher' ); ?></p>
 		<?php endif; ?>
 	<?php endif; ?>
 
 	<?php
 	comment_form(
 		array(
-			'title_reply'        => esc_html__( 'Leave a comment', 'twentytwentyone' ),
+			'title_reply'        => esc_html__( 'Leave a comment', 'backbencher' ),
 			'title_reply_before' => '<h2 id="reply-title" class="comment-reply-title">',
 			'title_reply_after'  => '</h2>',
 		)

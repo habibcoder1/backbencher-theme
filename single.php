@@ -1,6 +1,6 @@
 <?php 
 /**
- * @package AllThe Shop BD
+ * @package Backbencher Studio
  * Version: 1.0.0
  * 
  * Template for displaying Single Blog Page
@@ -16,9 +16,9 @@ get_header(); ?>
         Body Section
 ========================== -->
 <section class="body-section single-page pt-2">
-    <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-3">
+    <div class="container">
         <!-- main conent -->
-        <div class="body-main_content col-span-3 lg:col-span-4 w-4/5 mx-auto my-4">
+        <div class="body-main_content">
             <!-- single post -->
             <?php get_template_part('template_parts/single_page'); ?>	
 
@@ -31,10 +31,10 @@ get_header(); ?>
 
             <!-- Previou and Next Text -->
             <div class="previous_next-post text-center mt-5">
-                <div class="previous-post inline-block mr-2 font-semibold">
+                <div class="previous-post">
                     <?php previous_post_link('%link', '< Previous Post'); ?>
                 </div>
-                <div class="next-post inline-block ml-2 font-semibold">
+                <div class="next-post">
                     <?php next_post_link('%link', 'Next Post >'); ?>
                 </div>
                 <?php 

@@ -43,3 +43,9 @@ $theme_customizer = dirname(__FILE__).'/inc/theme-customizer/theme_customizer.ph
 if(file_exists($theme_customizer)){
     require_once($theme_customizer);
 }
+
+// Elementor Widgets
+$elementor_widgets_dev = dirname(__FILE__).'/inc/elementor/bbs_elementor_widgets.php';
+if(file_exists($elementor_widgets_dev)){
+    require_once($elementor_widgets_dev);
+}

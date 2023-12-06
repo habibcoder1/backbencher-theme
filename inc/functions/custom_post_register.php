@@ -96,9 +96,18 @@ function bbs_custom_metaboxes(){
         'bbbs_service-metabox',     //unique id
         __('Title & Accordion (for single page)', 'backbencher'),  //title
         'bbs_service_metabox_callback',  //callback function
-        'iseba-policy',   // post type
+        'bbs-service',    // post type
         'normal',         // position
         'high'            // high, side
+    );
+    // metabox for minutes in post
+    add_meta_box( 
+        'bbbs_minin-post-metabox',     //unique id
+        __('Blog Reading Duration', 'backbencher'),  //title
+        'bbs_reading_time_metabox_callback',  //callback function
+        'post',             // post type
+        'normal',           // position
+        'high'              // high, side
     );
 }
 // callback for metabox
@@ -120,6 +129,31 @@ function bbs_metabox_save_post($post_id){
     // for title
     if(isset($_POST['service-title'])){
         update_post_meta( $post_id, '_service-title', $_POST['service-title']);
+    }
+
+}
+
+
+// callback for reading time metabox
+function bbs_reading_time_metabox_callback(){ ?>
+    
+    <div class="bbs_readingtime-metabox">
+        <p>
+            <label for="readingtime"><?php _e('Total Time', 'backbencher'); ?></label>
+            <input type="text" class="regular-text" placeholder="3 Min" name="readingtime" id="readingtime" value="<?php echo get_post_meta(get_the_ID(), '_readingtime', true); ?>" >
+        </p>
+                
+    </div>
+
+<?php
+}
+
+// save post for reading time
+add_action('save_post', 'bbs_readingtime_metabox_save_post');
+function bbs_readingtime_metabox_save_post($post_id){
+    // for title
+    if(isset($_POST['readingtime'])){
+        update_post_meta( $post_id, '_readingtime', $_POST['readingtime']);
     }
 
 }

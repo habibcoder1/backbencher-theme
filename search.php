@@ -1,6 +1,6 @@
 <?php 
 /**
- * @package AllThe Shop BD
+ * @package Backbencher Studio
  * Version: 1.0.0
  * 
  * Template for displaying Search Page
@@ -16,10 +16,10 @@ get_header(); ?>
     <!-- =========================
         Body Section
     ========================== -->
-    <section class="body-section blog-page search-page pt-2">
-        <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-3">
+    <section class="search-page body-section blog-page">
+        <div class="container">
             <!-- main conent -->
-            <div class="body-main_content col-span-3 lg:col-span-4">
+            <div class="body-main_content">
                 <!-- Serch -->
                 <?php get_template_part('template_parts/search_page'); ?>
             </div>
