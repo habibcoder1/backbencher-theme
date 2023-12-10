@@ -62,24 +62,3 @@ document.addEventListener("DOMContentLoaded", function () {
         
 });
 
-/* =======================================
-    for custom cursor in video section  (will load exact page //home page)
-======================================= */
-let heroVideoSec = document.querySelector(".hero_video-area");
-let customCursor = document.querySelector(".magicvideo_cursor");
-
-if (heroVideoSec && customCursor) {
-    heroVideoSec.addEventListener("mouseenter", function() {
-        customCursor.style.display = "block";
-    });
-    heroVideoSec.addEventListener("mouseleave", function() {
-        customCursor.style.display = "none";
-    });
-    heroVideoSec.addEventListener("mousemove", function(e) {
-        const x = e.clientX;
-        const y = e.clientY;
-
-        customCursor.style.left = x + "px";
-        customCursor.style.top = y + "px";
-    });
-}

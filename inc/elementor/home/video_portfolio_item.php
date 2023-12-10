@@ -125,17 +125,7 @@ class Bbs_Home_Video_Portfolio_Widget_Dev extends \Elementor\Widget_Base {
 				'label_off'   => esc_html__( 'Right', 'backbencher' ),
 				'default' 	  => 'yes' 
 			]
-		);     
-		// cursor text
-        $this->add_control(
-            'vcursor_text',
-            [
-                'label'       => esc_html__( 'Cursor Text', 'backbencher' ),
-                'type' 		  => \Elementor\Controls_Manager::TEXT,
-                'default' 	  => esc_html__( 'see more' , 'backbencher' ),
-                'label_block' => true,
-            ]
-        );
+		);  
    
 		$this->end_controls_section(); //end content controls
 
@@ -170,8 +160,6 @@ class Bbs_Home_Video_Portfolio_Widget_Dev extends \Elementor\Widget_Base {
                     </div>
                 </div>
             </div>
-            <!-- custom cursor -->
-            <div class="videocustom-cursor"><?php echo $settings['vcursor_text']; ?></div>
         </div>
         
   

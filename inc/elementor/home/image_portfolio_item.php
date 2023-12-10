@@ -37,7 +37,7 @@ class Bbs_Home_Image_Portfolio_Widget_Dev extends \Elementor\Widget_Base {
 	}
 	// for scripts load
 	public function get_script_depends() {
-		return ['bbs-service-item-script']; //array key from enqueue script
+		return []; //array key from enqueue script
 	}
 	// for stylesheet load
 	public function get_style_depends() {
@@ -167,16 +167,6 @@ class Bbs_Home_Image_Portfolio_Widget_Dev extends \Elementor\Widget_Base {
 			]
 		); 
             
-		// cursor text
-        $this->add_control(
-            'cursor_text',
-            [
-                'label'       => esc_html__( 'Cursor Text', 'backbencher' ),
-                'type' 		  => \Elementor\Controls_Manager::TEXT,
-                'default' 	  => esc_html__( 'see more' , 'backbencher' ),
-                'label_block' => true,
-            ]
-        );
    
 		$this->end_controls_section(); //end content controls
 
@@ -227,8 +217,6 @@ class Bbs_Home_Image_Portfolio_Widget_Dev extends \Elementor\Widget_Base {
 					</div>
 				</div>
 			</div>
-			<!-- custom cursor -->
-			<div class="servicecustom-cursor" id="servicecustom-cursor"><?php echo $settings['cursor_text']; ?></div>
 		</div>
         
   

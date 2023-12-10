@@ -123,6 +123,31 @@
             var mixer = mixitup(blogItems);
         }
 
+        /* ==========================
+            Blog Page Fist Word Get  
+        ========================== */
+        jQuery('.blog-pageheading .blogpage-title h1').each(function(){
+            var self = jQuery(this);
+            var p    = self.text().split(' ');
+            var html = self.html().replace(p[0], '<span>'+ p[0] +'</span>');  //0 for first item
+
+            self.html(html);
+        });
+
+        /* =============================
+            contact form item select
+        ============================= */ 
+        jQuery('span.wpcf7-list-item.first.last label').change(function() {
+            let checkLabel = jQuery(this).closest('span.wpcf7-list-item.first.last label'); 
+            if (this.checked) {
+                checkLabel.css('background-color', '#202123');
+                checkLabel.css('color', '#8e8ea0');
+            } else {
+                checkLabel.css('background-color', '#50b800');
+                checkLabel.css('color', '#fff');
+            }
+        });
+
 
     });
 })(jQuery);

@@ -20,7 +20,7 @@ if (!defined('ABSPATH')) {
             <!-- main conent -->
             <div class="body-main_content">
                 <!-- blog hero section -->
-                <div class="blog-hero mt-1">
+                <div class="blog-hero">
                     <?php
                     // Archive Title and Description
                     the_archive_title('<h2 class="title text-uppercase">','</h2>');
@@ -29,11 +29,12 @@ if (!defined('ABSPATH')) {
                 </div>
                 <!-- blog details -->
                 <div class="blog-details">
-                    <!-- blog post -->
-                    <div class="blog-row">
-                        <!-- single blog -->
-                        <?php get_template_part('template_parts/blog_page'); ?>
+                    <!-- Blog Tab Area Start -->
+                    <div class="relatedblog-items">
+                    <?php get_template_part('template_parts/archive_page'); ?>
                     </div>
+                    <!-- Blog Tab Area End -->
+
                     <!-- Pagination -->
                     <div class="post-pagination text-center">
                         <?php 
@@ -50,8 +51,6 @@ if (!defined('ABSPATH')) {
                     </div>
                 </div>
             </div>
-            <!-- right sidebar -->
-            <?php get_sidebar('right'); ?>
         </div>
     </section>
 

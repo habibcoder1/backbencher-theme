@@ -396,7 +396,7 @@ function bbs_theme_customizer($wp_customize){
         'sanitize_callback' => 'sanitize_footertop_btnlink',
     ]);
     $wp_customize->add_control('bbs_footer_btnlink', [
-        'label'       => __('Header Contact Button Link', 'backbencher'),
+        'label'       => __('Footer Contact Button Link', 'backbencher'),
         'description' => __('copy and paste the full link here.', 'backbencher'),
         'section'     => 'bbs_footer_top',
         'setting'     => 'bbs_footer_btnlink',
@@ -475,7 +475,7 @@ function bbs_theme_customizer($wp_customize){
         return esc_url_raw($download_file_url);
     };
 
-     /* =========================
+    /* =========================
        Footer Social Section
     ========================= */
     $wp_customize->add_section('bbs_footer_social', [
@@ -527,6 +527,71 @@ function bbs_theme_customizer($wp_customize){
     ]);
     function sanitize_footer_linkedin($input){
         return sanitize_text_field($input);
+    };
+
+
+    /* =========================
+       BLog Option Panel
+    ========================= */
+    $wp_customize->add_panel('bbs_blog_page_panel', [
+        'title'       => __('Blog Option', 'backbencher'),
+        'priority'    => 15,
+        'capability'  => 'edit_theme_options',
+    ]);
+
+    /* =========================
+       Blog Section
+    ========================= */
+    $wp_customize->add_section('bbs_blog_page_section', [
+        'title'       => __('Blog Page', 'backbencher'),
+        'description' => __('Blog Page Details', 'backbencher'),
+        'panel'       => 'bbs_blog_page_panel',
+    ]);
+
+    // blog page title
+    $wp_customize->add_setting('bbs_blog_page_title', [
+        'default'           => 'blog',
+        'capability'        => 'edit_theme_options',
+        'sanitize_callback' => 'sanitize_blogpage_title',
+    ]);
+    $wp_customize->add_control('bbs_blog_page_title', [
+        'label'       => __('Blog Page Title here', 'backbencher'),
+        'section'     => 'bbs_blog_page_section',
+        'setting'     => 'bbs_blog_page_title',
+    ]);
+    function sanitize_blogpage_title($input){
+        return sanitize_text_field($input);
+    };
+
+    // blog page title
+    $wp_customize->add_setting('bbs_blog_pageheading', [
+        'default'           => 'BEST OF THE WEEK',
+        'capability'        => 'edit_theme_options',
+        'sanitize_callback' => 'sanitize_blogpage_heading',
+    ]);
+    $wp_customize->add_control('bbs_blog_pageheading', [
+        'label'       => __('Blog Page Heading here', 'backbencher'),
+        'section'     => 'bbs_blog_page_section',
+        'setting'     => 'bbs_blog_pageheading',
+    ]);
+    function sanitize_blogpage_heading($input){
+        return sanitize_text_field($input);
+    };
+
+    // blog page content
+    $wp_customize->add_setting('bbs_blog_pagecontent', [
+        'default'           => 'Discover a plethora of articles and personal accounts spanning various topics, offering valuable    insights and diverse perspectives from individual experiences and knowledge. Explore a wide array of narratives and informative pieces shared by people worldwide.',
+        'capability'        => 'edit_theme_options',
+        'sanitize_callback' => 'sanitize_blogpage_content',
+    ]);
+    $wp_customize->add_control('bbs_blog_pagecontent', [
+        'label'       => __('Blog Page Content here', 'backbencher'),
+        'section'     => 'bbs_blog_page_section',
+        'setting'     => 'bbs_blog_pagecontent',
+        'type'        => 'textarea',
+    ]);
+    function sanitize_blogpage_content($input){
+        return sanitize_textarea_field($input);
     };
     
 

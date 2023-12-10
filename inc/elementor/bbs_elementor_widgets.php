@@ -55,16 +55,10 @@ if (in_array('elementor/elementor.php', get_option('active_plugins'))) {
 		// javascript
 		wp_register_script('bbs-portfolio-video-script', get_template_directory_uri().'/inc/elementor/js/cursor_port_video.js', ['jquery'], '1.0.0', true);
 
-		wp_register_script('bbs-service-item-script', get_template_directory_uri().'/inc/elementor/js/cursor_port_image.js', ['jquery'], '1.0.0', true);
-
-		wp_register_script('bbs-testimonial-script', get_template_directory_uri().'/inc/elementor/js/cursor_testimonial.js', ['jquery'], '1.0.0', true);
-
 		wp_register_script('bbs-hero-video-script', get_template_directory_uri().'/inc/elementor/js/cursor_hero_video.js', ['jquery'], '1.0.0', true);
 
 		wp_register_script('bbs-casestudies-tab-script', get_template_directory_uri().'/inc/elementor/js/work_casestudies_tab.js', ['jquery'], '1.0.0', true);
 
-		// stylesheet
-		// wp_register_style('bbs-video-style', plugins_url('css/elementor-simple.css', __FILE__), array(), '1.0.0', 'all');
 	}
 	
 

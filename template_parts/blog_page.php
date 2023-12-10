@@ -36,11 +36,11 @@ if(have_posts()) : ?>
                         </div>
                         <!-- category -->
                         <div class="category-name">
-                            <h4 class="text-uppercase"><?php the_category(' / ', '', ''); ?></h4>
+                            <h4 class="text-uppercase"><?php the_category(' / '); ?></h4>
                         </div>
                         <!-- reading time -->
                         <div class="reading-time">
-                            <p class="text-capitalize"><?php global $post; echo get_post_meta(get_the_ID(), '_readingtime', true); ?></p>
+                            <p class="text-capitalize"><?php echo get_post_meta(get_the_ID(), '_readingtime', true); ?></p>
                         </div>
                     </article> <!-- end single blog -->
                     <?php endwhile; wp_reset_postdata(); //end loop ?>

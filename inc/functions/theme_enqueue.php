@@ -11,9 +11,9 @@ if(!defined('ABSPATH')){
     exit('not valid');
 }; 
 
-/* ===================---====
+/* ===========================
     Enqueue All Stylesheet
-==================---===== */
+=========================== */
 add_action('wp_enqueue_scripts', 'bbs_stylesheet_enqueue');
 function bbs_stylesheet_enqueue(){
     // google font
@@ -55,4 +55,18 @@ add_action('wp_enqueue_scripts', 'bbs_conditional_scripts');
 function bbs_conditional_scripts(){
     wp_enqueue_script('html5shim', 'http://html5shim.googlecode.com/svn/trunk/html5.js');
     wp_script_add_data('html5shim', 'conditional', 'if It ie 9');
+}
+
+
+
+/* ===========================
+    Enqueue For Backend
+=========================== */
+add_action('admin_enqueue_scripts', 'bbs_all_enqueue_backend');
+function bbs_all_enqueue_backend(){
+    // styles
+    wp_enqueue_style('bbs-admin', get_template_directory_uri().'/assets/css/admin.css', [], '1.0.0', 'all');
+
+    // scripts
+    wp_enqueue_script('bbs-admin', get_template_directory_uri().'/assets/js/admin.js', ['jquery'], '1.0.0', true);
 }

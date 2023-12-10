@@ -24,7 +24,7 @@ if(!defined('ABSPATH')){
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="footercontact-btn">
+                    <div class="footercontact-btn text-md-end">
                         <?php if(!empty(get_theme_mod('bbs_footertop_contactbtn'))) : ?>
                         <a href="<?php echo esc_url(get_theme_mod('bbs_footer_btnlink')); ?>" class="bbsBtn"><?php echo get_theme_mod('bbs_footertop_contactbtn'); ?></a>
                         <?php endif; ?>

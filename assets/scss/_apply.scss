@@ -1,107 +1,138 @@
 // apply form scss
 
-.apply_form-area{
-    background-color: #0A090F;
+.bbsapply-form{
     padding: 50px 0;
     color: $bbsWhiteColor;
-    .bbscontact_applyform{
-        background-color: #202123;
-        padding: 50px;
-        border-radius: 30px;
-        -webkit-border-radius: 30px;
-        -moz-border-radius: 30px;
-        -ms-border-radius: 30px;
-        -o-border-radius: 30px;
-        form{
-            input{
-                font-size: 20px;
-                color: $bbsWhiteColor;
-                background-color: $bbsBlackColor;
-                display: block;
-                width: 100%;
-                padding: 5px 0;
-                margin-bottom: 45px;
+    .form-title{
+        h3{
+            color: $bbsWhiteColor;
+            font-size: 38px;
+            font-weight: 500;
+            letter-spacing: -1.47px;
+            margin-bottom: 35px;
+        }
+    }
+    form{
+        input{
+            font-size: 20px;
+            color: $bbsWhiteColor;
+            background-color: transparent;
+            display: block;
+            width: 100%;
+            padding: 5px 0;
+            margin-bottom: 15px;
+            @media(max-width: 992px){
+                margin-bottom: 0;
             }
-            textarea{
-                font-size: 17px;
-                display: block;
-                background-color: transparent;
-                color: $bbsWhiteColor;
-                border: 1px solid #8E8EA0;
-                border-radius: 8px;
-                -webkit-border-radius: 8px;
-                -moz-border-radius: 8px;
-                -ms-border-radius: 8px;
-                -o-border-radius: 8px;
-                width: 100%;
-                resize: none;
-                padding: 5px;
-                height: 350px;
-                @media(max-width: 1200px){
-                    height: 300px;
-                }
-                @media(max-width: 992px){
-                    height: 200px;
-                }
-                @media(max-width: 768px){
-                    height: 150px;
-                }
-                
+        }
+        textarea{
+            font-size: 17px;
+            display: block;
+            background-color: transparent;
+            color: $bbsWhiteColor;
+            border: 1px solid #8E8EA0;
+            border-radius: 8px;
+            -webkit-border-radius: 8px;
+            -moz-border-radius: 8px;
+            -ms-border-radius: 8px;
+            -o-border-radius: 8px;
+            width: 100%;
+            resize: none;
+            padding: 5px;
+            height: 350px;
+            @media(max-width: 1400px){
+                height: 280px;
             }
-            .message-label{
-                margin-bottom: 5px;
+            @media(max-width: 992px){
+                height: 200px;
             }
-            .resume-submitbtn{
+            @media(max-width: 768px){
+                height: 150px;
+            }
+            
+        }
+        ::placeholder{
+            font-size: 20px;
+            font-weight: 500;
+            letter-spacing: -0.7px;
+        }
+        .message-label{
+            margin-bottom: 5px;
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: -0.7px;
+        }
+        .wpcf7-not-valid-tip{
+            font-size: 20px;
+        }
+        .resume-submitbtn{
+            p{
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
                 margin-top: 25px;
-                @media(max-width: 768px){
-                    flex-direction: column;
-                    margin-top: 25px;
+                span.wpcf7-spinner {
+                    display: none;
                 }
-                input[type="file"]{
-                    border-bottom: none;
-                    border-bottom: none;
-                    padding: 18px 30px;
-                    border: 1px solid #8E8EA0;
-                    border-radius: 50px;
-                    width: 230px;
-                    cursor: pointer;
-                    transition: .4s ease all;
-                    -webkit-transition: .4s ease all;
-                    -moz-transition: .4s ease all;
-                    -ms-transition: .4s ease all;
-                    -o-transition: .4s ease all;
-                    @media(max-width: 768px){
-                        margin-bottom: 20px;
-                        
-                    }
-                }
-                input[type="submit"]{
+                @media(max-width: 992px){
+                    display: block;
                     text-align: center;
-                    background-color: $bbsSecondaryColor;
-                    color: $bbsBlackColor;
-                    border-radius: 50px;
-                    width: 170px;
-                    font-size: 25px;
-                    font-style: normal;
-                    font-weight: 500;
-                    line-height: normal;
-                    letter-spacing: -0.7px;
-                    padding: 18px 30px;
-                    transition: .4s ease all;
-                    -webkit-transition: .4s ease all;
-                    -moz-transition: .4s ease all;
-                    -ms-transition: .4s ease all;
-                    -o-transition: .4s ease all;
-                    &:hover{
-                        background-color: $bbsPrimaryColor;   
-                        color: $bbsWhiteColor;
-                    }
                 }
-                
             }
+            @media(max-width: 768px){
+                flex-direction: column;
+                margin-top: 25px;
+            }
+            label.attach-resume{
+                font-size: 20px;
+                font-weight: 700;
+                border-bottom: none;
+                border-bottom: none;
+                padding: 18px 30px;
+                border: 1px solid #8E8EA0;
+                border-radius: 50px;
+                cursor: pointer;
+                transition: .4s ease all;
+                -webkit-transition: .4s ease all;
+                -moz-transition: .4s ease all;
+                -ms-transition: .4s ease all;
+                -o-transition: .4s ease all;
+                @media(max-width: 768px){
+                    margin-bottom: 20px;
+                    
+                }
+            }
+            input[type="file"]{
+                display: none;
+            }
+            input[type="submit"]{
+                text-align: center;
+                background-color: $bbsSecondaryColor;
+                color: $bbsBlackColor;
+                border-radius: 50px;
+                width: 200px;
+                font-size: 28px;
+                font-style: normal;
+                text-shadow: none;
+                font-weight: 500;
+                line-height: normal;
+                letter-spacing: -0.7px;
+                padding: 18px 30px;
+                transition: .4s ease all;
+                -webkit-transition: .4s ease all;
+                -moz-transition: .4s ease all;
+                -ms-transition: .4s ease all;
+                -o-transition: .4s ease all;
+                &:hover{
+                    background-color: $bbsPrimaryColor;   
+                    color: $bbsWhiteColor;
+                }
+                @media(max-width: 992px){
+                    font-size: 25px;
+                    margin: auto;
+                }
+            }
+            
         }
     }
 }

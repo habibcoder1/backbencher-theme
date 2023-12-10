@@ -79,17 +79,7 @@ class Bbs_Home_Hero_Video_Widget_Dev extends \Elementor\Widget_Base {
 					'active'   => true,  
 				],
 			]
-		);  
-		// cursor text
-        $this->add_control(
-            'cursor_text',
-            [
-                'label'       => esc_html__( 'Cursor Text', 'backbencher' ),
-                'type' 		  => \Elementor\Controls_Manager::TEXT,
-                'default' 	  => esc_html__( 'watch video' , 'backbencher' ),
-                'label_block' => true,
-            ]
-        );
+		); 
    
 		$this->end_controls_section(); //end content controls
 
@@ -101,15 +91,11 @@ class Bbs_Home_Hero_Video_Widget_Dev extends \Elementor\Widget_Base {
 		if ( ! empty($settings['magic_video']) ) : ?>
 
 		<div class="hero_video-area">
-			<!-- <div class="container"> -->
-				<div class="hero-video">
-					<video poster="<?php echo esc_url($settings['video_poster']['url']); ?>" controls id="heroVideo">
-						<source src="<?php echo esc_url($settings['magic_video']['url']); ?>" type="video/mp4">
-					</video>
-				</div>
-			<!-- </div> -->
-			<!-- custom cursor -->
-			<div class="custom-cursor magicvideo_cursor"><?php echo $settings['cursor_text']; ?></div>
+			<div class="hero-video">
+				<video poster="<?php echo esc_url($settings['video_poster']['url']); ?>" controls id="heroVideo">
+					<source src="<?php echo esc_url($settings['magic_video']['url']); ?>" type="video/mp4">
+				</video>
+			</div>
 		</div>
         
   

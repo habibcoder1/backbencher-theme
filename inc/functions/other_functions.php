@@ -63,3 +63,6 @@ function bbs_recommend_plugin_activation() {
         echo '<div class="notice notice-info is-dismissible"><p>' . $message . '</p></div>';
     }
 };
+
+
+

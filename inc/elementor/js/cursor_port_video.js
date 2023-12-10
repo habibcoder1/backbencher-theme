@@ -61,29 +61,3 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-
-
-/* =======================================
-    custom cursor for video items 
-======================================= */
-let videoContainer       = document.querySelector(".workvideo_customcursor");
-let videoCustomCursor    = document.querySelector(".videocustom-cursor"); 
-
-if(videoContainer && videoCustomCursor){
-    videoContainer.addEventListener("mouseenter", function () {
-        videoCustomCursor.style.display = "block";
-    });
-    videoContainer.addEventListener("mouseleave", function () {
-        videoCustomCursor.style.display = "none";
-    });
-    videoContainer.addEventListener("click", function () {
-        videoCustomCursor.style.display = "block";
-    });
-    videoContainer.addEventListener("mousemove", function (e) {
-        const x = e.clientX;
-        const y = e.clientY;
-    
-        videoCustomCursor.style.left = x + "px";
-        videoCustomCursor.style.top = y + "px";
-    });
-}

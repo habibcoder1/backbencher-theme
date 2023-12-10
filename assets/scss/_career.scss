@@ -1,0 +1,395 @@
+// job board
+.career-area{
+    background-color: #0a090f; 
+    padding: 100px 0;
+    color: $bbsWhiteColor;
+    @media(max-width: 768px){
+        padding: 50px 0;
+    }
+    .job_serach-title{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        @media(max-width: 1200px){
+            display: block;
+            text-align: center;
+        }
+        .title{
+            @media(max-width: 1200px){
+                margin-bottom: 25px;
+            }
+            h2{
+                color: $bbsWhiteColor;
+                font-size: 68px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: 100%; /* 68px */
+                text-transform: uppercase;
+                @media(max-width: 1400px){
+                    font-size: 50px;
+                    letter-spacing: 0;
+                }
+                @media(max-width: 992px){
+                    font-size: 40px;
+                }
+                @media(max-width: 768px){
+                    font-size: 35px;
+                }
+            }
+        }
+        .search-filter{
+            form{
+                input#service {
+                    background: #202123;
+                    padding: 10px 20px;
+                    border: navajowhite;
+                    border-radius: 50px;
+                    width: 350px;
+                    @media(max-width: 1400px){
+                        width: 250px;
+                    }
+                    @media(max-width: 768px){
+                        width: 200px;
+                    }
+                }
+                label{
+                    font-size: 28px;
+                    color: #8E8EA0;
+                    @media(max-width: 768px){
+                        font-size: 20px;
+                    }
+                }
+                select#filter {
+                    border: none;
+                    width: 60px;
+                    background-color: #0A090F;
+                }
+                ::placeholder{
+                    color: $bbsWhiteColor;
+                    font-size: 28px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: normal;
+                    letter-spacing: -0.7px;
+                }
+                select,
+                input{
+                    color: $bbsWhiteColor;
+                    background-color: transparent;
+                    font-size: 28px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: normal;
+                    letter-spacing: -0.7px;
+                    @media(max-width: 1200px){
+                        font-size: 25px;
+                    }
+                    @media(max-width: 992px){
+                        font-size: 20px;
+                    }
+                }
+            }
+        }
+    }
+    .job-post-items{
+        margin-top: 40px;
+        ul{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            li{
+                padding: 40px 0;
+                border-bottom: 1px solid #ECECEE;
+                .job-title{
+                    margin-bottom: 25px;
+                    h2{
+                        color: $bbsWhiteColor;
+                        font-size: 32px;
+                        font-style: normal;
+                        font-weight: 700;
+                        line-height: normal;
+                        letter-spacing: -2.08px;
+                        text-transform: uppercase;
+                        @media(max-width: 1200px){
+                            font-size: 30px;
+                            letter-spacing: -1px;
+                        }
+                        @media(max-width: 992px){
+                            font-size: 28px;
+                        }
+                        @media(max-width: 768px){
+                            font-size: 25px;
+                        }
+                    }
+                }
+                .job-details{
+                    .location-details{
+                        .location-title{
+                            p{
+                                color: #4C4E57;
+                                font-size: 24px;
+                                font-style: normal;
+                                font-weight: 500;
+                                line-height: 42px; /* 175% */
+                                letter-spacing: 0.12px;
+                                margin-bottom: 5px;
+                                @media(max-width: 768px){
+                                    font-size: 20px;
+                                }
+                            }
+                        }
+                        .location{
+                            p{
+                                color: $bbsWhiteColor;
+                                font-size: 24px;
+                                font-style: normal;
+                                font-weight: 500;
+                                line-height: 140%; /* 33.6px */
+                                letter-spacing: -1.56px;
+                                @media(max-width: 1200px){
+                                    letter-spacing: -0.50px;
+                                }
+                                @media(max-width: 768px){
+                                    font-size: 22px;
+                                    letter-spacing: 0px;
+                                }
+                            }
+                        }
+                    }
+                }
+                .salary-details{
+                    .salary-title{
+                        p{
+                            color: #4C4E57;
+                            font-size: 24px;
+                            font-style: normal;
+                            font-weight: 500;
+                            line-height: 42px; /* 175% */
+                            letter-spacing: 0.12px;
+                            margin-bottom: 5px;
+                            @media(max-width: 768px){
+                                font-size: 20px;
+                            }
+                        }
+                    }
+                    .salary{
+                        p{
+                            color: $bbsWhiteColor;
+                            font-size: 24px;
+                            font-style: normal;
+                            font-weight: 500;
+                            line-height: normal;
+                            letter-spacing: -1.56px;
+                            @media(max-width: 768px){
+                                font-size: 22px;
+                                letter-spacing: 0px;
+                            }
+                        }
+                    }
+                }
+                .deadline-details{
+                    .deadline-title{
+                        p{
+                            color: #4C4E57;
+                            font-size: 24px;
+                            font-style: normal;
+                            font-weight: 500;
+                            line-height: 42px; /* 175% */
+                            letter-spacing: 0.12px;
+                            margin-bottom: 5px;
+                            @media(max-width: 768px){
+                                font-size: 20px;
+                            }
+                        }
+                    }
+                    .deadline{
+                        p{
+                            color: $bbsWhiteColor;
+                            font-size: 24px;
+                            font-style: normal;
+                            font-weight: 500;
+                            line-height: normal;
+                            letter-spacing: -1.56px;
+                            @media(max-width: 768px){
+                                font-size: 22px;
+                                letter-spacing: 0px;
+                            }
+                        }
+                    }
+                }
+                .apply-btn{
+                    a{
+                        padding: 18px 48px;
+                        font-size: 28px;
+                        font-style: normal;
+                        font-weight: 500;
+                        line-height: normal;
+                        letter-spacing: -0.7px;
+                        @media(max-width: 1200px){
+                            font-size: 25px;
+                        }
+                        @media(max-width: 768px){
+                            font-size: 22px;
+                            margin-top: 15px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// career single
+// single career
+.single-carea-area{
+    background-color: #0a090f;
+    color: $bbsWhiteColor;
+    padding: 100px 0;
+    @media(max-width: 768px){
+        padding: 60px 0;
+    }
+    .career-titlelocation_btn{
+        margin-bottom: 25px;
+        .title{
+            margin-bottom: 15px;
+            h2{
+                color: $bbsWhiteColor;
+                font-size: 64px;
+                font-weight: 700;
+                letter-spacing: -2.24px;
+                @media(max-width: 1400px){
+                    font-size: 50px;
+                    letter-spacing: -2px;
+                }
+                @media(max-width: 768px){
+                    font-size: 40px;
+                    letter-spacing: 0;
+                }
+            }
+        }
+        .location{
+            p{
+                color: $bbsWhiteColor;
+                font-size: 24px;
+                font-weight: 400;
+                line-height: 140%; 
+            }
+        }
+        .btn{
+            a{
+                padding: 20px 48px;
+                font-size: 28px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: normal;
+                letter-spacing: -0.7px;
+                @media(max-width: 1200px){
+                    padding: 20px 35px;
+                    font-size: 26px;
+                }
+                @media(max-width: 992px){
+                    padding: 15px 20px;
+                    font-size: 20px;
+                }
+                @media(max-width: 768px){
+                    padding: 20px 35px;
+                    font-size: 20px;
+                }
+            }
+        }
+        .col-md-3.text-end{
+            @media(max-width: 768px){
+                text-align: center !important;
+                margin: 20px 0;
+            }
+        }
+    }
+    .salaray-deadline_type{
+        border-bottom: 1px solid #8E8EA0;
+        padding-bottom: 40px;
+        @media(max-width: 575px){
+            text-align: center;
+        }
+        .subtitle{
+            p{
+                color: #4C4E57;
+                font-size: 24px;
+                font-weight: 500;
+                line-height: 42px; 
+                letter-spacing: 0.12px;
+                margin-bottom: 10px;
+            }
+        }
+        .title{
+            p{
+                color: $bbsWhiteColor;
+                font-size: 24px;
+                font-weight: 500;
+                line-height: normal;
+                letter-spacing: -1.56px;
+                @media(max-width: 768px){
+                    letter-spacing: -1px;
+                }
+                @media(max-width: 575px){
+                    letter-spacing: 0;
+                    margin-bottom: 25px;
+                }
+            }
+        }
+    }
+    .single_career-title{
+        h3{
+            color: $bbsWhiteColor;
+            font-size: 36px;
+            font-weight: 600;
+            line-height: normal;
+            @media(max-width: 768px){
+                font-size: 30px;
+            }
+            @media(max-width: 575px){
+                font-size: 28px;
+            }
+        }
+    }
+    .single_career-des{
+        margin-top: 30px;
+        p{
+            color: $bbsWhiteColor;
+            font-size: 30px;
+            font-weight: 400;
+            line-height: 42px; 
+            @media(max-width: 768px){
+                font-size: 25px;
+            }
+            @media(max-width: 575px){
+                font-size: 22px;
+            }
+        }
+        ul{
+            li{
+                color: rgba(255, 255, 255, 0.79);
+                font-size: 30px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 42px; 
+                &::marker{
+                    font-size: 16px;
+                }
+                @media(max-width: 768px){
+                    font-size: 25px;
+                }
+                @media(max-width: 575px){
+                    font-size: 22px;
+                }
+            }
+        }
+    }
+    .career-specification{
+        padding: 50px 0;
+        border-bottom: 1px solid #8E8EA0;
+        ul{
+            margin: 0;
+            list-style: disc;
+        }
+    }
+}

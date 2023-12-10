@@ -1,0 +1,91 @@
+/* all admin panel css */
+
+/* style for table of content */
+#bbs_table_ofcontent_metabox #tableid-container .tableid-input{
+    margin-bottom: 12px;
+}
+#bbs_table_ofcontent_metabox button#add-tableid {
+    cursor: pointer;
+    border: none;
+    padding: 8px 15px;
+    background: #50B800;
+    color: white;
+    display: block;
+    margin-left: 500px;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 5px;
+    transition: .4s;
+}
+#bbs_table_ofcontent_metabox button#add-tableid:hover{
+    border: none;
+    background: #FFDE00;
+    color: black;
+}
+@media(max-width: 1200px){
+    #bbs_table_ofcontent_metabox button#add-tableid {
+        margin-left: 400px;
+    }
+}
+@media(max-width: 900px){
+    #bbs_table_ofcontent_metabox button#add-tableid {
+        margin-left: auto;
+    }
+}
+#bbs_table_ofcontent_metabox .tableid-input span.remove-tableid {
+    color: #c33232;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* style for service */
+.bbs_service-metabox label {
+    margin-right: 15px;
+}
+
+.bbs_service-metabox input#service-contactbtnllink {
+    margin-left: 27px;
+}
+
+.bbs_service-metabox input#discuss-projectlink {
+    margin-left: 25px;
+}
+.bbs_service-metabox textarea{
+    height: 150px;
+    width: 500px;
+    display: block;
+    margin-left: 156px;
+}
+.bbs_service-metabox label{
+    margin-right: 15px;
+}
+
+/* style for job board */
+#bbs_job_board_metabox .postbox-header h2{
+    font-size: 22px;
+    font-weight: 400;
+}
+#bbs_job_board_metabox .bbs_jobboard_metabox_details label{
+    font-size: 15px;
+    font-weight: 500;
+}
+#bbs_job_board_metabox .bbs_jobboard_metabox_details input{
+    font-size: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 4px 8px;
+    margin-left: 10px;
+}
+#bbs_job_board_metabox .bbs_jobboard_metabox_details input#jobaddress{
+    width: 70%;
+}
+#bbs_job_board_metabox .bbs_jobboard_metabox_details input:focus{
+    box-shadow: none;
+    border: 1px solid #ccc;
+    outline: none;
+}
+#bbs_job_board_metabox .bbs_jobboard_metabox_details input::placeholder{
+    font-style: italic;
+}
+

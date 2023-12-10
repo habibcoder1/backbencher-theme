@@ -1,39 +1,77 @@
 // contact page
 
+.bbscontact-form,
 .contact-form{
     form{
-        .service-choose{
-            margin: 50px 0 20px 0;
-            label{
-                text-transform: capitalize;
-                font-size: 35px;
-                font-style: normal;
+        ::placeholder{
+            font-size: 20px;
+            font-family: $bbsFontFamily;
+            font-weight: 500;
+        }
+        .form-title{
+            h3{
+                color: $bbsWhiteColor;
+                font-size: 38px;
                 font-weight: 500;
-                line-height: 38px;
-                letter-spacing: 0.19px;
-                color: #8E8EA0;
-                border: 1px solid #4C4E57;
-                padding: 30px 35px;
+                letter-spacing: -2.47px;
+                text-transform: capitalize;
                 margin-bottom: 20px;
-                margin-right: 20px;
-                cursor: pointer;
-                border-radius: 100px;
-                -webkit-border-radius: 100px;
-                -moz-border-radius: 100px;
-                -ms-border-radius: 100px;
-                -o-border-radius: 100px;
-                transition: .4s ease all;
-                -webkit-transition: .4s ease all;
-                -moz-transition: .4s ease all;
-                -ms-transition: .4s ease all;
-                -o-transition: .4s ease all;
-                &:hover{
-                    background-color: $bbsPrimaryColor;
-                    color: $bbsWhiteColor;
-                }
             }
-            input[type="checkbox"]{
-                display: none;
+        }
+        input#name,
+        input#email,
+        textarea,
+        input#phonenumber{
+            color: $bbsWhiteColor;
+            background-color: transparent;
+            font-size: 20px;
+            width: 100%;
+            font-weight: 500; 
+            margin-bottom: 40px;
+            padding: 10px 0;
+        }
+        .service-choose{
+            margin: 40px 0 20px 0;
+            span.wpcf7-list-item.first.last{
+                margin: 0;
+                label{
+                    text-transform: capitalize;
+                    font-size: 35px;
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: 38px;
+                    letter-spacing: 0.19px;
+                    color: #8E8EA0;
+                    border: 1px solid #4C4E57;
+                    padding: 30px 35px;
+                    margin-bottom: 20px;
+                    margin-right: 20px;
+                    cursor: pointer;
+                    border-radius: 100px;
+                    -webkit-border-radius: 100px;
+                    -moz-border-radius: 100px;
+                    -ms-border-radius: 100px;
+                    -o-border-radius: 100px;
+                    transition: .4s ease all;
+                    -webkit-transition: .4s ease all;
+                    -moz-transition: .4s ease all;
+                    -ms-transition: .4s ease all;
+                    -o-transition: .4s ease all;
+                    &:hover{
+                        background-color: $bbsPrimaryColor;
+                        color: $bbsWhiteColor;
+                    }
+                    @media(max-width: 768px){
+                        padding: 15px 25px;
+                    }
+                    @media(max-width: 500px){
+                        font-size: 20px;
+                        padding: 6px 20px;
+                    }
+                }
+                input[type="checkbox"]{
+                    display: none;
+                }
             }
         }
         input{
@@ -43,15 +81,16 @@
             font-size: 20px;
             border: none;
             border-bottom: 1px solid #C0C0C0;
-            height: 42px;
+            height: 52px;
             border-radius: 0;
             -webkit-border-radius: 0;
             -moz-border-radius: 0;
             -ms-border-radius: 0;
             -o-border-radius: 0;
         }
-        label.budget-label{
-            margin: 25px 0 40px;
+        .budget-label{
+            color: $bbsWhiteColor;
+            margin: 25px 0 0;
             font-size: 35px;
             font-style: normal;
             font-weight: 500;
@@ -70,6 +109,77 @@
                 padding-bottom: 10px;
             }
         }
-        
+        .resume-submitbtn{
+            @media(max-width: 500px){
+                margin-top: 25px;
+            }
+            p{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                span.wpcf7-spinner{
+                    display: none;
+                }
+                @media(max-width: 500px){
+                    display: block;
+                }
+            }
+            span.wpcf7-form-control-wrap{
+                cursor: pointer;
+            }
+            label.resume-label{
+                border: 1px solid #8E8EA0;
+                border-radius: 50px;
+                padding: 16px 31px;
+                color: $bbsWhiteColor;
+                font-size: 20px;
+                font-weight: 700;
+                cursor: pointer;
+                @media(max-width: 500px){
+                    display: block;
+                    margin: 0 auto 26px;
+                }
+            }
+            input#resume {
+                display: none;
+            }
+            input[type="submit"]{
+                text-align: center;
+                background-color: #ffde00;
+                color: #202123;
+                border-radius: 50px;
+                width: 170px;
+                font-size: 25px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: normal;
+                text-shadow: none;
+                letter-spacing: -0.7px;
+                padding: 18px 30px;
+                transition: .4s ease all;
+                -webkit-transition: .4s ease all;
+                -moz-transition: .4s ease all;
+                -ms-transition: .4s ease all;
+                -o-transition: .4s ease all;
+                &:hover{
+                    background-color: #50b800;
+                    color: #fff;
+                }
+                @media(max-width: 500px){
+                    display: block;
+                    margin: auto;
+                }
+            }
+        }
+        textarea{
+            margin-bottom: 0;
+        }
+        .wpcf7-not-valid-tip{
+            font-size: 20px;
+            margin-top: -40px;
+        }
+        .wpcf7-response-output {
+            color: $bbsWhiteColor;
+        }
     }
 }

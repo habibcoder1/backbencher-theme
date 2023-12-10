@@ -10,10 +10,3 @@ if (!defined('ABSPATH')){
 	exit('not valid');
 };
 
-
-get_header(); ?>
-
-
-
-<?php 
-get_footer();

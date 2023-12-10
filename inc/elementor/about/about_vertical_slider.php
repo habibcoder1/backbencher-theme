@@ -58,9 +58,9 @@ class Bbs_About_Vertical_Slider_Widget_Dev extends \Elementor\Widget_Base {
 		$this->add_control(
 			'slider_items',
 			[ 
-				'label'  => esc_html__( 'Slider Items', 'backbencher' ),
+				'label'        => esc_html__( 'Slider Items', 'backbencher' ),
 				'description'  => esc_html__( 'Min 8 items', 'backbencher' ),
-				'type'   => \Elementor\Controls_Manager::REPEATER,
+				'type'         => \Elementor\Controls_Manager::REPEATER,
 				'fields' => [
 					[
 						'name'        => 'single_slider',
