@@ -369,3 +369,12 @@
 
 
 }
+.dark_header-area{
+    border-bottom: 1px solid #000;
+    .contact-btn{
+        a{
+            color: $bbsWhiteColor;
+            border: 2px solid #4C4E57;
+        }
+    }
+}

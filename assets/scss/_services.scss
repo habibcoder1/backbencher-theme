@@ -418,7 +418,12 @@
             }
             img{
                 height: 550px;
-                @media(max-width: 1280px){
+                border-radius: 30px;
+                -webkit-border-radius: 30px;
+                -moz-border-radius: 30px;
+                -ms-border-radius: 30px;
+                -o-border-radius: 30px;
+                @media(max-width: 1280px){ 
                     height: 450px;
                 }
                 @media(max-width: 992px){
@@ -486,8 +491,12 @@
                     text-align: center;
                 }
                 a{
+                    padding: 38px 64px;
                     @media(max-width: 1400px){
-                        padding: 40px 65px;
+                        padding: 38px 54px;
+                    }
+                    @media(max-width: 992px){
+                        padding: 30px 35px;
                     }
                     @media(max-width: 768px){
                         padding: 30px 40px;
@@ -634,7 +643,7 @@
             .categories{
                 h3{
                     color: $bbsWhiteColor;
-                    font-size: 48px;
+                    font-size: 42px;
                     @media(max-width: 1400px){
                         font-size: 30px;
                     }
@@ -655,7 +664,7 @@
                     }
                     a{
                         color: $bbsWhiteColor;
-                        font-size: 48px;
+                        font-size: 42px;
                         font-style: normal;
                         font-weight: 600;
                         line-height: normal;
@@ -712,7 +721,7 @@
                 margin-top: 25px;
             }
             form{
-                input#service {
+                input#servicesearch{
                     background: #202123;
                     padding: 10px 20px;
                     border: navajowhite;
@@ -729,6 +738,7 @@
                     border: none;
                     width: 120px;
                     background-color: #0A090F;
+                    cursor: pointer;
                 }
                 ::placeholder{
                     color: $bbsWhiteColor;

@@ -14,10 +14,5 @@ if (!defined('ABSPATH')) {
 get_header(); ?>
 
     <?php echo get_template_part('template_parts/single_page'); ?>
-    
-    <style>
-        .footer-top-area{
-            background-color: #202123;
-        }
-    </style>
+
 <?php get_footer(); ?>

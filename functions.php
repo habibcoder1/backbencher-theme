@@ -49,3 +49,9 @@ $elementor_widgets_dev = dirname(__FILE__).'/inc/elementor/bbs_elementor_widgets
 if(file_exists($elementor_widgets_dev)){
     require_once($elementor_widgets_dev);
 }
+
+// Custom Search Form
+$custom_search = dirname(__FILE__).'/inc/functions/custom_search.php';
+if(file_exists($custom_search)){
+    require_once($custom_search);
+}

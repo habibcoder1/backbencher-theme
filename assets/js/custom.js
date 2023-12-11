@@ -77,7 +77,7 @@
             },
             on: {
                 autoplayTimeLeft(s, time, progress) {
-                progressCircle.style.setProperty("--progress", 1 - progress);
+                    progressCircle.style.setProperty("--progress", 1 - progress);
                 }
             }
         });
@@ -146,6 +146,28 @@
                 checkLabel.css('background-color', '#50b800');
                 checkLabel.css('color', '#fff');
             }
+        });
+
+
+        /* =============================
+            Searchform for Service
+        ============================= */ 
+        jQuery('#service-serachform').on('submit', function(e) {
+            e.preventDefault();
+    
+            let searchQuery = jQuery('input#servicesearch').val(); 
+    
+            jQuery.ajax({
+                type: 'POST',
+                url: ajax_object.ajax_url, 
+                data: {
+	                action: 'bbs_service_ajax_search',
+	                'bbsservice': searchQuery,
+	            },
+                success: function(response) {
+                    jQuery('.allblog-items').html(response);
+                }
+            });
         });
 
 

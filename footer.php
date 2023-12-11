@@ -11,7 +11,7 @@ if(!defined('ABSPATH')){
     exit('not valid');
 }; ?>
 
-    <?php if(! is_home()) : ?>
+    <?php if(!is_home() && !is_page(623) && !is_singular('career') && !is_page(779)) : ?>
     <!-- =========================
         Footer Top Area Start
     ========================== -->
@@ -100,6 +100,14 @@ if(!defined('ABSPATH')){
     <!-- =========================
         Footer Area End
     ========================== -->
+
+    <?php if(is_singular('post') || is_page(30)) : ?>
+        <style>
+            .footer-top-area{
+                background-color: #202123;
+            }
+        </style>
+    <?php endif; ?>
 
     <?php wp_footer(); ?>
 </body>

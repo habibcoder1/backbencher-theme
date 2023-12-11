@@ -53,16 +53,28 @@ get_header(); ?>
 						<?php endforeach;
 					?>
 				</ul>
-				<!-- search filter -->
+				<!-- search filter --> 
 				<div class="search-filter">
-					<form action="#" id="service-serachform">
-						<input type="text" name="service" id="service" placeholder="Search...">
+					<form action="#" id="service-serachform" method="POST">
+						<?php wp_nonce_field('bbs_service_ajax_search_nonce', 'nonce'); ?>
+
+						<input type="text" name="servicesearch" id="servicesearch" placeholder="Search...">
+
 						<label for="filter">Filter:</label>
 						<select name="filter" id="filter">
-							<option value="0">All Work</option>
-							<option value="1">UI/UX Design</option>
-							<option value="2">Web Design</option>
-							<option value="3">Web Development</option>
+							<option value="all"><?php _e('All Work', 'backbencher'); ?></option>
+							<?php 
+								$parent_category = get_term_by('slug', 'ui-ux-design', 'bbsservice_tax');
+								$parent_category_id = $parent_category->term_id;
+
+								$subcategories = get_terms(array(
+									'taxonomy' => 'bbsservice_tax',
+									'parent'   => $parent_category_id,
+								));
+								foreach($subcategories as $subcategory){
+									echo '<option value="' . esc_attr($subcategory->slug) . '">' . esc_html($subcategory->name) . '</option>';
+								}
+							?>
 						</select>
 						<input type="submit" style="display: none;" value="search">
 					</form>

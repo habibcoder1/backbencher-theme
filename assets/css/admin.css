@@ -70,15 +70,62 @@
     font-size: 15px;
     font-weight: 500;
 }
+#bbs_job_board_metabox .bbs_jobboard_metabox_details textarea,
 #bbs_job_board_metabox .bbs_jobboard_metabox_details input{
     font-size: 15px;
     border: 1px solid #ccc;
     border-radius: 6px;
     padding: 4px 8px;
-    margin-left: 10px;
+    margin-left: 13px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
 }
 #bbs_job_board_metabox .bbs_jobboard_metabox_details input#jobaddress{
     width: 70%;
+    margin-left: 60px;
+}
+#bbs_job_board_metabox .bbs_jobboard_metabox_details input#jobsalary-range{
+    margin-left: 48px;
+}
+#bbs_job_board_metabox .bbs_jobboard_metabox_details input#jobdeadline{
+    margin-left: 76px;
+    cursor: pointer;
+}
+#bbs_job_board_metabox .bbs_jobboard_metabox_details textarea#jobabout-company{
+    display: block;
+    width: 70%;
+    margin-left: 170px;
+    height: 140px;
+    margin-top: 8px;
+}
+@media(max-width: 768px){
+    #bbs_job_board_metabox .bbs_jobboard_metabox_details textarea#jobabout-company{
+        height: 100px;
+    }
+}
+#bbs_job_board_metabox .bbs_jobboard_metabox_details textarea#jobwhat-role{
+    width: 70%;
+    display: block;
+    margin-left: 170px;
+    height: 140px;
+    margin-top: 8px;
+}
+@media(max-width: 768px){
+    #bbs_job_board_metabox .bbs_jobboard_metabox_details textarea#jobwhat-role{
+        height: 100px;
+    }
+}
+#bbs_job_board_metabox .bbs_jobboard_metabox_details input#jobneedbegood_0 {
+    margin-left: 73px;
+}
+#bbs_job_board_metabox .bbs_jobboard_metabox_details .job-benefit p,
+#bbs_job_board_metabox .bbs_jobboard_metabox_details .job-allskills p,
+#bbs_job_board_metabox .bbs_jobboard_metabox_details .needtobegood p{
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 8px;
 }
 #bbs_job_board_metabox .bbs_jobboard_metabox_details input:focus{
     box-shadow: none;
@@ -88,4 +135,56 @@
 #bbs_job_board_metabox .bbs_jobboard_metabox_details input::placeholder{
     font-style: italic;
 }
-
+#bbs_job_board_metabox .bbs_jobboard_metabox_details p{
+    margin-bottom: 20px;
+}
+#bbs_job_board_metabox .bbs_jobboard_metabox_details button#add-jobbenefit,
+#bbs_job_board_metabox .bbs_jobboard_metabox_details button#add-jobskill,
+#bbs_job_board_metabox .bbs_jobboard_metabox_details button#add-needbegood {
+    padding: 6px 15px 8px;
+    text-transform: capitalize;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    margin-left: 80%;
+    margin-top: 5px;
+    font-weight: 600;
+    border-radius: 4px;
+    transition: .4s ease all;
+    -webkit-transition: .4s ease all;
+    -moz-transition: .4s ease all;
+    -ms-transition: .4s ease all;
+    -o-transition: .4s ease all;
+}
+#bbs_job_board_metabox .bbs_jobboard_metabox_details button#add-jobbenefit:hover,
+#bbs_job_board_metabox .bbs_jobboard_metabox_details button#add-jobskill:hover,
+#bbs_job_board_metabox .bbs_jobboard_metabox_details button#add-needbegood:hover{
+    background-color: #50B800;
+    color: #fff;
+}
+#bbs_job_board_metabox .bbs_jobboard_metabox_details .jobskillid input{
+    margin-left: 100px;
+    margin-bottom: 10px;
+    width: 67%;
+}
+#bbs_job_board_metabox .bbs_jobboard_metabox_details .needbegoodid input{
+    margin-left: 70px;
+    margin-bottom: 10px;
+    width: 67%;
+}
+#bbs_job_board_metabox .bbs_jobboard_metabox_details .jobbenefitid input{
+    margin-left: 80px;
+    margin-bottom: 10px;
+    width: 67%;
+}
+#bbs_job_board_metabox .bbs_jobboard_metabox_details .jobbenefitid span.remove-benefit,
+#bbs_job_board_metabox .bbs_jobboard_metabox_details .jobskillid span.remove-skill,
+#bbs_job_board_metabox .bbs_jobboard_metabox_details .needbegoodid span.remove-needbegood{
+    color: red;
+    font-weight: 500;
+    font-size: 22px;
+    cursor: pointer;
+    padding: 6px;
+}
+#bbs_job_board_metabox .bbs_jobboard_metabox_details .needbegoodid {
+    
+}

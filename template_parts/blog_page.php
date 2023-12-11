@@ -17,7 +17,15 @@ if(have_posts()) : ?>
         <div class="container">
             <div class="blog-slider_details swiper mySwiper">
                 <div class="blog-slider swiper-wrapper">
-                    <?php while(have_posts()) : the_post() ; ?>
+                    <?php
+                    $args = array(
+                        'posts_per_page' => 5, // Show the last 5 posts
+                        'order' => 'DESC',
+                    );
+                    $query = new WP_Query($args);
+
+                    while ($query->have_posts()) : $query->the_post();
+                    ?>
                     <!-- single blog -->
                     <article class="single-item swiper-slide blog-post" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                         <!-- thumb -->
@@ -32,7 +40,7 @@ if(have_posts()) : ?>
                         </div>
                         <!-- blog content -->
                         <div class="blog-content">
-                            <p><?php echo wp_trim_words( get_the_content(), 80, '' ); ?> </p>
+                            <p><?php echo wp_trim_words(get_the_content(), 80, ''); ?> </p>
                         </div>
                         <!-- category -->
                         <div class="category-name">
@@ -43,9 +51,8 @@ if(have_posts()) : ?>
                             <p class="text-capitalize"><?php echo get_post_meta(get_the_ID(), '_readingtime', true); ?></p>
                         </div>
                     </article> <!-- end single blog -->
-                    <?php endwhile; wp_reset_postdata(); //end loop ?>
+                    <?php endwhile; wp_reset_postdata(); // end loop ?>
                 </div>
-            </div>  
             </div>
         </div>
         <!-- pagination //number -->
@@ -58,6 +65,7 @@ if(have_posts()) : ?>
             <span></span>
         </div>
     </section>
+
 
    <?php 
 else:

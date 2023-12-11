@@ -45,7 +45,7 @@ function bbs_all_scripts_enqueue(){
     // comments form
     wp_enqueue_script('comment-reply');
     // for ajax  (here custom js id and wp_localize id need to be same)
-    wp_localize_script('bbs-ajax', 'ajax_object', array(
+    wp_localize_script('bbs-custom', 'ajax_object', array(
         'ajax_url' => admin_url('admin-ajax.php'),
     ));
 };

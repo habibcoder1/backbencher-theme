@@ -108,7 +108,7 @@ function bbs_custom_post_type(){
             'menu_icon'     => 'dashicons-welcome-learn-more',
             'menu_position' => 22,
             'show_ui'       => true,
-            'rewrite'       => array('slug' => 'career'),
+            'rewrite'       => array('slug' => 'bbs-career'),
             'has_archive'   => true,
             'query_var'     => true,
             'supports'      => ['title', 'thumbnail', 'revisions', 'page-attributes'],
@@ -250,7 +250,8 @@ add_action('save_post', 'bbs_readingtime_metabox_save_post');
 function bbs_readingtime_metabox_save_post($post_id){
     // for title
     if(isset($_POST['readingtime'])){
-        update_post_meta( $post_id, '_readingtime', $_POST['readingtime']);
+        $readingtime = sanitize_text_field($_POST['readingtime']);
+        update_post_meta( $post_id, '_readingtime', $readingtime);
     }
 
 }
@@ -334,7 +335,7 @@ function bbs_job_board_metabox_callback(){ ?>
         </p>
         <p>
             <label for="jobwhat-role"><?php _e('What is the role?', 'backbencher'); ?></label>
-            <textarea name="jobwhat-role" id="jobwhat-role" placeholder="About Company "><?php echo get_post_meta(get_the_ID(), '_jobwhat-role', true); ?></textarea>
+            <textarea name="jobwhat-role" id="jobwhat-role" placeholder="What's the role"><?php echo get_post_meta(get_the_ID(), '_jobwhat-role', true); ?></textarea>
         </p>
 
         <!-- for need to be good -->
@@ -342,7 +343,6 @@ function bbs_job_board_metabox_callback(){ ?>
             <p><?php _e('What do i need to be good at?', 'backbencher'); ?></p>
         </div>
         <?php
-        // Retrieve the current values of 'jobneedbegood'
         $job_needbegood_values = get_post_meta(get_the_ID(), '_jobneedbegood', true); ?>
         <div id="needbegood-container">
             <?php
@@ -369,6 +369,68 @@ function bbs_job_board_metabox_callback(){ ?>
         </div>
         <button type="button" class="add-needbegoodbtn" id="add-needbegood"><?php _e('Add item', 'backbencher'); ?></button>
 
+        <!-- for skills -->
+        <div class="job-allskills">
+            <p><?php _e('What skills?', 'backbencher'); ?></p>
+        </div>
+        <?php
+        $job_needbegood_values = get_post_meta(get_the_ID(), '_jobskill', true); ?>
+        <div id="skill-container">
+            <?php
+            if (!empty($job_needbegood_values)) {
+                foreach ($job_needbegood_values as $index => $job_needbegood_value) {
+                    ?>
+                    <div class="jobskillid">
+                        <label for="jobskill_<?php echo $index; ?>"><?php _e('Skill Item:', 'backbencher'); ?></label>
+                        <input type="text" class="regular-text" placeholder="Add skill here" id="jobskill_<?php echo $index; ?>" name="jobskill[]" value="<?php echo esc_attr($job_needbegood_value); ?>">
+                        <span class="remove-skill" data-index="<?php echo $index; ?>">X</span>
+                    </div>
+                    <?php
+                }
+            } else {
+                // Display at least one empty input field
+                ?>
+                <div class="jobskillid">
+                    <label for="jobskill_0"><?php _e('Skill Item:', 'backbencher'); ?></label>
+                    <input type="text" class="regular-text" placeholder="Add skill here" id="jobskill_0" name="jobskill[]" value="">
+                </div>
+                <?php
+            }
+            ?>
+        </div>
+        <button type="button" class="add-jobskillbtn" id="add-jobskill"><?php _e('Add skill', 'backbencher'); ?></button>
+
+        <!-- for benefit -->
+        <div class="job-benefit">
+            <p><?php _e('Benefit, Perks, Bonuses!', 'backbencher'); ?></p>
+        </div>
+        <?php
+        $job_needbegood_values = get_post_meta(get_the_ID(), '_jobbenefit', true); ?>
+        <div id="benefit-container">
+            <?php
+            if (!empty($job_needbegood_values)) {
+                foreach ($job_needbegood_values as $index => $job_needbegood_value) {
+                    ?>
+                    <div class="jobbenefitid">
+                        <label for="jobbenefit_<?php echo $index; ?>"><?php _e('Benefit Item:', 'backbencher'); ?></label>
+                        <input type="text" class="regular-text" placeholder="Add benefit here" id="jobbenefit_<?php echo $index; ?>" name="jobbenefit[]" value="<?php echo esc_attr($job_needbegood_value); ?>">
+                        <span class="remove-benefit" data-index="<?php echo $index; ?>">X</span>
+                    </div>
+                    <?php
+                }
+            } else {
+                // Display at least one empty input field
+                ?>
+                <div class="jobbenefitid">
+                    <label for="jobbenefit_0"><?php _e('Benefit Item:', 'backbencher'); ?></label>
+                    <input type="text" class="regular-text" placeholder="Add benefit here" id="jobbenefit_0" name="jobbenefit[]" value="">
+                </div>
+                <?php
+            }
+            ?>
+        </div>
+        <button type="button" class="add-jobbenefitbtn" id="add-jobbenefit"><?php _e('Add benefit', 'backbencher'); ?></button>
+
                 
     </div>
 
@@ -381,39 +443,92 @@ function save_bbs_jobboard_metabox($post_id) {
     if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
 
     // address
-    if (isset($_POST['_jobaddress'])) {
-        $jobaddress = array_map('sanitize_text_field', $_POST['_jobaddress']);
-        update_post_meta($post_id, '__jobaddress', $jobaddress);
+    if (isset($_POST['jobaddress'])) {
+        $jobaddress = sanitize_text_field($_POST['jobaddress']);
+        update_post_meta($post_id, '_jobaddress', $jobaddress);
     }
+
     // btn link
     if (isset($_POST['jobapply-btnlink'])) {
-        $jobapplylink = array_map('sanitize_text_field', $_POST['jobapply-btnlink']);
+        $jobapplylink = esc_url_raw($_POST['jobapply-btnlink']);
         update_post_meta($post_id, '_jobapply-btnlink', $jobapplylink);
     }
+
     // salary range
     if (isset($_POST['jobsalary-range'])) {
-        $jobsalary = array_map('sanitize_text_field', $_POST['jobsalary-range']);
+        $jobsalary = sanitize_text_field($_POST['jobsalary-range']);
         update_post_meta($post_id, '_jobsalary-range', $jobsalary);
     }
+    
     // job deadline
-    if (isset($_POST['_jobdeadline'])) {
-        $jobdeadline = array_map('sanitize_date', $_POST['_jobdeadline']);
-        update_post_meta($post_id, '__jobdeadline', $jobdeadline);
+    if (isset($_POST['jobdeadline'])) {
+        $jobdeadline = sanitize_text_field($_POST['jobdeadline']);
+        update_post_meta($post_id, '_jobdeadline', $jobdeadline);
     }
-    // about company
+
+    // job about company
     if (isset($_POST['jobabout-company'])) {
-        $jobaboutcompany = array_map('sanitize_textarea_field', $_POST['jobabout-company']);
+        $jobaboutcompany = sanitize_textarea_field($_POST['jobabout-company']);
         update_post_meta($post_id, '_jobabout-company', $jobaboutcompany);
     }
+
     // about role
     if (isset($_POST['jobwhat-role'])) {
-        $jobrole = array_map('sanitize_textarea_field', $_POST['jobwhat-role']);
+        $jobrole = sanitize_textarea_field($_POST['jobwhat-role']);
         update_post_meta($post_id, '_jobwhat-role', $jobrole);
     }
+
     // need to be good
     if (isset($_POST['jobneedbegood'])) {
         $jobneedbegood = array_map('sanitize_text_field', $_POST['jobneedbegood']);
         update_post_meta($post_id, '_jobneedbegood', $jobneedbegood);
     }
 
+    // skill
+    if (isset($_POST['jobskill'])) {
+        $jobskill = array_map('sanitize_text_field', $_POST['jobskill']);
+        update_post_meta($post_id, '_jobskill', $jobskill);
+    }
+
+    // benefit
+    if (isset($_POST['jobbenefit'])) {
+        $jobbenefit = array_map('sanitize_text_field', $_POST['jobbenefit']);
+        update_post_meta($post_id, '_jobbenefit', $jobbenefit);
+    }
+
+
 }
+/* ============================================================
+Custom Metabox Contents Show in Dashboard
+============================================================ */
+add_filter( 'manage_career_posts_columns', 'bbs_set_custom_edit_career_columns' );   
+add_action( 'manage_career_posts_custom_column' , 'bbs_custom_career_column_dashboard' );     
+ 
+function bbs_set_custom_edit_career_columns($columns){
+    $columns['jobsalary-range']  = __( 'Salary Range', 'backbencher' );
+    $columns['jobdeadline']      = __( 'Deadline', 'backbencher' );
+ 
+    return $columns;
+};
+ 
+function bbs_custom_career_column_dashboard( $column ) {
+    switch ( $column ) {
+        case 'jobsalary-range' :
+            echo get_post_meta( get_the_ID(), '_jobsalary-range' , true ); 
+            break;
+
+        case 'jobdeadline' :
+            echo get_post_meta( get_the_ID(), '_jobdeadline' , true ); 
+            break;
+    }
+};
+
+/// Again this hook Only for Date Show later /////
+add_filter( 'manage_career_posts_columns', 'bbs_career_columns_list_date' );  
+function bbs_career_columns_list_date($columns) {
+    unset( $columns['date']   );
+    // date
+    $columns['date']           = __('Published Date', 'backbencher');
+ 
+    return $columns;
+};

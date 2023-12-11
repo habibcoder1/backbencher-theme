@@ -310,7 +310,7 @@
                     h3{
                         margin-left: 40px;
                         color: $bbsWhiteColor;
-                        font-size: 48px;
+                        font-size: 42px;
                         @media(max-width: 1400px){
                             font-size: 35px;
                         }
@@ -321,9 +321,9 @@
                             font-size: 24px;
                         }
                         a{
-                            font-size: 48px;
-                            font-weight: 600;
-                            letter-spacing: -3.12px;
+                            font-size: 42px;
+                            font-weight: 600; 
+                            letter-spacing: -2.50px;
                             text-decoration: none;
                             color: $bbsWhiteColor;
                             transition: .4s ease all;
