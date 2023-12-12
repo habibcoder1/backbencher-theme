@@ -15,32 +15,33 @@ if(!defined('ABSPATH')){
 /* ==========================
 	for search ajax
 ========================== */
-add_action('wp_ajax_bbs_service_ajax_service', 'bbs_service_ajax_search');
+add_action('wp_ajax_bbs_service_ajax_search', 'bbs_service_ajax_search');
 add_action('wp_ajax_nopriv_bbs_service_ajax_search', 'bbs_service_ajax_search');
 
 function bbs_service_ajax_search() {
-    $selected_category = isset($_POST['bbsservice']) ? $_POST['bbsservice'] : '';
+    $search_query      = isset($_POST['bbsservice']) ? $_POST['bbsservice'] : '';
+    $selected_category = isset($_POST['bbssearchcat']) ? $_POST['bbssearchcat'] : 'all';
 
+    // argument for input
     $args = array(
         'post_type'      => 'bbs-service',
         'posts_per_page' => -1,
-        's'              => $selected_category,
+        's'              => $search_query,
     );
-    
+    // argument for select options
     if ($selected_category !== 'all') {
         $args['tax_query'] = array(
             array(
-                'taxonomy' => 'bbsservice_tax',
-                'field' => 'slug',
-                'terms' => $selected_category,
+                'taxonomy' => 'bbsservice_tax',  //taxonomy id
+                'field'    => 'slug',
+                'terms'    => $selected_category,
             ),
         );
     }
     $category_posts = new WP_Query($args);
 
-
     if ($category_posts->have_posts()) : ?>
-        <div class="<?php echo esc_attr($selected_category->slug); ?> mix blog-details">
+        <div class="<?php echo esc_attr($search_query); ?> mix blog-details">
             <?php while ($category_posts->have_posts()) : $category_posts->the_post(); ?>
                 <!-- single item -->
                 <article class="blog-box blog-item">
@@ -78,12 +79,10 @@ function bbs_service_ajax_search() {
                 </article>
             <?php endwhile; wp_reset_postdata(); ?>
         </div>
+    <?php else : ?>
+        <p><?php _e('No search found.', 'backbencher'); ?></p>
     <?php 
-
-    else :
-        echo '<p>No results found.</p>';
     endif;
 
     die();
-} 
-?>
+}

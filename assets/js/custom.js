@@ -153,23 +153,36 @@
         /* =============================
             Searchform for Service
         ============================= */ 
-        jQuery('#service-serachform').on('submit', function(e) {
-            e.preventDefault();
-    
-            let searchQuery = jQuery('input#servicesearch').val(); 
-    
+        // Define a function to handle the AJAX search
+        function performAjaxSearch() {
+            let searchQuery = jQuery('input#servicesearch').val();
+            let searchSelect = jQuery('#searvicefilter').val();
+
             jQuery.ajax({
                 type: 'POST',
-                url: ajax_object.ajax_url, 
+                url: ajax_object.ajax_url,
                 data: {
-	                action: 'bbs_service_ajax_search',
-	                'bbsservice': searchQuery,
-	            },
+                    action: 'bbs_service_ajax_search',
+                    'bbsservice': searchQuery,
+                    'bbssearchcat': searchSelect,
+                },
                 success: function(response) {
                     jQuery('.allblog-items').html(response);
                 }
             });
+        }
+
+        // Bind the function to both input change and form submission
+        jQuery('#service-serachform').on('input', function(e) {
+            e.preventDefault();
+            performAjaxSearch();
         });
+
+        jQuery('#service-serachform').on('submit', function(e) {
+            e.preventDefault();
+            performAjaxSearch();
+        });
+
 
 
     });

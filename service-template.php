@@ -61,8 +61,8 @@ get_header(); ?>
 
 						<input type="text" name="servicesearch" id="servicesearch" placeholder="Search...">
 
-						<label for="filter">Filter:</label>
-						<select name="filter" id="filter">
+						<label for="filter"><?php _e('Filter:', 'backbencher'); ?></label>
+						<select name="searvicefilter" id="searvicefilter">
 							<option value="all"><?php _e('All Work', 'backbencher'); ?></option>
 							<?php 
 								$parent_category = get_term_by('slug', 'ui-ux-design', 'bbsservice_tax');
@@ -145,9 +145,7 @@ get_header(); ?>
 										</a>
 									</div>
 								</article>
-							<?php endwhile;
-							wp_reset_postdata();
-							?>
+							<?php endwhile; wp_reset_postdata(); ?>
 						</div>
 					<?php endif;
 				endforeach; ?>
