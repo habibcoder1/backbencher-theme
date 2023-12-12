@@ -87,7 +87,7 @@
         ======================== */
         jQuery('.aboutservice-slider .serviceitems').slick({
             autoplay: true,
-            autoplaySpeed: 3000,
+            autoplaySpeed: 2000,
             speed: 500,
             infinite: true,
             slidesToShow: 6,
@@ -136,17 +136,18 @@
 
         /* =============================
             contact form item select
-        ============================= */ 
-        jQuery('span.wpcf7-list-item.first.last label').change(function() {
-            let checkLabel = jQuery(this).closest('span.wpcf7-list-item.first.last label'); 
+        ============================= */       
+        jQuery('.service-choose label input').change(function() {
+            let checkLabel = jQuery(this).closest('.service-choose label'); 
             if (this.checked) {
-                checkLabel.css('background-color', '#202123');
-                checkLabel.css('color', '#8e8ea0');
-            } else {
                 checkLabel.css('background-color', '#50b800');
                 checkLabel.css('color', '#fff');
+            } else {
+                checkLabel.css('background-color', '#202123');
+                checkLabel.css('color', '#8E8EA0');
             }
         });
+        
 
 
         /* =============================

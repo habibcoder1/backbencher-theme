@@ -202,6 +202,7 @@ textarea:focus{
 }
 
 // browser scrollbar
+/*
 ::-webkit-scrollbar {
     width: 15px;
     z-index: 9999
@@ -221,7 +222,7 @@ textarea:focus{
     -moz-border-radius: 5px;
     -ms-border-radius: 5px;
     -o-border-radius: 5px
-}
+} */
 
 // D word design
 .digital-ddesign{
@@ -324,7 +325,7 @@ textarea:focus{
                     -moz-transform: scale(1.2);
                     -ms-transform: scale(1.2);
                     -o-transform: scale(1.2);
-}
+                }
             }
         }
     }

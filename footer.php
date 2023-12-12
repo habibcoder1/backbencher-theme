@@ -101,6 +101,7 @@ if(!defined('ABSPATH')){
         Footer Area End
     ========================== -->
 
+    <!-- some style -->
     <?php if(is_singular('post') || is_page(30)) : ?>
         <style>
             .footer-top-area{

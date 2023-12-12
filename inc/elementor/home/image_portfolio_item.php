@@ -138,7 +138,7 @@ class Bbs_Home_Image_Portfolio_Widget_Dev extends \Elementor\Widget_Base {
 				'type'  	  => \Elementor\Controls_Manager::SWITCHER,
 				'label_on'    => esc_html__( 'Left', 'backbencher' ),
 				'label_off'   => esc_html__( 'Right', 'backbencher' ),
-				'default' 	  => 'yes' 
+				'default' 	  => 'yes',
 			]
 		);     
 		// service button text
@@ -179,9 +179,10 @@ class Bbs_Home_Image_Portfolio_Widget_Dev extends \Elementor\Widget_Base {
 
         <div class="servicewith_customcursor" id="servicewith_customcursor">
 			<div class="service-details">
-				<div class="row align-items-center">
+				<div class="row service-wrapper align-items-center">
 					<!-- image -->
-					<div class="col-md-6" style="order: <?php if($settings['image_first_later'] == 'yes'){echo '2';} ?>;">
+					<?php $order = $settings['image_first_later'] == 'yes' ? '2': ''; ?>
+					<div class="col-md-6" style="order: <?php echo $order; ?>;">
 						<div class="service-image">
 							<?php $target   = $settings['image_link']['is_external'] ? 'target="_blank"' : '';
                                 $nofollow = $settings['image_link']['nofollow'] ? 'rel="nofollow"' : '';

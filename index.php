@@ -55,8 +55,8 @@ get_header(); ?>
                 <ul class="tab-menuitem">
                     <li data-filter="all"><?php _e('all', 'backbencher'); ?></li>
                     <?php
-                    $categories = get_categories();  
-                    foreach($categories as $cat) :
+                    $categories = get_categories(['order' => 'DESC', 'orderby' => 'date']);
+                    foreach ($categories as $cat) :
                         if ($cat->slug !== 'uncategorized' && $cat->count > 0) : ?>
                             <li data-filter=".<?php echo $cat->slug; ?>"><?php echo $cat->name; ?></li>
                         <?php endif;

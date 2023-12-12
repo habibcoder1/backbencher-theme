@@ -45,6 +45,7 @@ get_header(); ?>
 						$subcategories = get_terms(array(
 							'taxonomy' => 'bbsservice_tax',
 							'parent'   => $parent_category_id,
+							'order'    => 'DESC',
 						));
 
 						foreach ($subcategories as $subcat) : ?>

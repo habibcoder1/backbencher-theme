@@ -1,4 +1,3 @@
-
 /* ==================================
     Video play & fullscreen onhover
 ================================== */
@@ -7,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let isPlaying = false;
 
     if(heroVideo){
-        heroVideo.addEventListener("mouseenter", function () {
+        heroVideo.addEventListener("click", function () {
             if (!isPlaying) {
                 isPlaying = true;
                 heroVideo.play()
@@ -28,7 +27,8 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
 
-        heroVideo.addEventListener("mouseleave", function () {
+        // for video pause
+        heroVideo.addEventListener("click", function () {
             if (isPlaying) {
                 isPlaying = false;
                 heroVideo.pause();
@@ -37,27 +37,30 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         // Function to exit fullscreen
-        //NOTE:: if want fullscreeen again & again then remove below codes//
         function exitFullscreen() {
-            if (document.exitFullscreen) {
-                document.exitFullscreen();
-            } else if (document.mozCancelFullScreen) {
-                document.mozCancelFullScreen();
-            } else if (document.webkitExitFullscreen) {
-                document.webkitExitFullscreen();
-            } else if (document.msExitFullscreen) {
-                document.msExitFullscreen();
+            if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) {
+                    document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen();
+                }
             }
         }
 
         // Event listener for the fullscreenchange event
         document.addEventListener("fullscreenchange", function () {
             // If the document is not in fullscreen mode, stop the video
-            if (!document.fullscreenElement) {
+            if (!document.fullscreenElement && !document.mozFullScreenElement && !document.webkitFullscreenElement && !document.msFullscreenElement) {
                 isPlaying = false;
-                portfolioVideo.pause();
+                heroVideo.pause();
             }
         });
+
+        
     }
         
 });

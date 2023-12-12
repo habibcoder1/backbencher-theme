@@ -251,7 +251,6 @@
     }
 }
 
-// career single
 // single career
 .single-carea-area{
     background-color: #0a090f;
@@ -288,6 +287,9 @@
             }
         }
         .btn{
+            &:active{
+                border-color: transparent;
+            }
             a{
                 padding: 20px 48px;
                 font-size: 28px;
