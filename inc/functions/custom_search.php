@@ -12,9 +12,9 @@ if(!defined('ABSPATH')){
 }; 
 
 
-/* ==========================
-	for search ajax
-========================== */
+/* ================================
+	for service search with ajax
+================================ */
 add_action('wp_ajax_bbs_service_ajax_search', 'bbs_service_ajax_search');
 add_action('wp_ajax_nopriv_bbs_service_ajax_search', 'bbs_service_ajax_search');
 
@@ -80,9 +80,14 @@ function bbs_service_ajax_search() {
             <?php endwhile; wp_reset_postdata(); ?>
         </div>
     <?php else : ?>
-        <p><?php _e('No search found.', 'backbencher'); ?></p>
+        <p><?php _e('<p style="margin-top: 50px;text-align: center;">No search found.</p>', 'backbencher'); ?></p>
     <?php 
     endif;
 
     die();
 }
+
+
+/* ================================
+	for job search with ajax
+================================ */

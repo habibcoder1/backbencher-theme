@@ -90,7 +90,7 @@ function bbs_custom_post_type(){
     }
     
 
-    // register post type for career
+    // register post type for career /
     if (!post_type_exists('career')) {
         register_post_type('career', array(
             'public'        => true,
@@ -113,6 +113,29 @@ function bbs_custom_post_type(){
             'query_var'     => true,
             'supports'      => ['title', 'thumbnail', 'revisions', 'page-attributes'],
             'publicly_queryable' => true,
+        ));
+    }
+    // register category for job department
+    if (!taxonomy_exists('career_department')) {
+        register_taxonomy('career_department', 'career', array(
+            'hierarchical'      => true,
+            'labels'            => array(
+                'name'                => __('Job Department', 'backbencher'),
+                'add_new'             => __('Add Job Department','backbencher'),
+                'add_new_item'        => __('Add New Department', 'backbencher'),
+                'all_items'           => __('All Department', 'backbencher'),
+                'edit_item'           => __('Edit Department', 'backbencher'),
+                'update_item'         => __('Update Department', 'backbencher'),
+                'add_or_remove_items' => __('Add/Remove Department', 'backbencher'),
+                'parent_item'         => __('Parent Department', 'backbencher'),
+            ),
+            'show_ui'           => true,
+            'rewrite'           => array('slug' => 'career-department'),   //taxonomy slug
+            'query_var'         => true,
+            'has_archive'       => false,
+            'show_in_rest'      => true,
+            'publicly_queryable'=> true,
+            'show_admin_column' => true,
         ));
     }
     // register category for job types
@@ -138,6 +161,7 @@ function bbs_custom_post_type(){
             'show_admin_column' => true,
         ));
     }
+    
 
 }
 
@@ -498,6 +522,7 @@ function save_bbs_jobboard_metabox($post_id) {
 
 
 }
+
 /* ============================================================
 Custom Metabox Contents Show in Dashboard
 ============================================================ */
