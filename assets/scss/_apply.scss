@@ -97,7 +97,7 @@
                 -moz-transition: .4s ease all;
                 -ms-transition: .4s ease all;
                 -o-transition: .4s ease all;
-                @media(max-width: 768px){
+                @media(max-width: 992px){
                     margin-bottom: 20px;
                     
                 }
@@ -133,6 +133,49 @@
                 }
             }
             
+        }
+        // contact form 7
+        .wpcf7-response-output{
+            color: $bbsPrimaryColor;
+            border-radius: 20px;
+            background: #0A090F;
+            padding: 45px 44px;
+            font-size: 32px;
+            font-weight: 500;
+            letter-spacing: -1.12px;
+            border: none;
+            position: relative;
+            padding-left: 80px;
+            @media(max-width: 992px){
+                font-size: 25px;
+                padding: 25px;
+                letter-spacing: -0.5px;
+                padding-left: 76px;
+            }
+            &::after{
+                content: "";
+                display: block;
+                clear: both;
+                position: absolute;
+                top: 52px;
+                left: 0;
+                background-image: url(https://backbencher.studio/wp-content/uploads/2023/12/information-square.png);
+                background-position: center;
+                height: 32px;
+                width: 32px;
+                background-size: cover;
+                background-repeat: no-repeat;
+                margin-left: 35px;
+                @media(max-width: 992px){
+                    top: 26px;
+                    
+                }
+            }
+        }
+        p{
+            span.wpcf7-not-valid-tip{
+                text-align: right;
+            }
         }
     }
 }

@@ -108,19 +108,20 @@ if(have_posts()) :
                     </div>
                     <!-- category -->
                     <div class="categories">
-                        <?php 
-                        $terms = get_terms(['taxonomy' => 'bbsservice_tax']); 
-                        $term_names = array();
+                    <?php
+                        $post_categories = get_the_terms(get_the_ID(), 'bbsservice_tax');
+                        $category_names = array();
 
-                        if (!empty($terms)) {
-                            foreach ($terms as $term) {
-                                $term_names[] = '<a href="' . esc_url(get_term_link($term)) . '">' . esc_html($term->name) . '</a>';
+                        if (!empty($post_categories)) {
+                            foreach ($post_categories as $category) {
+                                $category_names[] = esc_html($category->name);
                             }
                         }
                         // added / for more
-                        if (!empty($term_names)) {
-                            echo '<h3 class="text-uppercase dot-title">' . implode(' / ', $term_names) . '</h3>';
-                        } ?>
+                        if (!empty($category_names)) {
+                            echo '<h3 class="text-uppercase dot-title">' . implode(' / ', $category_names) . '</h3>';
+                        }
+                    ?>
                     </div>
 
                     <!-- title -->

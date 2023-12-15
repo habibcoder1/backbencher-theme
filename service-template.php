@@ -61,11 +61,11 @@ get_header(); ?>
 
 						<input type="text" name="servicesearch" id="servicesearch" placeholder="Search...">
 
-						<label for="filter"><?php _e('Filter:', 'backbencher'); ?></label>
+						<label for="searvicefilter"><?php _e('Filter:', 'backbencher'); ?></label>
 						<select name="searvicefilter" id="searvicefilter">
 							<option value="all"><?php _e('All Work', 'backbencher'); ?></option>
 							<?php 
-								$parent_category = get_term_by('slug', 'ui-ux-design', 'bbsservice_tax');
+								$parent_category    = get_term_by('slug', 'ui-ux-design', 'bbsservice_tax');
 								$parent_category_id = $parent_category->term_id;
 
 								$subcategories = get_terms(array(
@@ -121,22 +121,15 @@ get_header(); ?>
 									</div>
 									<!-- category -->
 									<div class="categories">
-										<h3 class="text-uppercase dot-title">
-											<?php 
-											$taxono = get_the_terms(get_the_ID(), 'bbsservice_tax');  
-											if (!empty($taxono)) {
-												$i = 1;
-												foreach ($taxono as $tax) {
-													$tax_name = $tax->name;
-													$tax_link = get_term_link($tax, 'bbsservice_tax');   
-											
-													echo '<a href="'.esc_url($tax_link).'">'.__($tax_name).'</a>';
-													
-													echo ($i < count($taxono)) ? " / " : "";
-													$i++;
-												};
-											} ?>
-										</h3>
+										<?php 
+										$post_categories = get_the_terms(get_the_ID(), 'bbsservice_tax');  
+										if (!empty($post_categories)) {
+												$category_names = array();
+												foreach ($post_categories as $post_category) {
+													$category_names[] = $post_category->name;
+												}
+												echo '<h3 class="text-uppercase dot-title">' . implode(' / ', $category_names) . '</h3>';
+										} ?>
 									</div>
 									<!-- title -->
 									<div class="post-title">

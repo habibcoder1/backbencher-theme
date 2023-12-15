@@ -90,7 +90,7 @@ get_header(); ?>
                                             <!-- title -->
                                             <div class="post-title">
                                                 <a href="<?php the_permalink(); ?>" class="text-decoration-none">
-                                                    <h2 class="text-uppercase"><?php the_title(); ?> </h2>
+                                                    <h2 class="text-uppercase"><?php echo wp_trim_words(get_the_title(), 3, ''); ?> </h2>
                                                 </a>
                                             </div>
                                             <!-- reading time -->
@@ -99,7 +99,16 @@ get_header(); ?>
                                             </div>
                                             <!-- category -->
                                             <div class="categories">
-                                                <h3 class="text-uppercase dot-title"><?php the_category(' / '); ?></h3>
+                                            <?php
+                                                $post_categories = get_the_category();
+                                                if ($post_categories) {
+                                                    $category_names = array();
+                                                    foreach ($post_categories as $post_category) {
+                                                        $category_names[] = $post_category->name;
+                                                    }
+                                                    echo '<h3 class="text-uppercase dot-title">' . implode(' / ', $category_names) . '</h3>';
+                                                }
+                                            ?>
                                             </div>
                                         </article>
                                     <?php endwhile;

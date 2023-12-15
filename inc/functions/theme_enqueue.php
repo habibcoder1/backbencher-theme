@@ -42,6 +42,7 @@ function bbs_all_scripts_enqueue(){
     wp_enqueue_script('bbs-swiper', get_template_directory_uri().'/assets/js/swiper.min.js', ['jquery'], '1.0.0', true);
     wp_enqueue_script('bbs-mixitup', get_template_directory_uri().'/assets/js/mixitup.min.js', ['jquery'], '1.0.0', true);
     wp_enqueue_script('bbs-custom', get_template_directory_uri().'/assets/js/custom.js', ['jquery'], '1.0.0', true);
+    wp_enqueue_script('bbs-tablecontent', get_template_directory_uri().'/assets/js/itoc.js', ['jquery'], '1.0.0', true);
     // comments form
     wp_enqueue_script('comment-reply');
     // for ajax  (here custom js id and wp_localize id need to be same)

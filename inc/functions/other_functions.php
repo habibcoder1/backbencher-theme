@@ -52,8 +52,9 @@ function bbs_script_loadin_footer(){ ?>
 ============================= */
 add_action('admin_notices', 'bbs_recommend_plugin_activation');
 function bbs_recommend_plugin_activation() {
-    $elementor_slug = 'elementor';   //plugin slug
 
+    // for required plugins ////////
+    $elementor_slug = 'elementor';   //plugin slug
     if (!is_plugin_active($elementor_slug . '/' . $elementor_slug . '.php')) {   //exact plugin folder and file
         $plugin_name = 'Elementor';
         $install_link = wp_nonce_url(admin_url('update.php?action=install-plugin&plugin=' . $elementor_slug), 'install-plugin_' . $elementor_slug);
@@ -61,7 +62,20 @@ function bbs_recommend_plugin_activation() {
         $message = sprintf( __('This Theme is required installing and activating the %s plugin for creating a dynamic website %sClick here to install%s.', 'backbencher'), $plugin_name, '<a href="' . $install_link . '">', '</a>' );
 
         echo '<div class="notice notice-info is-dismissible"><p>' . $message . '</p></div>';
+    };
+    
+
+    // notice acout table of content /////
+    $screen = get_current_screen();
+    if (is_admin() && $screen->id === 'edit-post') { ?>
+        <div class="tableofcontent-noticeadmin notice notice-warning is-dismissible" style="text-align: center;">
+            <p><?php _e('NOTE:: Use Heading h1 or Heading h2 tag for listing in table of content', 'backbencher'); ?></p>
+        </div>
+
+    <?php
     }
+
+
 };
 
 

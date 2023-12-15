@@ -37,14 +37,27 @@ get_header(); ?>
 			</div>
 			<!-- search form -->
 			<div class="search-filter">
-				<form action="#" id="service-serachform">
-					<input type="text" name="service" id="service" placeholder="Search...">
-					<label for="filter">Filter:</label>
-					<select name="filter" id="filter">
-						<option value="0">All</option>
-						<option value="1">UI/UX Design</option>
-						<option value="2">Web Design</option>
-						<option value="3">Web Development</option>
+				<form action="#" id="job-serachform" method="POST">
+					<?php wp_nonce_field('bbs_job_ajax_search_nonce', 'nonce'); ?>
+
+					<input type="text" name="jobservice" id="jobservice" placeholder="Search...">
+					<label for="jobsearchfilter"><?php _e('Filter:', 'backbencher'); ?></label>
+					<select name="jobsearchfilter" id="jobsearchfilter">
+						<option value="all"><?php _e('All', 'backbencher'); ?></option>
+						<?php
+							$taxonomy = 'career_department';
+							$terms = get_terms(array(
+								'taxonomy' => $taxonomy,
+								'hide_empty' => false, // Set to true if you only want to show terms with posts
+							));
+
+							if (!empty($terms) && !is_wp_error($terms)) {
+								foreach ($terms as $term) { ?>
+									<option value="<?php echo esc_attr($term->slug); ?>"><?php echo esc_html($term->name); ?></option>
+								<?php
+								}
+							}
+						?>
 					</select>
 					<input type="submit" style="display: none;" value="search">
 				</form>

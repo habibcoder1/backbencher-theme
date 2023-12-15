@@ -39,7 +39,7 @@
         }
         .search-filter{
             form{
-                input#service {
+                input#jobservice{
                     background: #202123;
                     padding: 10px 20px;
                     border: navajowhite;
@@ -59,10 +59,13 @@
                         font-size: 20px;
                     }
                 }
-                select#filter {
+                select#jobsearchfilter{
                     border: none;
-                    width: 60px;
+                    text-align: right;
                     background-color: #0A090F;
+                    option{
+                        color: #8E8EA0;
+                    }
                 }
                 ::placeholder{
                     color: $bbsWhiteColor;
@@ -230,6 +233,10 @@
                     }
                 }
                 .apply-btn{
+                    text-align: right;
+                    @media(max-width: 768px){
+                        text-align: left;
+                    }
                     a{
                         padding: 18px 48px;
                         font-size: 28px;

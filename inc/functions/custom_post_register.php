@@ -189,15 +189,7 @@ function bbs_custom_metaboxes(){
         'normal',           // position
         'high'              // high, side
     );
-    // metabox for table of contents
-    add_meta_box(
-        'bbs_table_ofcontent_metabox',
-        'Table of Contents',
-        'bbs_table_ofcontent_metabox_callback',
-        'post', 
-        'normal',
-        'high'
-    );
+
 
     /* ========================
     metabox for job board
@@ -222,9 +214,7 @@ function bbs_service_metabox_callback(){ ?>
         </p>
         <p>
             <label for="service-projectcontent"><?php _e('About Project Content', 'backbencher'); ?></label>
-            <textarea class="regular-text" name="service-projectcontent" id="service-projectcontent" placeholder="Project Content here">
-                 <?php echo get_post_meta(get_the_ID(), '_service-projectcontent', true); ?>
-            </textarea>
+            <textarea class="regular-text" name="service-projectcontent" id="service-projectcontent" placeholder="Project Content here"><?php echo get_post_meta(get_the_ID(), '_service-projectcontent', true); ?></textarea>
         </p>
         <p>
             <label for="discuss-projectlink"><?php _e('Discuss Project Link', 'backbencher'); ?></label>
@@ -280,44 +270,6 @@ function bbs_readingtime_metabox_save_post($post_id){
 
 }
 
-
-
-/* ========================================
-    Custom Meta Box For Table of Contents
-======================================== */
-
-// Display metabox content
-function bbs_table_ofcontent_metabox_callback($post) {
-    // Retrieve the current values of 'tableid'
-    $table_ids = get_post_meta($post->ID, '_tableofcontent', true);
-    ?>
-    <div id="tableid-container">
-        <?php
-        if (!empty($table_ids)) {
-            foreach ($table_ids as $index => $table_id) {
-                ?>
-                <div class="tableid-input">
-                    <label for="tableofcontent_<?php echo $index; ?>">Table of Content Item:</label>
-                    <input type="text" class="regular-text" id="tableofcontent_<?php echo $index; ?>" name="tableofcontent[]" value="<?php echo esc_attr($table_id); ?>">
-                    <span class="remove-tableid" data-index="<?php echo $index; ?>">X</span>
-                </div>
-                <?php
-            }
-        } else {
-            // Display at least one empty input field
-            ?>
-            <div class="tableid-input">
-                <label for="tableid_0"><?php _e('Table of Content Item:', 'backbencher'); ?></label>
-                <input type="text" class="regular-text" id="tableid_0" name="tableofcontent[]" value="">
-            </div>
-            <?php
-        }
-        ?>
-    </div>
-    <button type="button" class="add-tableof-contentbtn" id="add-tableid"><?php _e('Add Content', 'backbencher'); ?></button>
-
-    <?php
-}
 
 // Save metabox data
 add_action('save_post', 'save_tableof_content_metabox');

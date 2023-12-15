@@ -13,6 +13,6 @@ if (!defined('ABSPATH')) {
 
 get_header(); ?>
 
-    <?php echo get_template_part('template_parts/single_page'); ?>
+    <?php get_template_part('template_parts/single_page'); ?>
 
 <?php get_footer(); ?>

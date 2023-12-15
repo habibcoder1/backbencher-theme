@@ -712,7 +712,13 @@
         }
         ul.tab-menuitem{
             margin-bottom: 0;
-            
+            li{
+                padding: 10px 36px;
+                margin-right: 0;
+                @media(max-width: 1400px){
+                    padding: 10px 30px;
+                }
+            }
         }
         .search-filter{
             text-align: right;
@@ -726,9 +732,10 @@
                     padding: 10px 20px;
                     border: navajowhite;
                     border-radius: 50px;
-                    width: 350px;
+                    width: 320px;
                     @media(max-width: 1400px){
-                        width: 250px;
+                        width: 220px;
+                        font-size: 25px;
                     }
                 }
                 label{
@@ -736,9 +743,15 @@
                 }
                 select#searvicefilter{ 
                     border: none;
-                    width: 120px;
                     background-color: #0A090F;
                     cursor: pointer;
+                    text-align: right;
+                    option{
+                        color: #8E8EA0;
+                    }
+                    @media(max-width: 1400px){
+                        font-size: 25px;
+                    }
                 }
                 ::placeholder{
                     color: $bbsWhiteColor;

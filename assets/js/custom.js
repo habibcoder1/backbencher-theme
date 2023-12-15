@@ -149,13 +149,64 @@
         });
         
 
+         /* =============================
+            table of content sticky
+        ============================= */ 
+        window.addEventListener("scroll", function () {
+            let stickyTableOfContent = document.querySelector(".tableofcontent-readingprogressbar");
+            // check for mobile version
+            if(stickyTableOfContent){
+                if (window.innerWidth > 768) {
+                    stickyTableOfContent.classList.toggle("tableofcontent-sticky", window.scrollY > 2200);
+                } else {
+                    stickyTableOfContent.classList.remove("tableofcontent-sticky");
+                }
+            }
+            
+        });
+        
+        /* =============================
+            table of content set
+        ============================= */ 
+        jQuery('.tableof_content-items').toc({
+            'selectors': 'h1,h2',      //elements to use as headings
+            'container': 'body',       //element to find all selectors in
+            'smoothScrolling': true,   //enable or disable smooth scrolling on click
+            'prefix': 'list-group-item toc',  //prefix for anchor tags and class names
+            'onHighlight': function(el) {}, //called when a new section is highlighted 
+            'highlightOnScroll': true, //add class to heading that is currently in focus
+            'highlightOffset': 100,    //offset to trigger the next headline 
+        });
+        // Add a class to the ul element
+        jQuery('.tableof_content-items > ul').addClass('list-group-numbered');
+        
+        /* =============================
+            blog reading progressbar
+        ============================= */ 
+        window.onscroll = function() {
+            readingProgressbarFunction()
+        };
+        function readingProgressbarFunction() {
+            let winScroll = window.scrollY || document.documentElement.scrollTop;
+            let height    = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            let scrolled  = (winScroll / height) * 100;
+
+            let progressBar = document.getElementById("blogProgressBar");
+        
+            if(progressBar){
+                progressBar.style.width = scrolled + "%";
+                progressBar.innerHTML = Math.round(scrolled) + "%";
+            }
+            
+        }
+
 
         /* =============================
             Searchform for Service
         ============================= */ 
         // Define a function to handle the AJAX search
         function performAjaxSearch() {
-            let searchQuery = jQuery('input#servicesearch').val();
+            let searchQuery  = jQuery('input#servicesearch').val();
             let searchSelect = jQuery('#searvicefilter').val();
 
             jQuery.ajax({
@@ -187,6 +238,35 @@
         /* =============================
             Searchform for job
         ============================= */ 
+        // Define a function to handle the AJAX search
+        function performJobAjaxSearch() {
+            let jobSearchQuery  = jQuery('input#jobservice').val();
+            let jobSearchSelect = jQuery('#jobsearchfilter').val();
+
+            jQuery.ajax({
+                type: 'POST',
+                url: ajax_object.ajax_url,
+                data: {
+                    action: 'bbs_job_ajax_search',
+                    'bbsjobsearch': jobSearchQuery,
+                    'bbsjobsearchselect': jobSearchSelect,
+                },
+                success: function(response) {
+                    jQuery('.job-post-items').html(response);
+                }
+            });
+        }
+
+        // Bind the function to both input change and form submission
+        jQuery('#job-serachform').on('input', function(e) {
+            e.preventDefault();
+            performJobAjaxSearch();
+        });
+
+        jQuery('#job-serachform').on('submit', function(e) {
+            e.preventDefault();
+            performJobAjaxSearch();
+        });
 
 
     });

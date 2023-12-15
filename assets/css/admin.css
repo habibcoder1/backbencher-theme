@@ -1,43 +1,5 @@
 /* all admin panel css */
 
-/* style for table of content */
-#bbs_table_ofcontent_metabox #tableid-container .tableid-input{
-    margin-bottom: 12px;
-}
-#bbs_table_ofcontent_metabox button#add-tableid {
-    cursor: pointer;
-    border: none;
-    padding: 8px 15px;
-    background: #50B800;
-    color: white;
-    display: block;
-    margin-left: 500px;
-    font-size: 18px;
-    font-weight: 500;
-    border-radius: 5px;
-    transition: .4s;
-}
-#bbs_table_ofcontent_metabox button#add-tableid:hover{
-    border: none;
-    background: #FFDE00;
-    color: black;
-}
-@media(max-width: 1200px){
-    #bbs_table_ofcontent_metabox button#add-tableid {
-        margin-left: 400px;
-    }
-}
-@media(max-width: 900px){
-    #bbs_table_ofcontent_metabox button#add-tableid {
-        margin-left: auto;
-    }
-}
-#bbs_table_ofcontent_metabox .tableid-input span.remove-tableid {
-    color: #c33232;
-    cursor: pointer;
-    font-size: 18px;
-    font-weight: 600;
-}
 
 /* style for service */
 .bbs_service-metabox label {
@@ -185,6 +147,15 @@
     cursor: pointer;
     padding: 6px;
 }
-#bbs_job_board_metabox .bbs_jobboard_metabox_details .needbegoodid {
-    
+
+.tableofcontent-noticeadmin{
+    width: 40%;
+    margin: -12px auto !important;
+    border-left-color: #b80029;
+}
+
+.tableofcontent-noticeadmin p{
+    font-size: 18px;
+    font-weight: 600;
+    margin: 5px 0 !important;
 }

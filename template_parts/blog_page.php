@@ -20,7 +20,7 @@ if(have_posts()) : ?>
                     <?php
                     $args = array(
                         'posts_per_page' => 5, // Show the last 5 posts
-                        'order' => 'DESC',
+                        'order'          => 'DESC',
                     );
                     $query = new WP_Query($args);
 
@@ -44,7 +44,15 @@ if(have_posts()) : ?>
                         </div>
                         <!-- category -->
                         <div class="category-name">
-                            <h4 class="text-uppercase"><?php the_category(' / '); ?></h4>
+                            <?php 
+                             $post_categories = get_the_category();
+                             if ($post_categories) {
+                                 $category_names = array();
+                                 foreach ($post_categories as $post_category) {
+                                     $category_names[] = $post_category->name;
+                                 }
+                                 echo '<h4 class="text-uppercase">' . implode(' / ', $category_names) . '</h4>';
+                             } ?>
                         </div>
                         <!-- reading time -->
                         <div class="reading-time">

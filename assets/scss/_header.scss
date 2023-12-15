@@ -78,7 +78,9 @@
             .main-logo{
                 a{
                     img{
-
+                        @media(max-width: 450px){
+                            width: 80%;
+                        }
                     }
                 }
             }

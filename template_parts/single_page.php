@@ -19,7 +19,16 @@ if(have_posts()) :
     <section class="single-page single-blog_firstpart blog-pageheading">
         <div class="container">
             <div class="category page-title text-center">
-                <h3 class="text-uppercase dot-title"><?php the_category(' / '); ?></h3>
+            <?php
+                $post_categories = get_the_category();
+                if ($post_categories) {
+                    $category_names = array();
+                    foreach ($post_categories as $post_category) {
+                        $category_names[] = $post_category->name;
+                    }
+                    echo '<h3 class="text-uppercase dot-title">' . implode(' / ', $category_names) . '</h3>';
+                }
+            ?>    
             </div>
             <div class="blog-title blogpage-title">
                 <h1 class="text-uppercase text-center"><?php the_title(); ?></h1>
@@ -39,14 +48,12 @@ if(have_posts()) :
                         <p class="text-uppercase"><?php _e('posted by', 'backbencher'); ?></p>
                         <div class="userimg-name">
                             <?php echo get_avatar(get_the_author_meta('ID'), 21); //21 is avatar size ?>
-                            <a href="<?php echo get_author_posts_url(get_the_author_meta('ID')); ?>">
-                                <h3 class="name text-capitalize"><?php the_author(); ?></h3>
-                            </a>
+                            <h3 class="name text-capitalize"><?php the_author(); ?></h3>
                         </div>
                     </div>
                     <div class="blog-date">
                         <p class="text-uppercase"><?php _e('published', 'backbencher'); ?></p>
-                        <a href="<?php echo get_day_link(get_post_time('Y'), get_post_time('m'), get_post_time('j')); ?>"><h3><?php the_time('j M, Y'); ?></h3></a>
+                        <h3><?php the_time('j M, Y'); ?></h3>
                     </div>
                 </div>
             </div>
@@ -70,23 +77,23 @@ if(have_posts()) :
                         </div>
                         <!-- comments area -->
                         <div class="comments-area">
-                        <?php if(comments_open() || get_comments_number() ) :
-                                comments_template();
-                            endif; ?>
+                        <?php //if(comments_open() || get_comments_number() ) :
+                                //comments_template();
+                            //endif; ?>
                         </div>
                         <!-- previous next -->
                         <div class="previous_next-post text-center">
-                            <ul>
-                                <li> <?php previous_post_link('%link', ''.'<i class="fa-solid fa-arrow-left"></i>'.' Previous Post'); ?></li>
-                                <li> <?php next_post_link('%link', 'Next Post '.'<i class="fa-solid fa-arrow-right"></i>'.''); ?></li>
+                            <!-- <ul>
+                                <li> <?php //previous_post_link('%link', ''.'<i class="fa-solid fa-arrow-left"></i>'.' Previous Post'); ?></li>
+                                <li> <?php //next_post_link('%link', 'Next Post '.'<i class="fa-solid fa-arrow-right"></i>'.''); ?></li>
                                 <?php 
-                                wp_link_pages(
+                                /*wp_link_pages(
                                     array(
                                         'before'      => '<div class="page-links">' . __( 'Pages:', 'atsbd' ),
                                         'after'       => '</div>',
                                     )
-                                ); ?>
-                            </ul>
+                                );*/ ?>
+                            </ul> -->
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -94,14 +101,21 @@ if(have_posts()) :
                         $table_ids = get_post_meta(get_the_ID(), '_tableofcontent', true);
                         if (!empty($table_ids)) : ?>
                         <!-- table of content -->
-                        <div class="tableofcontent">
-                            <div class="tofcontent-title">
-                                <h4><?php _e('Table of contents', 'backbencher'); ?></h4>
-                                <ul class="tableofcontent-list list-group-numbered px-0">
-                                    <?php foreach ($table_ids as $table_id) : ?>
-                                    <li class="list-group-item"><?php echo esc_html( $table_id ); ?></li>
-                                    <?php endforeach; ?>
-                                </ul>
+                        <div class="tableofcontent-readingprogressbar">
+                            <div class="tableofcontent">
+                                <!-- tabel of content -->
+                                <div class="tofcontent-title">
+                                    <h4><?php _e('Table of contents', 'backbencher'); ?></h4>
+                                    <div class="tableof_content-items">
+                                        <ul class="tableofcontent-list p-0 list-group-numbered px-0">
+                                            <li class="list-group-item"></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- progressbar -->
+                            <div class="progress bbs_blog-progressbar mt-5">
+                                <div class="progress-bar" id="blogProgressBar"  role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
                         <?php endif; ?>
@@ -110,7 +124,7 @@ if(have_posts()) :
                             <div class="readingtime-bar"></div>
                             <div class="reading-time_clock d-flex align-items-center">
                                 <div class="clock"><i class="fa-regular fa-clock"></i></div>
-                                <div class="timetext text-capitalize"><p><?php echo get_post_meta(get_the_ID(), '_readingtime', true); ?></p></div>
+                                <div class="timetext text-capitalize"><p><?php echo get_post_meta(get_the_ID(), '_readingtime', true); ?> <?php _e('Read', 'backbencher'); ?></p></div>
                             </div>
                         </div>
                         <!-- social links -->
@@ -146,41 +160,50 @@ if(have_posts()) :
     'post__not_in'   => array($bbscurrent_post->ID),  //for after post
     'posts_per_page' => 2,
     'order'          => 'DESC',
-    ));
+    )); 
     if ($bbsrecommend_posts->have_posts()) : //if have related post ?>
     <section class="relatedblog-area">
-    <div class="container">
-        <!-- border top -->
-        <hr>
-        <!-- title -->
-        <div class="blog-title">
-            <h2><?php _e('Blogs You May like', 'backbencher'); ?></h2>
+        <div class="container">
+            <!-- border top -->
+            <hr>
+            <!-- title -->
+            <div class="blog-title">
+                <h2><?php _e('Blogs You May like', 'backbencher'); ?></h2>
+            </div>
+            <!-- blog items -->
+            <div class="relatedblog-items">
+                <?php while ($bbsrecommend_posts->have_posts()) : $bbsrecommend_posts->the_post() ; //loop for post ?>
+                <!-- single item -->
+                <article class="blog-box blog-item">
+                    <!-- thumb -->
+                    <div class="thumbnail">
+                        <a href="<?php the_permalink(); ?>" class="text-decoration-none" title="<?php the_title(); ?>">
+                            <?php the_post_thumbnail(); ?>
+                        </a>
+                    </div>
+                    <!-- title -->
+                    <div class="post-title">
+                        <a href="<?php the_permalink(); ?>" class="text-decoration-none">
+                            <h2 class="text-uppercase"><?php echo wp_trim_words( get_the_title(), 3, '' ); ?> </h2>
+                        </a>
+                    </div>
+                    <!-- category -->
+                    <div class="categories">
+                    <?php
+                        $categories = get_the_terms(get_the_ID(), 'category');
+                        if ($categories && !is_wp_error($categories)) {
+                            $category_names = array();
+                            foreach ($categories as $category) {
+                                $category_names[] = $category->name;
+                            }
+                            echo '<h3 class="text-uppercase dot-title">' . implode(' / ', $category_names) . '</h3>';
+                        }
+                    ?>
+                    </div>
+                </article>
+                <?php endwhile; wp_reset_postdata(); //end loop & reset ?>
+            </div>
         </div>
-        <!-- blog items -->
-        <div class="relatedblog-items">
-            <?php while ($bbsrecommend_posts->have_posts()) : $bbsrecommend_posts->the_post() ; //loop for post ?>
-            <!-- single item -->
-            <article class="blog-box blog-item">
-                <!-- thumb -->
-                <div class="thumbnail">
-                    <a href="<?php the_permalink(); ?>" class="text-decoration-none" title="<?php the_title(); ?>">
-                        <?php the_post_thumbnail(); ?>
-                    </a>
-                </div>
-                <!-- title -->
-                <div class="post-title">
-                    <a href="<?php the_permalink(); ?>" class="text-decoration-none">
-                        <h2 class="text-uppercase"><?php echo wp_trim_words( get_the_title(), 3, '' ); ?> </h2>
-                    </a>
-                </div>
-                <!-- category -->
-                <div class="categories">
-                    <h3 class="text-uppercase dot-title"><?php the_category(' / '); ?></h3>
-                </div>
-            </article>
-            <?php endwhile; wp_reset_postdata(); //end loop & reset ?>
-        </div>
-    </div>
     </section>
     <?php endif; ?>
     <!-- =========================
