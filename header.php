@@ -24,7 +24,12 @@ if(!defined('ABSPATH')){
     <?php if(get_theme_mod('bbs_preloader') == 'yes') : ?>
     <!-- preloader -->
     <div id="preloader">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/preloader.gif" alt="preloader-image">
+        <div class="preloader-content">
+            <p>loading...</p>
+            <div id="progress-container">
+                <div id="progress-bar">0%</div>
+            </div>
+        </div>
     </div>
     <?php endif; ?>
 

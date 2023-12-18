@@ -24,8 +24,7 @@ if(have_posts()) : ?>
                     );
                     $query = new WP_Query($args);
 
-                    while ($query->have_posts()) : $query->the_post();
-                    ?>
+                    while ($query->have_posts()) : $query->the_post(); ?>
                     <!-- single blog -->
                     <article class="single-item swiper-slide blog-post" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                         <!-- thumb -->

@@ -34,13 +34,28 @@ add_action('wp_footer', 'bbs_script_loadin_footer');
 function bbs_script_loadin_footer(){ ?> 
 <script>
     // preloader
-    let preloader = document.getElementById('preloader');
-    if (preloader) {
-        window.addEventListener("load", function() {
-            preloader.style.display = "none";
-        });
-    }
+    function preloaderLoading() {
+        let preloader   = document.getElementById("preloader");
+        let progressBar = document.getElementById("progress-bar");
 
+        if (preloader && progressBar) {
+            let width = 1;
+            let interval = setInterval(loadFrame, 1);
+
+            function loadFrame() {
+                if (width >= 100) {
+                    clearInterval(interval);
+                    preloader.style.display = 'none';
+                } else {
+                    width++;
+                    progressBar.style.width = width + "%";
+                    progressBar.innerHTML = width + "%";
+                }
+            }
+        } 
+    }
+    // Call the loading simulation function
+    preloaderLoading();
 
 </script>
     <?php 

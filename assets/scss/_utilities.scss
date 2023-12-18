@@ -447,13 +447,39 @@ textarea:focus{
     align-items: center;
     justify-content: center;
     z-index: 110;
-    img{
-        height: 100px;
-        width: 100px;
-        @media(max-width: 768px){
-            height: 60px;
-            width: 60px;
+    .preloader-content{
+        text-align: center;
+        width: 100%;
+        p{
+            text-transform: capitalize;
+            margin-bottom: 10px;
+            @media(max-width: 768px){
+                font-size: 22px;
+            }
         }
+    }
+    #progress-container{
+        width: 50%;
+        margin: 0 auto;
+        background-color: #f1f1f1;
+        border: 1px solid #ddd;
+        height: 30px;
+        position: relative;
+        border-radius: 15px;
+        @media(max-width: 768px){
+            width: 70%;
+        }
+    }
+    #progress-bar{
+        width: 0;
+        height: 100%;
+        background-color: #50b800;
+        color: #fff;
+        text-align: center;
+        line-height: 30px;
+        position: absolute;
+        border-radius: 15px;
+        font-size: 22px;
     }
 }
 
@@ -832,3 +858,5 @@ textarea:focus{
         }
     }
 }
+
+

@@ -776,7 +776,7 @@
     }
 }
 
-// web development
+// elementor widget style - web development
 .webdevelopment-services a{
     overflow: hidden;
     border-radius: 30px;
@@ -814,4 +814,15 @@
 }
 .webdevelopment-services p:hover {
     color: $bbsPrimaryColor;
+}
+#service-howwe-work .dot-title.dot-title-green::before {
+    left: 0px;
+    top: 9px;
+}
+
+// dot for page heading
+.dot-title.page-heading::before {
+    @media(max-width: 768px){
+        top: 5px;
+    }
 }

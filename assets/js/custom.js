@@ -80,7 +80,7 @@
                     progressCircle.style.setProperty("--progress", 1 - progress);
                 }
             }
-        });
+        }); 
 
         /* ========================
             About Service Slider
