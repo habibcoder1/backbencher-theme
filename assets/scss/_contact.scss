@@ -21,7 +21,7 @@
         input#name,
         input#email,
         textarea,
-        input#phonenumber{
+        input#company-name{
             color: $bbsWhiteColor;
             background-color: transparent;
             font-size: 20px;
@@ -206,7 +206,7 @@
                 position: absolute;
                 top: 52px;
                 left: 0;
-                background-image: url(https://backbencher.studio/wp-content/uploads/2023/12/information-square.png);
+                background-image: url(https://backbencher.studio/wp-content/uploads/2023/12/information-square1.png);
                 background-position: center;
                 height: 32px;
                 width: 32px;
@@ -219,5 +219,12 @@
                 }
             }
         }
+    }
+    .wpcf7 form.invalid .wpcf7-response-output, 
+    .wpcf7 form.unaccepted .wpcf7-response-output, 
+    .wpcf7 form.payment-required .wpcf7-response-output,
+    .wpcf7 form.failed .wpcf7-response-output, 
+    .wpcf7 form.aborted .wpcf7-response-output{
+        color: #F02525;
     }
 }

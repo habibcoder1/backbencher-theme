@@ -206,6 +206,9 @@
         ============================= */ 
         // Define a function to handle the AJAX search
         function performAjaxSearch() {
+            // preloader
+            jQuery('.allblog-items').html('<div class="service_preloader text-center mt-5" style="color: #4C4E57;">Loading...</div>');
+
             let searchQuery  = jQuery('input#servicesearch').val();
             let searchSelect = jQuery('#searvicefilter').val();
 
@@ -240,6 +243,9 @@
         ============================= */ 
         // Define a function to handle the AJAX search
         function performJobAjaxSearch() {
+            // preloader
+            jQuery('.job-post-items').html('<div class="job_preloader text-center mt-5" style="color: #4C4E57;">Loading...</div>');
+
             let jobSearchQuery  = jQuery('input#jobservice').val();
             let jobSearchSelect = jQuery('#jobsearchfilter').val();
 

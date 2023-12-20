@@ -172,6 +172,7 @@ function bbs_custom_post_type(){
 ======================== */
 add_action('add_meta_boxes', 'bbs_custom_metaboxes');
 function bbs_custom_metaboxes(){
+    // service metabox
     add_meta_box( 
         'bbbs_service-metabox',     //unique id
         __('Project Details', 'backbencher'),  //title
@@ -180,7 +181,16 @@ function bbs_custom_metaboxes(){
         'normal',         // position
         'high'            // high, side
     );
-    // metabox for minutes in post
+    // service metabox for problem solution
+    add_meta_box( 
+        'bbs_problemsolution-metabox',     //unique id
+        __('Problems & Solutions', 'backbencher'),  //title
+        'bbs_problemsolutions_metabox_callback',  //callback function
+        'bbs-service',    // post type
+        'normal',         // position
+    );
+
+    // metabox for minutes in post //
     add_meta_box( 
         'bbbs_minin-post-metabox',     //unique id
         __('Blog Reading Duration', 'backbencher'),  //title
@@ -226,8 +236,8 @@ function bbs_service_metabox_callback(){ ?>
 <?php
 }
 // save post
-add_action('save_post', 'bbs_metabox_save_post');
-function bbs_metabox_save_post($post_id){
+add_action('save_post', 'bbs_projectdetails_metabox_save_post');
+function bbs_projectdetails_metabox_save_post($post_id){
     if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
     // contact link
     if(isset($_POST['service-contactbtnllink'])){
@@ -243,6 +253,113 @@ function bbs_metabox_save_post($post_id){
     }
 
 }
+ 
+// callback for service problem solutions
+function bbs_problemsolutions_metabox_callback() { ?>
+    <div class="bbs_service_problemsolution-metabox">
+        <!-- project problems //// -->
+        <div class="service-problemitem"><?php _e('Problem Items::', 'backbencher'); ?></div>
+        <p class="project-problems">
+            <?php
+            $service_problem_items = get_post_meta(get_the_ID(), '_service-problemitemtitle', true);
+            $service_problem_contents = get_post_meta(get_the_ID(), '_problemitem-content', true);
+            ?>
+            <div id="serviceproblem-container">
+                <?php
+                if (!empty($service_problem_items)) {
+                    foreach ($service_problem_items as $index => $service_problem_item) {
+                        ?>
+                        <div class="serviceproblemid">
+                            <label for="service-problemitemtitle_<?php echo $index; ?>"><?php _e('Problem item:', 'backbencher'); ?></label>
+                            <input type="text" class="regular-text" placeholder="Problem item title" id="service-problemitemtitle_<?php echo $index; ?>" name="service-problemitemtitle[]" value="<?php echo esc_attr($service_problem_item); ?>">
+                            <span class="remove-problemitems remove-icon" data-index="<?php echo $index; ?>">X</span>
+                            <textarea name="problemitem-content[]" id="problemitem-content_<?php echo $index; ?>" placeholder="Problem content"><?php echo esc_textarea($service_problem_contents[$index]); ?></textarea>
+                        </div>
+                        <?php
+                    }
+                } else {
+                    // Display at least one empty input field
+                    ?>
+                    <div class="serviceproblemid">
+                        <label for="service-problemitemtitle_0"><?php _e('Problem item:', 'backbencher'); ?></label>
+                        <input type="text" class="regular-text" placeholder="Problem item title" id="service-problemitemtitle_0" name="service-problemitemtitle[]" value="">
+                        <textarea name="problemitem-content[]" id="problemitem-content_0" placeholder="Problem content"></textarea>
+                    </div>
+                    <?php
+                }
+                ?>
+            </div>
+            <button type="button" class="add-problem" id="add-problem"><?php _e('Add problem', 'backbencher'); ?></button>
+        </p>
+        <!-- project solutions //// -->
+        <div class="service-solutionitem"><?php _e('Solution Items::', 'backbencher'); ?></div>
+        <p class="project-solutions">
+            <?php
+            $service_solution_items = get_post_meta(get_the_ID(), '_service-solutionitemtitle', true);
+            $service_solution_contents = get_post_meta(get_the_ID(), '_solutionitem-content', true);
+            ?>
+            <div id="servicesolution-container">
+                <?php
+                if (!empty($service_solution_items)) {
+                    foreach ($service_solution_items as $index => $service_solution_item) {
+                        ?>
+                        <div class="servicesolutionid">
+                            <label for="service-solutionitemtitle_<?php echo $index; ?>"><?php _e('Solution item:', 'backbencher'); ?></label>
+                            <input type="text" class="regular-text" placeholder="Solution item title" id="service-solutionitemtitle_<?php echo $index; ?>" name="service-solutionitemtitle[]" value="<?php echo esc_attr($service_solution_item); ?>">
+                            <span class="remove-solutionitems remove-icon" data-index="<?php echo $index; ?>">X</span>
+                            <textarea name="solutionitem-content[]" id="solutionitem-content_<?php echo $index; ?>" placeholder="Solution content"><?php echo esc_textarea($service_solution_contents[$index]); ?></textarea>
+                        </div>
+                        <?php
+                    }
+                } else {
+                    // Display at least one empty input field
+                    ?>
+                    <div class="servicesolutionid">
+                        <label for="service-solutionitemtitle_0"><?php _e('Solution item:', 'backbencher'); ?></label>
+                        <input type="text" class="regular-text" placeholder="Solution item title" id="service-solutionitemtitle_0" name="service-solutionitemtitle[]" value="">
+                        <textarea name="solutionitem-content[]" id="solutionitem-content_0" placeholder="Solution content"></textarea>
+                    </div>
+                    <?php
+                }
+                ?>
+            </div>
+            <button type="button" class="add-solution" id="add-solution"><?php _e('Add solution', 'backbencher'); ?></button>
+        </p>
+        
+    </div>
+<?php
+}
+
+// Save post
+add_action('save_post', 'bbs_problemsolution_metabox_save_post');
+function bbs_problemsolution_metabox_save_post($post_id) {
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
+
+    // Problem titles
+    if (isset($_POST['service-problemitemtitle'])) {
+        $problem_titles = array_map('sanitize_text_field', $_POST['service-problemitemtitle']);
+        update_post_meta($post_id, '_service-problemitemtitle', $problem_titles);
+    }
+
+    // Problem contents
+    if (isset($_POST['problemitem-content'])) {
+        $problem_contents = array_map('sanitize_textarea_field', $_POST['problemitem-content']);
+        update_post_meta($post_id, '_problemitem-content', $problem_contents);
+    }
+
+    // Solution titles
+    if (isset($_POST['service-solutionitemtitle'])) {
+        $solution_titles = array_map('sanitize_text_field', $_POST['service-solutionitemtitle']);
+        update_post_meta($post_id, '_service-solutionitemtitle', $solution_titles);
+    }
+
+    // Solution contents
+    if (isset($_POST['solutionitem-content'])) {
+        $problem_contents = array_map('sanitize_textarea_field', $_POST['solutionitem-content']);
+        update_post_meta($post_id, '_solutionitem-content', $problem_contents);
+    }
+}
+
  
 
 // callback for reading time metabox
@@ -474,6 +591,8 @@ function save_bbs_jobboard_metabox($post_id) {
 
 
 }
+
+
 
 /* ============================================================
 Custom Metabox Contents Show in Dashboard

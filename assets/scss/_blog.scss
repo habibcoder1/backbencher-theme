@@ -234,6 +234,7 @@
         // menu items
         .tab-menuitem{
             padding: 0;
+            margin-bottom: 60px;
             @media(max-width: 768px){
                 text-align: center;
             }
@@ -285,18 +286,19 @@
             display: grid;
             grid-template-columns: repeat(2,  minmax(0,1fr));
             gap: 40px;
-            margin-top: 80px;
+            margin-top: 40px;
             @media(max-width: 1200px){
                 gap: 20px;
-                margin-top: 60px;
+                margin-top: 20px;
             }
             @media(max-width: 768px){
                 grid-template-columns: repeat(1,  minmax(0,1fr));
                 gap: 30px;
-                margin-top: 40px;
+                margin-top: 30px;
             }
             @media(max-width: 450px){
                 gap: 20px;
+                margin-top: 20px;
             }
             article{
                 .post-title{
@@ -310,7 +312,8 @@
                     h3{
                         margin-left: 40px;
                         color: $bbsWhiteColor;
-                        font-size: 42px;
+                        font-size: 40px;
+                        letter-spacing: -2.6px;
                         @media(max-width: 1400px){
                             font-size: 35px;
                             letter-spacing: -2px;
@@ -352,6 +355,9 @@
                     }
                     .dot-title{
                         &::before{
+                            @media(max-width: 992px){
+                                top: 1px;
+                            }
                             @media(max-width: 768px){
                                 top: 3px;
                             }

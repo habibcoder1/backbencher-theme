@@ -53,18 +53,29 @@ function bbs_service_ajax_search() {
                     </div>
                     <!-- category -->
                     <div class="categories">
-                        <h3 class="text-uppercase dot-title">
                         <?php 
-                            $service_categories = get_the_terms(get_the_ID(), 'bbsservice_tax');  
-                            if (!empty($service_categories)) {
-                                $category_names = array();
-                                foreach ($service_categories as $service_category) {
-                                    $category_names[] = $service_category->name;
+                        $post_categories = get_the_terms(get_the_ID(), 'bbsservice_tax');
+
+                        if (!empty($post_categories)) {
+                            $main_category = '';
+
+                            foreach ($post_categories as $post_category) {
+                                if ($post_category->parent) {
+                                    $category_hierarchy = get_term_parents_list($post_category->term_id, 'bbsservice_tax', array('separator' => ' / ', 'link' => false));
+                
+                                    $hierarchy_array = explode(' / ', $category_hierarchy);
+                                    $main_category   = reset($hierarchy_array);
+                                } else {
+                                    $main_category = $post_category->name;
                                 }
-                                echo '<h3 class="text-uppercase dot-title">' . implode(' / ', $category_names) . '</h3>';
-                            } 
-                        ?>
-                        </h3>
+                                // Display only the main category
+                                if (!empty($main_category)) {
+                                    echo '<h3 class="text-uppercase dot-title">' . $main_category . '</h3>';
+                                    // Break out of the loop once the main category is found
+                                    break;
+                                }
+                            }
+                        }; ?>
                     </div>
                     <!-- title -->
                     <div class="post-title">

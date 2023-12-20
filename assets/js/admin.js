@@ -88,3 +88,69 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
+
+// script for service/project problems
+document.addEventListener('DOMContentLoaded', function () {
+    const problemContainer = document.getElementById('serviceproblem-container');
+    const addProblemButton = document.getElementById('add-problem');
+
+    if (problemContainer && addProblemButton) {
+        addProblemButton.addEventListener('click', function () {
+            const newIndex = problemContainer.querySelectorAll('.serviceproblemid').length;
+            const newInput = document.createElement('div');
+            newInput.className = 'serviceproblemid';
+            newInput.innerHTML = `
+                <label for="service-problemitemtitle_${newIndex}">Problem item:</label>
+                <input type="text" class="regular-text" placeholder="Problem item title" id="service-problemitemtitle_${newIndex}" name="service-problemitemtitle[]" value="">
+                <span class="remove-problemitems remove-icon" data-index="${newIndex}">X</span>
+                <textarea name="problemitem-content[]" id="problemitem-content_${newIndex}" placeholder="Problem content"></textarea> `;
+            problemContainer.appendChild(newInput);
+        });
+
+        problemContainer.addEventListener('click', function (event) {
+            if (event.target.classList.contains('remove-problemitems')) {
+                const indexToRemove = event.target.getAttribute('data-index');
+                const inputToRemove = document.getElementById(`service-problemitemtitle_${indexToRemove}`);
+                const textareaToRemove = document.getElementById(`problemitem-content_${indexToRemove}`);
+
+                if (inputToRemove && textareaToRemove) {
+                    inputToRemove.parentNode.remove();
+                    textareaToRemove.parentNode.remove();
+                }
+            }
+        });
+    }
+});
+
+// script for service/project solutions
+document.addEventListener('DOMContentLoaded', function () {
+    const solutionContainer = document.getElementById('servicesolution-container');
+    const addSolutionButton = document.getElementById('add-solution');
+
+    if (solutionContainer && addSolutionButton) {
+        addSolutionButton.addEventListener('click', function () {
+            const newIndex = solutionContainer.querySelectorAll('.servicesolutionid').length;
+            const newInput = document.createElement('div');
+            newInput.className = 'servicesolutionid';
+            newInput.innerHTML = `
+                <label for="service-solutionitemtitle_${newIndex}">Solution item:</label>
+                <input type="text" class="regular-text" placeholder="Solution item title" id="service-solutionitemtitle_${newIndex}" name="service-solutionitemtitle[]" value="">
+                <span class="remove-solutionitems remove-icon" data-index="${newIndex}">X</span>
+                <textarea name="solutionitem-content[]" id="solutionitem-content_${newIndex}" placeholder="Solution content"></textarea>`;
+            solutionContainer.appendChild(newInput);
+        });
+
+        solutionContainer.addEventListener('click', function (event) {
+            if (event.target.classList.contains('remove-solutionitems')) {
+                const indexToRemove = event.target.getAttribute('data-index');
+                const inputToRemove = document.getElementById(`service-solutionitemtitle_${indexToRemove}`);
+                const textareaToRemove = document.getElementById(`solutionitem-content_${indexToRemove}`);
+
+                if (inputToRemove && textareaToRemove) {
+                    inputToRemove.parentNode.remove();
+                    textareaToRemove.parentNode.remove();
+                }
+            }
+        });
+    }
+});

@@ -2,16 +2,20 @@
 
 
 /* style for service */
+.bbs_service_problemsolution-metabox label,
 .bbs_service-metabox label {
     margin-right: 15px;
+    font-size: 15px;
 }
 
 .bbs_service-metabox input#service-contactbtnllink {
-    margin-left: 27px;
+    margin-left: 6px;
+    width: 500px;
 }
-
+.bbs_service_problemsolution-metabox input#service-problemitemtitle,
 .bbs_service-metabox input#discuss-projectlink {
-    margin-left: 25px;
+    margin-left: 7px;
+    width: 500px;
 }
 .bbs_service-metabox textarea{
     height: 150px;
@@ -21,6 +25,73 @@
 }
 .bbs_service-metabox label{
     margin-right: 15px;
+}
+
+/* service problem, solutions */
+.bbs_service_problemsolution-metabox button{
+    padding: 6px 15px 8px;
+    text-transform: capitalize;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    margin-left: 45%;
+    margin-top: 5px;
+    font-weight: 600;
+    border-radius: 4px;
+    transition: .4s ease all;
+    -webkit-transition: .4s ease all;
+    -moz-transition: .4s ease all;
+    -ms-transition: .4s ease all;
+    -o-transition: .4s ease all;
+}
+.bbs_service_problemsolution-metabox button:hover{
+    background-color: #50B800;
+    color: #fff;
+}
+.bbs_service_problemsolution-metabox .service-solutionitem,
+.bbs_service_problemsolution-metabox .service-problemitem{
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+.bbs_service_problemsolution-metabox input{
+    margin-left: 45px;
+    margin-bottom: 15px;
+    width: 500px;
+}
+.bbs_service_problemsolution-metabox textarea{
+    height: 80px;
+    width: 500px;
+    display: block;
+    margin-left: 156px;
+}
+.bbs_service_problemsolution-metabox span.remove-solutionitems.remove-icon,
+.bbs_service_problemsolution-metabox span.remove-problemitems.remove-icon {
+    color: red;
+    font-weight: 500;
+    font-size: 22px;
+    cursor: pointer;
+    padding: 6px;
+    display: inline-block;
+}
+.bbs_service_problemsolution-metabox .servicesolutionid,
+.bbs_service_problemsolution-metabox .serviceproblemid {
+    margin-bottom: 20px;
+}
+
+@media(max-width: 1400px){
+    .bbs_service_problemsolution-metabox button{
+        margin-left: 80%;
+    }
+}
+
+@media(max-width: 1200px){
+
+}
+@media(max-width: 992px){
+
+}
+@media(max-width: 768px){
+
 }
 
 /* style for job board */

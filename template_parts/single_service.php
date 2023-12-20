@@ -44,34 +44,34 @@ if(have_posts()) :
             <hr>
             <!-- project details -->
             <div class="project-details">
-            <div class="row">
-                <!-- project title -->
-                <div class="col-lg-3">
-                    <div class="project-title">
-                        <h2 class="text-uppercase"><?php _e('project', 'backbencher'); ?></h2>
-                    </div>
-                </div>
-                <!-- project content -->
-                <div class="col-lg-9">
-                    <div class="project-content">
-                        <p><?php echo get_post_meta(get_the_ID(), '_service-projectcontent', true); ?></p>
-                    </div>
-                    <div class="project-peoples_link">
-                        <!-- images -->
-                        <div class="people-image">
-                            <?php
-                                $users = get_users();
-                                foreach ($users as $user){
-                                    echo get_avatar($user->ID, 21); 
-                                } 
-                            ?>
-                        </div>
-                        <div class="project-link">
-                            <a href="<?php echo get_post_meta(get_the_ID(), '_discuss-projectlink', true); ?>"><?php _e('Discuss the project', 'backbencher'); ?></a>
+                <div class="row">
+                    <!-- project title -->
+                    <div class="col-lg-3">
+                        <div class="project-title">
+                            <h2 class="text-uppercase"><?php _e('project', 'backbencher'); ?></h2>
                         </div>
                     </div>
+                    <!-- project content -->
+                    <div class="col-lg-9">
+                        <div class="project-content">
+                            <p><?php echo get_post_meta(get_the_ID(), '_service-projectcontent', true); ?></p>
+                        </div>
+                        <div class="project-peoples_link">
+                            <!-- images -->
+                            <div class="people-image">
+                                <?php
+                                    $users = get_users();
+                                    foreach ($users as $user){
+                                        echo get_avatar($user->ID, 21); 
+                                    } 
+                                ?>
+                            </div>
+                            <div class="project-link">
+                                <a href="<?php echo get_post_meta(get_the_ID(), '_discuss-projectlink', true); ?>"><?php _e('Discuss the project', 'backbencher'); ?></a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
             </div>
             <!-- hr -->
             <hr>
@@ -102,7 +102,7 @@ if(have_posts()) :
                 <article class="blog-box blog-item">
                     <!-- thumb -->
                     <div class="thumbnail">
-                        <a href="<?php the_permalink(); ?>" class="text-decoration-none" title="blog title">
+                        <a href="<?php the_permalink(); ?>" class="text-decoration-none" title="<?php the_title(); ?>">
                             <?php the_post_thumbnail(); ?>
                         </a>
                     </div>
@@ -123,11 +123,10 @@ if(have_posts()) :
                         }
                     ?>
                     </div>
-
                     <!-- title -->
                     <div class="post-title">
                         <a href="<?php the_permalink(); ?>" class="text-decoration-none">
-                            <h2 class="text-uppercase"><?php echo wp_trim_words( get_the_content(), 3, '' ); ?> </h2>
+                            <h2 class="text-uppercase"><?php the_title(); ?> </h2>
                         </a>
                     </div>
                 </article>

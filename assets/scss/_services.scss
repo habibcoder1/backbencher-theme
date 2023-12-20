@@ -267,6 +267,7 @@
                 margin-left: 40px;
                 margin-bottom: 30px;
                 &::before{
+                    top: 14px;
                     @media(max-width: 1200px){
                         height: 25px;
                         width: 25px;
@@ -407,6 +408,10 @@
 .single_service-page{
     background-color: #0A090F;
     color: $bbsWhiteColor;
+    padding-bottom: 100px;
+    @media(max-width: 768px){
+        padding-bottom: 50px;
+    }
     .container{
         hr{
             border-color: #8E8EA0;
@@ -657,9 +662,8 @@
                         font-size: 20px;
                     }
                     &::before{
-                        top: 12px;
                         @media(max-width: 768px){
-                            top: 8px;
+                            top: 3px;
                         }
                     }
                     a{
@@ -777,44 +781,45 @@
 }
 
 // elementor widget style - web development
-.webdevelopment-services a{
-    overflow: hidden;
-    border-radius: 30px;
-    -webkit-border-radius: 30px;
-    -moz-border-radius: 30px;
-    -ms-border-radius: 30px;
-    -o-border-radius: 30px;
+.webdevelopment-services{
+    h2{
+        a{
+            transition: .4s ease all;
+            -webkit-transition: .4s ease all;
+            -moz-transition: .4s ease all;
+            -ms-transition: .4s ease all;
+            -o-transition: .4s ease all;
+            &:hover{
+                color: $bbsPrimaryColor !important;
+            }
+        }
+    }
+    a{
+        overflow: hidden;
+        &:hover img{
+            transform: scale(1.2);
+        }
+        img{
+            transition: .6s ease all;
+            -webkit-transition: .6s ease all;
+            -moz-transition: .6s ease all;
+            -ms-transition: .6s ease all;
+            -o-transition: .6s ease all;
+        }
+    }
+    p {
+        transition: .4s ease all;
+        -webkit-transition: .4s ease all;
+        -moz-transition: .4s ease all;
+        -ms-transition: .4s ease all;
+        -o-transition: .4s ease all;
+        &:hover {
+            color: $bbsPrimaryColor;
+        }
+    }
+    
 }
-.webdevelopment-services a:hover img{
-    transform: scale(1.2);
-}
-.webdevelopment-services a img{
-    transition: .6s ease all;
-    -webkit-transition: .6s ease all;
-    -moz-transition: .6s ease all;
-    -ms-transition: .6s ease all;
-    -o-transition: .6s ease all;
-}
-.webdevelopment-services h3 a span:hover {
-    color: $bbsPrimaryColor;
-}
-.webdevelopment-services h3 a span {
-    transition: .4s ease all;
-    -webkit-transition: .4s ease all;
-    -moz-transition: .4s ease all;
-    -ms-transition: .4s ease all;
-    -o-transition: .4s ease all;
-}
-.webdevelopment-services p {
-    transition: .4s ease all;
-    -webkit-transition: .4s ease all;
-    -moz-transition: .4s ease all;
-    -ms-transition: .4s ease all;
-    -o-transition: .4s ease all;
-}
-.webdevelopment-services p:hover {
-    color: $bbsPrimaryColor;
-}
+
 #service-howwe-work .dot-title.dot-title-green::before {
     left: 0px;
     top: 9px;

@@ -413,55 +413,10 @@
 // work step animation
 .work-step_animation{
     overflow: hidden;
-    padding: 100px 0;
+    padding: 50px 0;
     .workanimation-wrap{
         background: $bbsPrimaryColor;
-        // overflow: hidden;
-        transform: rotate(355deg);
-        -webkit-transform: rotate(355deg);
-        -moz-transform: rotate(355deg);
-        -ms-transform: rotate(355deg);
-        -o-transform: rotate(355deg);
-        &::before{
-            content: '';
-            width: 28px;
-            height: 0;
-            border-bottom: 178px solid $bbsPrimaryColor;
-            border-right: 20px solid transparent;
-            display: block;
-            clear: both;
-            position: absolute;
-            top: 0;
-            left: -14px;
-            z-index: -1;
-            bottom: 0;
-            @media(max-width: 768px){
-                border-bottom: 117px solid $bbsPrimaryColor;
-            }
-            @media(max-width: 550px){
-                border-bottom: 93px solid $bbsPrimaryColor;
-            }
-        }
-        &::after{
-            content: '';
-            width: 28px;
-            height: 0;
-            border-top: 178px solid $bbsPrimaryColor;
-            border-right: 20px solid transparent;
-            display: block;
-            clear: both;
-            position: absolute;
-            top: 0;
-            right: -14px;
-            z-index: -1;
-            bottom: 0;
-            @media(max-width: 768px){
-                border-top: 117px solid $bbsPrimaryColor;
-            }
-            @media(max-width: 550px){
-                border-top: 93px solid $bbsPrimaryColor;
-            }
-        }
+        // overflow: hidden; 
     }
     .workanimation-items{
         display: flex;
