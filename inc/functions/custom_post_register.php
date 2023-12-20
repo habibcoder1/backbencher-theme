@@ -188,6 +188,7 @@ function bbs_custom_metaboxes(){
         'bbs_problemsolutions_metabox_callback',  //callback function
         'bbs-service',    // post type
         'normal',         // position
+        'default', 
     );
 
     // metabox for minutes in post //
@@ -325,13 +326,29 @@ function bbs_problemsolutions_metabox_callback() { ?>
             </div>
             <button type="button" class="add-solution" id="add-solution"><?php _e('Add solution', 'backbencher'); ?></button>
         </p>
-        
+        <!-- problem, solution image -->
+        <p>
+            <div class="problem_solution-img">
+                <?php wp_nonce_field(basename(__FILE__), 'bbs_problemsolution-metabox_nonce'); ?>
+                <?php $imgurl = get_post_meta(get_the_ID(), '_problemsolution-image', true); ?>
+
+                <label for="problemsolution-image"><?php _e('Problem Solution Image', 'backbencher'); ?></label>
+                <input type="hidden" id="problemsolution-image" name="problemsolution-image" value="<?php echo esc_attr($imgurl); ?>">
+                <img src="<?php echo esc_url($imgurl); ?>" alt="problem solution image" id="problemsolutionimagetag">
+                <div class="add_remove-btn">
+                    <button class="add-image"><?php _e('Add Image', 'backbencher'); ?></button>
+                    <button class="remove-image"><?php _e('Remove Image', 'backbencher'); ?></button>
+                </div>
+            </div>
+        </p>
+
     </div>
 <?php
 }
 
 // Save post
 add_action('save_post', 'bbs_problemsolution_metabox_save_post');
+
 function bbs_problemsolution_metabox_save_post($post_id) {
     if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
 
@@ -358,6 +375,20 @@ function bbs_problemsolution_metabox_save_post($post_id) {
         $problem_contents = array_map('sanitize_textarea_field', $_POST['solutionitem-content']);
         update_post_meta($post_id, '_solutionitem-content', $problem_contents);
     }
+
+    // for problem solutuion image //
+    // Check if nonce is set.
+    if (!isset($_POST['bbs_problemsolution-metabox_nonce'])){ return; }
+    // Verify that the nonce is valid.
+    if (!wp_verify_nonce($_POST['bbs_problemsolution-metabox_nonce'], basename(__FILE__))){
+        return;
+    }
+    // Handle image upload.
+    if (!empty($_POST['problemsolution-image'])){
+        $image_url = esc_url($_POST['problemsolution-image']);
+        update_post_meta($post_id, '_problemsolution-image', $image_url);
+    }
+
 }
 
  

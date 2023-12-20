@@ -77,6 +77,26 @@
 .bbs_service_problemsolution-metabox .serviceproblemid {
     margin-bottom: 20px;
 }
+.bbs_service_problemsolution-metabox .problem_solution-img label{
+    display: block;
+    font-size: 15px;
+    font-weight: 500;
+}   
+.bbs_service_problemsolution-metabox .problem_solution-img img{
+    height: 150px;
+    width: 280px;
+    border: 1px solid #ccc;
+    display: block;
+    margin: auto;
+}   
+.bbs_service_problemsolution-metabox .problem_solution-img .add_remove-btn{
+    text-align: center;
+}
+.bbs_service_problemsolution-metabox .problem_solution-img .add_remove-btn button{
+    display: inline-block;
+    margin-left: auto;
+}
+
 
 @media(max-width: 1400px){
     .bbs_service_problemsolution-metabox button{

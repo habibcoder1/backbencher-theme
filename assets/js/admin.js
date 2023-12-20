@@ -154,3 +154,37 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 });
+
+// Image upload for problem solution //
+let customUploader;
+jQuery('.problem_solution-img .add-image').on('click', function(e) {
+    e.preventDefault();
+
+    if (customUploader) {
+        customUploader.open();
+        return;
+    }
+
+    customUploader = wp.media.frames.file_frame = wp.media({
+        title: 'Choose Image',
+        button: {
+            text: 'Choose Image'
+        },
+        multiple: false
+    });
+
+    customUploader.on('select', function() {
+        var attachment = customUploader.state().get('selection').first().toJSON();
+        jQuery('#problemsolution-image').val(attachment.url);  //input hidden
+        jQuery('#problemsolutionimagetag').attr('src', attachment.url); //img tag
+    });
+
+    customUploader.open();
+});
+// Remove Image
+jQuery('.problem_solution-img .add_remove-btn .remove-image').on('click', function(e) {
+    e.preventDefault();
+
+    jQuery('#problemsolution-image').val(' ');
+    jQuery('#problemsolutionimagetag').attr('src', ' ');
+});
