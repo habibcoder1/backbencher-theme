@@ -2,6 +2,25 @@
 
 
 /* style for service */
+.bbs_service-metabox .service_banner-img p{
+    margin-left: 315px;
+}
+.bbs_service-metabox .service_banner-img img{
+    height: 190px;
+    width: 500px;
+    border: 1px solid #ccc;
+    display: block;
+    margin-left: 158px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+.bbs_service-metabox .service_banner-img .add_remove-btn{
+    margin-left: 315px;
+    margin-bottom: 20px;
+}
 .bbs_service_problemsolution-metabox label,
 .bbs_service-metabox label {
     margin-right: 15px;
@@ -28,6 +47,7 @@
 }
 
 /* service problem, solutions */
+.bbs_service-metabox .service_banner-img .add_remove-btn button,
 .bbs_service_problemsolution-metabox button{
     padding: 6px 15px 8px;
     text-transform: capitalize;
@@ -43,6 +63,10 @@
     -ms-transition: .4s ease all;
     -o-transition: .4s ease all;
 }
+.bbs_service-metabox .service_banner-img .add_remove-btn button{
+    margin-left: auto;
+}
+.bbs_service-metabox .service_banner-img .add_remove-btn button:hover,
 .bbs_service_problemsolution-metabox button:hover{
     background-color: #50B800;
     color: #fff;
@@ -65,7 +89,7 @@
     margin-left: 156px;
 }
 .bbs_service_problemsolution-metabox span.remove-solutionitems.remove-icon,
-.bbs_service_problemsolution-metabox span.remove-problemitems.remove-icon {
+.bbs_service_problemsolution-metabox span.remove-problemitems.remove-icon{
     color: red;
     font-weight: 500;
     font-size: 22px;
@@ -77,11 +101,87 @@
 .bbs_service_problemsolution-metabox .serviceproblemid {
     margin-bottom: 20px;
 }
+.bbs_service_problemsolution-metabox .problem_solution-img label{
+    display: block;
+    font-size: 15px;
+    font-weight: 500;
+}   
+.bbs_service_problemsolution-metabox .problem_solution-img img{
+    height: 250px;
+    width: 480px;
+    border: 1px solid #ccc;
+    display: block;
+    margin-left: 200px;
+}   
+.bbs_service_problemsolution-metabox .problem_solution-img p{
+    margin-left: 330px;
+}   
+.bbs_service_problemsolution-metabox .problem_solution-img .add_remove-btn{
+    margin-left: 330px;
+}
+.bbs_service_problemsolution-metabox .problem_solution-img .add_remove-btn button{
+    display: inline-block;
+    margin-left: auto;
+}
+#bbs_brandingtypographyprocess-metabox .add_remove-btn{
+    margin-left: 250px;
+}
+
+#bbs_brandingtypographyprocess-metabox .typography-content textarea,
+#bbs_brandingtypographyprocess-metabox .workprocess-content textarea,
+#bbs_brandingtypographyprocess-metabox .branding-content textarea{
+    margin-bottom: 20px;
+    margin-left: 156px;
+    width: 500px;
+    height: 100px;
+    display: block;
+}
+#bbs_brandingtypographyprocess-metabox .workprocess-content,
+#bbs_brandingtypographyprocess-metabox .typography-content{
+    margin-top: 30px;
+}
+#bbs_brandingtypographyprocess-metabox .branding_typography_workprocess img{
+    width: 300px;
+    height: 180px;
+    margin-left: 210px;
+    display: block;
+    border: 1px solid #ccc;
+}
+#bbs_brandingtypographyprocess-metabox .branding_typography_workprocess .workprocess-image img{
+    height: 120px;
+}
+#bbs_brandingtypographyprocess-metabox .branding_typography_workprocess .branding-image p,
+#bbs_brandingtypographyprocess-metabox .branding_typography_workprocess .typography-image p{
+    margin-left: 250px;
+}
+#bbs_brandingtypographyprocess-metabox .add_remove-btn button{
+    display: inline-block;
+    padding: 6px 15px 8px;
+    text-transform: capitalize;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    margin-top: 5px;
+    font-weight: 600;
+    border-radius: 4px;
+    transition: .4s ease all;
+    -webkit-transition: .4s ease all;
+    -moz-transition: .4s ease all;
+    -ms-transition: .4s ease all;
+    -o-transition: .4s ease all;
+}
+#bbs_brandingtypographyprocess-metabox .add_remove-btn button:hover{
+    background-color: #50B800;
+    color: #fff;
+}
 
 @media(max-width: 1400px){
     .bbs_service_problemsolution-metabox button{
         margin-left: 80%;
     }
+    .bbs_service_problemsolution-metabox .problem_solution-img img{
+        height: 150px;
+        width: 380px;
+    } 
 }
 
 @media(max-width: 1200px){

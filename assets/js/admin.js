@@ -154,3 +154,178 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 });
+
+
+// Image upload for service banner //
+let bannerImgUploader;
+jQuery('#bbbs_service-metabox .service_banner-img .add-image').on('click', function(e) {
+    e.preventDefault();
+
+    if (bannerImgUploader){
+        bannerImgUploader.open();
+        return;
+    }
+
+    bannerImgUploader = wp.media.frames.file_frame = wp.media({
+        title: 'Choose Image',
+        button: {
+            text: 'Choose Image'
+        },
+        multiple: false
+    });
+
+    bannerImgUploader.on('select', function() {
+        var attachment = bannerImgUploader.state().get('selection').first().toJSON();
+        jQuery('#service_banner-image').val(attachment.url);  //input hidden
+        jQuery('#servicebannerimagetag').attr('src', attachment.url); //img tag
+    });
+
+    bannerImgUploader.open();
+});
+// Remove Image
+jQuery('#bbbs_service-metabox .add_remove-btn .remove-image').on('click', function(e) {
+    e.preventDefault();
+
+    jQuery('#service_banner-image').val(' ');
+    jQuery('#servicebannerimagetag').attr('src', ' ');
+});
+
+
+// Image upload for problem, solution solution //
+let customUploader;
+jQuery('.problem_solution-img .add-image').on('click', function(e) {
+    e.preventDefault();
+
+    if (customUploader) {
+        customUploader.open();
+        return;
+    }
+
+    customUploader = wp.media.frames.file_frame = wp.media({
+        title: 'Choose Image',
+        button: {
+            text: 'Choose Image'
+        },
+        multiple: false
+    });
+
+    customUploader.on('select', function() {
+        var attachment = customUploader.state().get('selection').first().toJSON();
+        jQuery('#problemsolution-image').val(attachment.url);  //input hidden
+        jQuery('#problemsolutionimagetag').attr('src', attachment.url); //img tag
+    });
+
+    customUploader.open();
+});
+// Remove Image
+jQuery('.problem_solution-img .add_remove-btn .remove-image').on('click', function(e) {
+    e.preventDefault();
+
+    jQuery('#problemsolution-image').val(' ');
+    jQuery('#problemsolutionimagetag').attr('src', ' ');
+});
+
+
+// Image upload for Branding //
+let brandImgUploader;
+jQuery('.branding_typography_workprocess .branding-image .add-image').on('click', function(e) {
+    e.preventDefault();
+
+    if (brandImgUploader) {
+        brandImgUploader.open();
+        return;
+    }
+
+    brandImgUploader = wp.media.frames.file_frame = wp.media({
+        title: 'Choose Image',
+        button: {
+            text: 'Choose Image'
+        },
+        multiple: false
+    });
+
+    brandImgUploader.on('select', function() {
+        var attachment = brandImgUploader.state().get('selection').first().toJSON();
+        jQuery('#branding-image').val(attachment.url);  //input hidden
+        jQuery('#brandingimagetag').attr('src', attachment.url); //img tag
+    });
+
+    brandImgUploader.open();
+});
+// Remove Image
+jQuery('.branding_typography_workprocess .branding-image .add_remove-btn .remove-image').on('click', function(e) {
+    e.preventDefault();
+
+    jQuery('#branding-image').val(' ');
+    jQuery('#brandingimagetag').attr('src', ' ');
+});
+
+
+// Image upload for typography //
+let typoImgUploader;
+jQuery('.branding_typography_workprocess .typography-image .add-image').on('click', function(e) {
+    e.preventDefault();
+
+    if (typoImgUploader) {
+        typoImgUploader.open();
+        return;
+    }
+
+    typoImgUploader = wp.media.frames.file_frame = wp.media({
+        title: 'Choose Image',
+        button: {
+            text: 'Choose Image'
+        },
+        multiple: false
+    });
+
+    typoImgUploader.on('select', function() {
+        var imgurl = typoImgUploader.state().get('selection').first().toJSON();
+        jQuery('#typography-image').val(imgurl.url);  //input hidden
+        jQuery('#typographyimagetag').attr('src', imgurl.url); //img tag
+    });
+
+    typoImgUploader.open();
+});
+// Remove Image
+jQuery('.branding_typography_workprocess .typography-image .typography-add_removebtns .remove-image').on('click', function(e) {
+    e.preventDefault();
+
+    jQuery('#typography-image').val(' ');
+    jQuery('#typographyimagetag').attr('src', ' ');
+});
+
+
+// Image upload for work process //
+let workImgUploader;
+jQuery('.branding_typography_workprocess .workprocess-image .add-image').on('click', function(e) {
+    e.preventDefault();
+
+    if (workImgUploader) {
+        workImgUploader.open();
+        return;
+    }
+
+    workImgUploader = wp.media.frames.file_frame = wp.media({
+        title: 'Choose Image',
+        button: {
+            text: 'Choose Image'
+        },
+        multiple: false
+    });
+
+    workImgUploader.on('select', function() {
+        var attachmenturl = workImgUploader.state().get('selection').first().toJSON();
+        jQuery('#workprocess-image').val(attachmenturl.url);  //input hidden
+        jQuery('#workprocessimagetag').attr('src', attachmenturl.url); //img tag
+    });
+
+    workImgUploader.open();
+});
+// Remove Image
+jQuery('.branding_typography_workprocess .workprocess-image .add_remove-btn .remove-image').on('click', function(e) {
+    e.preventDefault();
+
+    jQuery('#workprocess-image').val(' ');
+    jQuery('#workprocessimagetag').attr('src', ' ');
+});

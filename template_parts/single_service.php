@@ -15,14 +15,20 @@ if(have_posts()) :
     while(have_posts()) : the_post() ; ?>
 
     <!-- =========================
-    Single Service Details
+    Single Service Details Start
     ========================== -->
     <section class="single_service-page">
         <div class="container">
-            <!-- thumb -->
-            <div class="service-img">
-                <?php the_post_thumbnail(); ?>
-            </div>
+        <?php 
+            $bannerimg = get_post_meta(get_the_ID(), '_service_banner-image', true);
+            if (!empty($bannerimg)) : ?>
+                <!-- thumb -->
+                <div class="service-img">
+                    <img src="<?php echo $bannerimg; ?>" alt="backbencher-banner-image">
+                </div>
+            <?php  
+            endif; ?>
+
             <div class="titlecontent_btn">
                 <div class="row align-items-center">
                     <div class="col-md-8">
@@ -78,7 +84,186 @@ if(have_posts()) :
             <!-- related posts -->
         </div>
     </section>
-
+    <!-- =========================
+    Single Service Details End
+    ========================== -->
+    <!-- =========================
+    Problem Solution Area Start
+    ========================== -->
+    <section class="problem_solution-area">
+        <div class="container">
+            <?php
+            $service_problem_items    = get_post_meta(get_the_ID(), '_service-problemitemtitle', true);
+            $service_problem_contents = get_post_meta(get_the_ID(), '_problemitem-content', true);  
+            if (!empty($service_problem_items) || !empty($service_problem_contents)) : ?>
+                <!-- problem area -->
+                <div class="problems-area">
+                    <div class="row">
+                        <div class="col-lg-3"> 
+                            <div class="problem-title">
+                                <h2 class="text-uppercase"><?php _e('problems', 'backbencher'); ?></h2>
+                            </div>
+                        </div>
+                        <div class="col-lg-9">
+                            <ul class="problem-items">
+                                <?php
+                                // Iterate through each problem item and content
+                                foreach ($service_problem_items as $index => $item) :
+                                    $content = !empty($service_problem_contents[$index]) ? $service_problem_contents[$index] : ''; ?>
+                                    <li>
+                                        <h4 class="problem_item-title"><?php echo esc_html($item); ?></h4>
+                                        <p><?php echo esc_html($content); ?></p>
+                                    </li>
+                                <?php endforeach; ?>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            <?php
+            endif; ?>   
+            <?php
+            $service_solution_items    = get_post_meta(get_the_ID(), '_service-solutionitemtitle', true);
+            $service_solution_contents = get_post_meta(get_the_ID(), '_solutionitem-content', true);
+            if(!empty($service_solution_items) || !empty($service_solution_contents)) :  ?>         
+                <!-- solution area -->
+                <hr>
+                <div class="solutions-area">
+                    <div class="row">
+                        <div class="col-lg-3"> 
+                            <div class="solution-title">
+                                <h2 class="text-uppercase"><?php _e('solutions', 'backbencher'); ?></h2>
+                            </div>
+                        </div>
+                        <div class="col-lg-9">
+                            <ul class="solution-items">
+                                <?php 
+                                foreach ($service_solution_items as $index => $sitem) :
+                                $scontent = !empty($service_solution_contents[$index]) ? $service_solution_contents[$index] : ''; ?>
+                                <li>
+                                    <h4 class="solution_item-title"><?php echo esc_html($sitem); ?></h4>
+                                    <p><?php echo esc_html($scontent); ?></p>
+                                </li>
+                                <?php endforeach; ?>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            <?php endif; ?>
+        </div>
+    </section>
+    <?php $problemsolu_img = get_post_meta(get_the_ID(), '_problemsolution-image', true);
+    if(!empty($problemsolu_img)) : ?>
+    <section class="problem_solution_image-area">
+        <div class="problem_solution-image">
+            <img src="<?php echo $problemsolu_img; ?>" alt="problem solution image">
+        </div>
+    </section>
+    <?php endif; ?>
+    <!-- =========================
+    Problem Solution Area End
+    ========================== -->
+    <?php $brandingcontent = get_post_meta(get_the_ID(), '_service-brandingcontent', true); 
+          $typocontent     = get_post_meta(get_the_ID(), '_service-typographycontent', true); 
+          $workcontent     = get_post_meta(get_the_ID(), '_service-workprocesscontent', true);
+    if(!empty($brandingcontent) || !empty($typocontent) || !empty($workcontent) ) : ?>
+    <!-- =========================
+    Branding Area Start
+    ========================== -->
+    <div class="bbs-spacer"></div>
+    <?php endif;
+    if(!empty($brandingcontent)) : ?>
+    <section class="singleservice_branding-area">
+        <div class="container">
+            <div class="row title-content">
+                <div class="col-lg-3"> 
+                    <div class="branding-title">
+                        <h2 class="text-uppercase"><?php _e('branding', 'backbencher'); ?></h2>
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <div class="branding-content">
+                        <p><?php echo $brandingcontent; ?></p>
+                    </div>
+                </div>
+            </div>
+            <?php $brandimage = get_post_meta(get_the_ID(), '_branding-image', true);
+            if(!empty($brandimage)) : ?>
+            <div class="branding-image">
+                <img src="<?php echo $brandimage; ?>" alt="branding image">
+            </div>
+            <?php endif; ?>
+        </div>
+    </section>
+    <div class="bbs-spacer"></div>
+    <!-- =========================
+    Branding Area End
+    ========================== -->
+    <?php endif;
+    if(!empty($typocontent)) : ?>
+    <!-- =========================
+    Typhography Area Start
+    ========================== -->
+    <section class="singleservice_typography-area">
+        <div class="container">
+            <div class="row title-content">
+                <div class="col-lg-3"> 
+                    <div class="typography-title">
+                        <h2 class="text-uppercase for-desktop d-none d-lg-block"><?php _e('Typo <br> graphy', 'backbencher'); ?></h2>
+                        <h2 class="text-uppercase for-mobile d-lg-none"><?php _e('Typography', 'backbencher'); ?></h2>
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <div class="typography-content">
+                        <p><?php echo $typocontent; ?></p>
+                    </div>
+                </div>
+            </div>
+            <?php $typoimage = get_post_meta(get_the_ID(), '_typography-image', true);
+            if(!empty($typoimage)) : ?>
+            <div class="typography-image">
+                <img src="<?php echo $typoimage; ?>" alt="typography image">
+            </div>
+            <?php endif; ?>
+        </div>
+    </section>
+    <div class="bbs-spacer"></div>
+    <!-- =========================
+    Typhography Area End
+    ========================== -->
+    <?php endif;
+    if(!empty($workcontent)) : ?>
+    <!-- =========================
+    Work Process Area Start
+    ========================== -->
+    <section class="singleservice_workprocess-area">
+        <div class="container">
+            <div class="row title-content">
+                <div class="col-lg-3"> 
+                    <div class="workprocess-title">
+                        <h2 class="text-uppercase"><?php _e('work process', 'backbencher'); ?></h2>
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <div class="workprocess-content">
+                        <p><?php echo $workcontent; ?></p>
+                    </div>
+                </div>
+            </div>
+            <?php $workimage = get_post_meta(get_the_ID(), '_workprocess-image', true);
+            if(!empty($workimage)) : ?>
+            <div class="workprocess-image">
+                <img src="<?php echo $workimage; ?>" alt="workprocess image">
+            </div>
+            <?php 
+            endif; ?>
+        </div>
+    </section>
+    <div class="bbs-spacer"></div>
+    <!-- =========================
+    Work Process Area End
+    ========================== -->
+    <?php 
+    endif; ?>
     <!-- =========================
     Related Blog Start
     ========================== -->
@@ -95,6 +280,9 @@ if(have_posts()) :
     if ($serrecommend_posts->have_posts()) : //if have related post ?>
     <section class="service-related_post relatedblog-area">
         <div class="container">
+            <div class="related_post-title">
+                <h2 class="text-uppercase"><?php _e('more works you may like', 'backbencher'); ?></h2>
+            </div>
             <!-- blog items -->
             <div class="relatedblog-items">
                 <?php while ($serrecommend_posts->have_posts()) : $serrecommend_posts->the_post() ; //loop for post ?>

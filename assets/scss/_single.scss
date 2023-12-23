@@ -331,9 +331,6 @@
                     li.toc-active{
                         border-left: 7px solid $bbsPrimaryColor;
                     }
-                    li:last-child{
-                        display: none !important;
-                    }
                 }
             }
             
@@ -443,10 +440,11 @@
             text-transform: uppercase;
             @media(max-width: 1400px){
                 font-size: 65px;
-                letter-spacing: 0;
+                letter-spacing: -3px;
             }
             @media(max-width: 992px){
                 font-size: 55px;
+                letter-spacing: -2px;
             }
         }
     }

@@ -174,30 +174,40 @@ add_action('add_meta_boxes', 'bbs_custom_metaboxes');
 function bbs_custom_metaboxes(){
     // service metabox
     add_meta_box( 
-        'bbbs_service-metabox',     //unique id
-        __('Project Details', 'backbencher'),  //title
-        'bbs_service_metabox_callback',  //callback function
-        'bbs-service',    // post type
-        'normal',         // position
-        'high'            // high, side
+        'bbbs_service-metabox',   //metabox unique id
+        __('Project Details', 'backbencher'), 
+        'bbs_service_metabox_callback',  
+        'bbs-service',    
+        'normal',         
+        'high'           
     );
     // service metabox for problem solution
     add_meta_box( 
-        'bbs_problemsolution-metabox',     //unique id
-        __('Problems & Solutions', 'backbencher'),  //title
-        'bbs_problemsolutions_metabox_callback',  //callback function
-        'bbs-service',    // post type
-        'normal',         // position
+        'bbs_problemsolution-metabox',     
+        __('Problems & Solutions', 'backbencher'),  
+        'bbs_problemsolutions_metabox_callback',  
+        'bbs-service',    
+        'normal',         
+        'default', 
+    );
+    // service metabox for branding, typography, work process
+    add_meta_box( 
+        'bbs_brandingtypographyprocess-metabox',     
+        __('Branding, Typography & Work Process', 'backbencher'),  
+        'bbs_brandingtypographyprocess_metabox_callback',  
+        'bbs-service',    
+        'normal',         
+        'default', 
     );
 
     // metabox for minutes in post //
     add_meta_box( 
-        'bbbs_minin-post-metabox',     //unique id
-        __('Blog Reading Duration', 'backbencher'),  //title
-        'bbs_reading_time_metabox_callback',  //callback function
-        'post',             // post type
-        'normal',           // position
-        'high'              // high, side
+        'bbbs_minin-post-metabox',    
+        __('Blog Reading Duration', 'backbencher'), 
+        'bbs_reading_time_metabox_callback',  
+        'post',             
+        'normal',           
+        'high'             
     );
 
 
@@ -218,6 +228,23 @@ function bbs_custom_metaboxes(){
 function bbs_service_metabox_callback(){ ?>
     
     <div class="bbs_service-metabox">
+        <!-- banner image -->
+        <p>
+            <div class="service_banner-img">
+                <?php wp_nonce_field(basename(__FILE__), 'bbbs_service-metabox_nonce');  //bbbs_service-metabox is metabox unique id ?>
+                <?php $serimgurl = get_post_meta(get_the_ID(), '_service_banner-image', true); ?>
+
+                <label for="service_banner-image"><?php _e('Service Banner Image', 'backbencher'); ?></label>
+                <p><?php _e('Upload a big image (1609x760)', 'backbencher'); ?></p>
+                <input type="hidden" id="service_banner-image" name="service_banner-image" value="<?php echo esc_attr($serimgurl); ?>">
+                <img src="<?php echo esc_url($serimgurl); ?>" alt="banner image" id="servicebannerimagetag">
+                <div class="add_remove-btn">
+                    <button class="add-image"><?php _e('Add Image', 'backbencher'); ?></button>
+                    <button class="remove-image"><?php _e('Remove Image', 'backbencher'); ?></button>
+                </div>
+            </div>
+        </p>
+        <!-- contact button link -->
         <p>
             <label for="service-contactbtnllink"><?php _e('Contact Button Link', 'backbencher'); ?></label>
             <input type="url" class="regular-text" placeholder="Only url (Full)" name="service-contactbtnllink" id="service-contactbtnllink" value="<?php echo get_post_meta(get_the_ID(), '_service-contactbtnllink', true); ?>" >
@@ -239,6 +266,20 @@ function bbs_service_metabox_callback(){ ?>
 add_action('save_post', 'bbs_projectdetails_metabox_save_post');
 function bbs_projectdetails_metabox_save_post($post_id){
     if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
+
+    // for banner image //
+    // Check if nonce is set.
+    if (!isset($_POST['bbbs_service-metabox_nonce'])){ return; }
+    // Verify that the nonce is valid.
+    if (!wp_verify_nonce($_POST['bbbs_service-metabox_nonce'], basename(__FILE__))){
+        return;
+    }
+    // Handle image upload.
+    if (!empty($_POST['service_banner-image'])){
+        $serimage_url = esc_url($_POST['service_banner-image']);
+        update_post_meta($post_id, '_service_banner-image', $serimage_url);
+    }
+
     // contact link
     if(isset($_POST['service-contactbtnllink'])){
         update_post_meta( $post_id, '_service-contactbtnllink', $_POST['service-contactbtnllink']);
@@ -261,7 +302,7 @@ function bbs_problemsolutions_metabox_callback() { ?>
         <div class="service-problemitem"><?php _e('Problem Items::', 'backbencher'); ?></div>
         <p class="project-problems">
             <?php
-            $service_problem_items = get_post_meta(get_the_ID(), '_service-problemitemtitle', true);
+            $service_problem_items    = get_post_meta(get_the_ID(), '_service-problemitemtitle', true);
             $service_problem_contents = get_post_meta(get_the_ID(), '_problemitem-content', true);
             ?>
             <div id="serviceproblem-container">
@@ -325,11 +366,26 @@ function bbs_problemsolutions_metabox_callback() { ?>
             </div>
             <button type="button" class="add-solution" id="add-solution"><?php _e('Add solution', 'backbencher'); ?></button>
         </p>
-        
+        <!-- problem, solution image -->
+        <p>
+            <div class="problem_solution-img">
+                <?php wp_nonce_field(basename(__FILE__), 'bbs_problemsolution-metabox_nonce'); ?>
+                <?php $imgurl = get_post_meta(get_the_ID(), '_problemsolution-image', true); ?>
+
+                <label for="problemsolution-image"><?php _e('Problem Solution Image', 'backbencher'); ?></label>
+                <p><?php _e('Upload a big image (1937x1050)', 'backbencher'); ?></p>
+                <input type="hidden" id="problemsolution-image" name="problemsolution-image" value="<?php echo esc_attr($imgurl); ?>">
+                <img src="<?php echo esc_url($imgurl); ?>" alt="problem solution image" id="problemsolutionimagetag">
+                <div class="add_remove-btn">
+                    <button class="add-image"><?php _e('Add Image', 'backbencher'); ?></button>
+                    <button class="remove-image"><?php _e('Remove Image', 'backbencher'); ?></button>
+                </div>
+            </div>
+        </p>
+
     </div>
 <?php
 }
-
 // Save post
 add_action('save_post', 'bbs_problemsolution_metabox_save_post');
 function bbs_problemsolution_metabox_save_post($post_id) {
@@ -358,8 +414,156 @@ function bbs_problemsolution_metabox_save_post($post_id) {
         $problem_contents = array_map('sanitize_textarea_field', $_POST['solutionitem-content']);
         update_post_meta($post_id, '_solutionitem-content', $problem_contents);
     }
+
+    // for problem solutuion image //
+    // Check if nonce is set.
+    if (!isset($_POST['bbs_problemsolution-metabox_nonce'])){ return; }
+    // Verify that the nonce is valid.
+    if (!wp_verify_nonce($_POST['bbs_problemsolution-metabox_nonce'], basename(__FILE__))){
+        return;
+    }
+    // Handle image upload.
+    if (!empty($_POST['problemsolution-image'])){
+        $image_url = esc_url($_POST['problemsolution-image']);
+        update_post_meta($post_id, '_problemsolution-image', $image_url);
+    }
+
 }
 
+// callback for branding, typography, work process
+function bbs_brandingtypographyprocess_metabox_callback(){ ?>
+    <div class="branding_typography_workprocess">
+        <!-- branding content -->
+        <div class="branding-content">
+            <p>
+                <label for="service-brandingcontent"><?php _e('Branding Content', 'backbencher'); ?></label>
+                <textarea class="regular-text" placeholder="Branding content is here" name="service-brandingcontent" id="service-brandingcontent"><?php echo get_post_meta(get_the_ID(), '_service-brandingcontent', true); ?></textarea>
+            </p>
+        </div>
+        <!-- branding image -->
+        <p>
+            <div class="branding-image">
+                <?php wp_nonce_field(basename(__FILE__), 'bbs_brandingtypographyprocess-metabox_nonce'); ?>
+                <?php $brandimgurl = get_post_meta(get_the_ID(), '_branding-image', true); ?>
+
+                <label for="branding-image"><?php _e('Branding Image', 'backbencher'); ?></label>
+                <p><?php _e('Upload a big image like (1608x1194)', 'backbencher'); ?></p>
+                <input type="hidden" id="branding-image" name="branding-image" value="<?php echo esc_attr($brandimgurl); ?>">
+                <img src="<?php echo esc_url($brandimgurl); ?>" alt="Branding image" id="brandingimagetag">
+                <div class="add_remove-btn">
+                    <button class="add-image"><?php _e('Add Image', 'backbencher'); ?></button>
+                    <button class="remove-image"><?php _e('Remove Image', 'backbencher'); ?></button>
+                </div>
+            </div>
+        </p>
+
+        <!-- Typography content -->
+        <div class="typography-content">
+            <p>
+                <label for="service-typographycontent"><?php _e('Typography Content', 'backbencher'); ?></label>
+                <textarea class="regular-text" placeholder="Typography content is here" name="service-typographycontent" id="service-typographycontent"><?php echo get_post_meta(get_the_ID(), '_service-typographycontent', true); ?></textarea>
+            </p>
+        </div>
+        <!-- typography image -->
+        <p>
+            <div class="typography-image">
+                <?php wp_nonce_field(basename(__FILE__), 'bbs_brandingtypographyprocess-metabox_nonce'); ?>
+                <?php $typoimgurl = get_post_meta(get_the_ID(), '_typography-image', true); ?>
+
+                <label for="typography-image"><?php _e('Typography Image', 'backbencher'); ?></label>
+                <p><?php _e('Upload a big image like (1608x1194)', 'backbencher'); ?></p>
+                <input type="hidden" id="typography-image" name="typography-image" value="<?php echo esc_attr($typoimgurl); ?>">
+                <img src="<?php echo esc_url($typoimgurl); ?>" alt="Typography image" id="typographyimagetag">
+                <div class="add_remove-btn typography-add_removebtns">
+                    <button class="add-image"><?php _e('Add Image', 'backbencher'); ?></button>
+                    <button class="remove-image"><?php _e('Remove Image', 'backbencher'); ?></button>
+                </div>
+            </div>
+        </p>
+
+        <!-- Work Process content -->
+        <div class="workprocess-content">
+            <p>
+                <label for="service-workprocesscontent"><?php _e('Work process Content', 'backbencher'); ?></label>
+                <textarea class="regular-text" placeholder="Work process content is here" name="service-workprocesscontent" id="service-workprocesscontent"><?php echo get_post_meta(get_the_ID(), '_service-workprocesscontent', true); ?></textarea>
+            </p>
+        </div>
+        <!-- Work Process image -->
+        <p>
+            <div class="workprocess-image">
+                <?php wp_nonce_field(basename(__FILE__), 'bbs_brandingworkprocessprocess-metabox_nonce'); ?>
+                <?php $workimgurl = get_post_meta(get_the_ID(), '_workprocess-image', true); ?>
+
+                <label for="workprocess-image"><?php _e('Work Process Image', 'backbencher'); ?></label>
+                <input type="hidden" id="workprocess-image" name="workprocess-image" value="<?php echo esc_attr($workimgurl); ?>">
+                <img src="<?php echo esc_url($workimgurl); ?>" alt="Work Process image" id="workprocessimagetag">
+                <div class="add_remove-btn">
+                    <button class="add-image"><?php _e('Add Image', 'backbencher'); ?></button>
+                    <button class="remove-image"><?php _e('Remove Image', 'backbencher'); ?></button>
+                </div>
+            </div>
+        </p>
+    </div>
+<?php 
+}
+// save post
+add_action('save_post', 'bbs_brandingtypographyprocess_metabox_save_post');
+function bbs_brandingtypographyprocess_metabox_save_post($post_id){
+    // branding content 
+    if (isset($_POST['service-brandingcontent'])){
+        $brandcontent = sanitize_textarea_field($_POST['service-brandingcontent']);
+        update_post_meta($post_id, '_service-brandingcontent', $brandcontent);
+    }
+    // for branding image //
+    // Check if nonce is set.
+    if (!isset($_POST['bbs_brandingtypographyprocess-metabox_nonce'])){ return; }
+    // Verify that the nonce is valid.
+    if (!wp_verify_nonce($_POST['bbs_brandingtypographyprocess-metabox_nonce'], basename(__FILE__))){
+        return;
+    }
+    // Handle image upload.
+    if (!empty($_POST['branding-image'])){
+        $brandimage_url = esc_url($_POST['branding-image']);
+        update_post_meta($post_id, '_branding-image', $brandimage_url);
+    }
+    
+    // typography content
+    if (isset($_POST['service-typographycontent'])){
+        $typocontent = sanitize_textarea_field($_POST['service-typographycontent']);
+        update_post_meta($post_id, '_service-typographycontent', $typocontent);
+    }
+    // for typography image //
+    // Check if nonce is set.
+    if (!isset($_POST['bbs_brandingtypographyprocess-metabox_nonce'])){ return; }
+    // Verify that the nonce is valid.
+    if (!wp_verify_nonce($_POST['bbs_brandingtypographyprocess-metabox_nonce'], basename(__FILE__))){
+        return;
+    }
+    // Handle image upload.
+    if (!empty($_POST['typography-image'])){
+        $typoimage_url = esc_url($_POST['typography-image']);
+        update_post_meta($post_id, '_typography-image', $typoimage_url);
+    }
+    
+    // work process content
+    if (isset($_POST['service-workprocesscontent'])){
+        $workcontent = sanitize_textarea_field($_POST['service-workprocesscontent']);
+        update_post_meta($post_id, '_service-workprocesscontent', $workcontent);
+    }
+    // for work process image //
+    // Check if nonce is set.
+    if (!isset($_POST['bbs_brandingtypographyprocess-metabox_nonce'])){ return; }
+    // Verify that the nonce is valid.
+    if (!wp_verify_nonce($_POST['bbs_brandingtypographyprocess-metabox_nonce'], basename(__FILE__))){
+        return;
+    }
+    // Handle image upload.
+    if (!empty($_POST['workprocess-image'])){
+        $workimage_url = esc_url($_POST['workprocess-image']);
+        update_post_meta($post_id, '_workprocess-image', $workimage_url);
+    }
+
+}
  
 
 // callback for reading time metabox
@@ -375,7 +579,6 @@ function bbs_reading_time_metabox_callback(){ ?>
 
 <?php
 }
-
 // save post for reading time
 add_action('save_post', 'bbs_readingtime_metabox_save_post');
 function bbs_readingtime_metabox_save_post($post_id){

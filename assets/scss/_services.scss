@@ -641,6 +641,23 @@
         padding: 50px 0;
     }
     .container{
+        .related_post-title{
+            margin-bottom: 50px;
+            h2{
+                color: $bbsWhiteColor;
+                font-size: 74px;
+                font-weight: 600;
+                letter-spacing: -4.81px;
+                @media(max-width: 1400px){
+                    font-size: 65px;
+                    letter-spacing: -3px;
+                }
+                @media(max-width: 992px){
+                    font-size: 55px;
+                    letter-spacing: -2px;
+                }
+            }
+        }
         .relatedblog-items{
             margin-top: 0;
         }
@@ -780,6 +797,134 @@
     }
 }
 
+// problem solution area
+.problem_solution-area{
+    .problems-area{
+        padding: 100px 0;
+        @media(max-width: 768px){
+            padding: 50px 0;
+        }
+    }
+    .solutions-area,
+    .problems-area{
+        .solution-title,
+        .problem-title{
+            h2{
+                font-size: 68px;
+                font-weight: 600;
+                letter-spacing: -4.42px;
+                @media(max-width: 1400px){
+                    font-size: 60px;
+                    letter-spacing: -4px;
+                }
+                @media(max-width: 1280px){
+                    font-size: 52px;
+                    letter-spacing: -3.40px;
+                }
+                @media(max-width: 768px){
+                    font-size: 35px;
+                    letter-spacing: 0;
+                }
+            }
+        }
+        .solution-items,
+        .problem-items{
+            margin-top: 14px;
+            @media(max-width: 992px){
+                padding: 0;
+            }
+            li{
+                margin-bottom: 40px;
+                &:last-child{
+                    margin-bottom: 0;
+                }
+                h4{
+                    color: #2E313C;
+                    font-size: 36px;
+                    font-weight: 600;
+                    line-height: 100%;
+                    margin-bottom: 14px;
+                    @media(max-width: 768px){
+                        font-size: 30px;
+                        line-height: 35px;
+                    }
+                }
+                p{
+                    color: #464C5E;
+                    font-size: 30px;
+                    font-weight: 400;
+                    line-height: 160%; 
+                    text-transform: capitalize;
+                    @media(max-width: 768px){
+                        font-size: 25px;
+                    }
+                }
+            }
+        }
+    }
+    .solutions-area{
+        padding: 100px 0; 
+        @media(max-width: 768px){
+            padding: 50px 0;
+        }
+    }
+}
+
+// branding area
+.singleservice_workprocess-area,
+.singleservice_typography-area,
+.singleservice_branding-area{
+    .title-content{
+        margin-bottom: 50px;
+    }
+    .workprocess-title,
+    .typography-title,
+    .branding-title{
+        h2{
+            font-size: 68px;
+            font-weight: 600;
+            letter-spacing: -4.42px;
+            @media(max-width: 1400px){
+                font-size: 60px;
+                letter-spacing: -4px;
+            }
+            @media(max-width: 1280px){
+                font-size: 52px;
+                letter-spacing: -3.40px;
+            }
+            @media(max-width: 768px){
+                font-size: 35px;
+                letter-spacing: 0;
+            }
+        }
+    }
+    .workprocess-content,
+    .typography-content,
+    .branding-content{
+        p{
+            color: #464C5E;
+            font-size: 30px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 160%; 
+            text-transform: capitalize;
+            @media(max-width: 768px){
+                font-size: 25px;
+                line-height: 155%;
+            }
+        }
+    }
+}
+
+
+
+// spacer
+.bbs-spacer{
+    padding: 50px 0;
+    @media(max-width: 768px){
+        padding: 25px 0;
+    }
+}
 // elementor widget style - web development
 .webdevelopment-services{
     h2{

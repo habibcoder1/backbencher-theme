@@ -67,7 +67,10 @@ add_action('admin_enqueue_scripts', 'bbs_all_enqueue_backend');
 function bbs_all_enqueue_backend(){
     // styles
     wp_enqueue_style('bbs-admin', get_template_directory_uri().'/assets/css/admin.css', [], '1.0.0', 'all');
+    wp_enqueue_style('thickbox'); 
 
     // scripts
     wp_enqueue_script('bbs-admin', get_template_directory_uri().'/assets/js/admin.js', ['jquery'], '1.0.0', true);
+    wp_enqueue_script('media-upload'); //for custom media upload
+	wp_enqueue_script('thickbox');
 }
