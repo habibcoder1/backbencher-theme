@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-// script for service/project problems
+// script for project problems
 document.addEventListener('DOMContentLoaded', function () {
     const problemContainer = document.getElementById('serviceproblem-container');
     const addProblemButton = document.getElementById('add-problem');
@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-// script for service/project solutions
+// script for project solutions
 document.addEventListener('DOMContentLoaded', function () {
     const solutionContainer = document.getElementById('servicesolution-container');
     const addSolutionButton = document.getElementById('add-solution');
@@ -156,9 +156,44 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-// Image upload for service banner //
+// Image upload for default post banner //
+let postBannerImgUploader;
+jQuery('#bbbs-post-bannerimg-metabox .default_post_banner-img .add-image').on('click', function(e) {
+    e.preventDefault();
+
+    if (postBannerImgUploader){
+        postBannerImgUploader.open();
+        return;
+    }
+
+    postBannerImgUploader = wp.media.frames.file_frame = wp.media({
+        title: 'Choose Banner Image',
+        button: {
+            text: 'Choose Image'
+        },
+        multiple: false
+    });
+
+    postBannerImgUploader.on('select', function() {
+        var attachment = postBannerImgUploader.state().get('selection').first().toJSON();
+        jQuery('#defaultpost_banner-image').val(attachment.url);  //input hidden
+        jQuery('#defaultpostbannerimagetag').attr('src', attachment.url); //img tag
+    });
+
+    postBannerImgUploader.open();
+});
+// Remove Image
+jQuery('#bbbs-post-bannerimg-metabox .add_remove-btn .remove-image').on('click', function(e) {
+    e.preventDefault();
+
+    jQuery('#defaultpost_banner-image').val(' ');
+    jQuery('#defaultpostbannerimagetag').attr('src', ' ');
+});
+
+
+// Image upload for project banner //
 let bannerImgUploader;
-jQuery('#bbbs_service-metabox .service_banner-img .add-image').on('click', function(e) {
+jQuery('#bbbs_project-metabox .service_banner-img .add-image').on('click', function(e) {
     e.preventDefault();
 
     if (bannerImgUploader){
@@ -167,7 +202,7 @@ jQuery('#bbbs_service-metabox .service_banner-img .add-image').on('click', funct
     }
 
     bannerImgUploader = wp.media.frames.file_frame = wp.media({
-        title: 'Choose Image',
+        title: 'Choose a Project Banner Image',
         button: {
             text: 'Choose Image'
         },
@@ -183,7 +218,7 @@ jQuery('#bbbs_service-metabox .service_banner-img .add-image').on('click', funct
     bannerImgUploader.open();
 });
 // Remove Image
-jQuery('#bbbs_service-metabox .add_remove-btn .remove-image').on('click', function(e) {
+jQuery('#bbbs_project-metabox .add_remove-btn .remove-image').on('click', function(e) {
     e.preventDefault();
 
     jQuery('#service_banner-image').val(' ');

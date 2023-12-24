@@ -1,7 +1,46 @@
 /* all admin panel css */
 
+/* style for post banner image */
+#bbbs-post-bannerimg-metabox .default_post_banner-img img{
+    height: 190px;
+    width: 500px;
+    border: 1px solid #ccc;
+    display: block;
+    margin-left: 158px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+#bbbs-post-bannerimg-metabox .default_post_banner-img .add_remove-btn{
+    margin-left: 315px;
+    margin-bottom: 20px;
+}
+#bbbs-post-bannerimg-metabox .default_post_banner-img p{
+    margin-left: 315px;
+}
+#bbbs-post-bannerimg-metabox .default_post_banner-img .add_remove-btn button{
+    padding: 6px 15px 8px;
+    text-transform: capitalize;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    margin: 5px 5px 0;
+    font-weight: 600;
+    border-radius: 4px;
+    transition: .4s ease all;
+    -webkit-transition: .4s ease all;
+    -moz-transition: .4s ease all;
+    -ms-transition: .4s ease all;
+    -o-transition: .4s ease all;
+}
+#bbbs-post-bannerimg-metabox .default_post_banner-img .add_remove-btn button:hover{
+    background-color: #50B800;
+    color: #fff;
+}
 
-/* style for service */
+
+/* style for projects */
 .bbs_service-metabox .service_banner-img p{
     margin-left: 315px;
 }

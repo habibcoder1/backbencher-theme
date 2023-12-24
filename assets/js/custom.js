@@ -154,29 +154,32 @@
         ============================= */ 
         window.addEventListener("scroll", function () {
             let stickyTableOfContent = document.querySelector(".tableofcontent-readingprogressbar");
-            // check for mobile version
-            if(stickyTableOfContent){
+            
+            if (stickyTableOfContent) {
                 if (window.innerWidth > 768) {
-                    stickyTableOfContent.classList.toggle("tableofcontent-sticky", window.scrollY > 2200);
+                    let fromTop    = window.scrollY > 2200;
+                    let fromBottom = window.scrollY < (document.documentElement.scrollHeight - window.innerHeight - 1400);
+                    
+                    stickyTableOfContent.classList.toggle("tableofcontent-sticky", fromTop && fromBottom);
                 } else {
                     stickyTableOfContent.classList.remove("tableofcontent-sticky");
                 }
             }
-            
         });
+        
         
         /* =============================
             table of content set
         ============================= */ 
         jQuery('.tableof_content-items').toc({
-            'selectors': 'h1,h2',      //elements to use as headings
-            'container': 'body',       //element to find all selectors in
-            'smoothScrolling': true,   //enable or disable smooth scrolling on click
+            'selectors': 'h1,h2',             //elements to use as headings
+            'container': '.single-blog.single-blog_secondpart .content-area',      //element to find all selectors in
+            'smoothScrolling': true,          //enable or disable smooth scrolling on click
             'prefix': 'list-group-item toc',  //prefix for anchor tags and class names
-            'onHighlight': function(el) {}, //called when a new section is highlighted 
-            'highlightOnScroll': true, //add class to heading that is currently in focus
-            'highlightOffset': 100,    //offset to trigger the next headline 
-        });
+            'onHighlight': function(el) {},   //called when a new section is highlighted 
+            'highlightOnScroll': true,        //add class to heading that is currently in focus
+            'highlightOffset': 100,           //offset to trigger the next headline 
+        }); 
         // Add a class to the ul element
         jQuery('.tableof_content-items > ul').addClass('list-group-numbered');
         
@@ -184,22 +187,29 @@
             blog reading progressbar
         ============================= */ 
         window.onscroll = function() {
-            readingProgressbarFunction()
+            readingProgressbarFunction();
         };
+        
         function readingProgressbarFunction() {
-            let winScroll = window.scrollY || document.documentElement.scrollTop;
-            let height    = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            let scrolled  = (winScroll / height) * 100;
-
+            let contentArea = document.querySelector('.single-blog.single-blog_secondpart .content-area');
+            if (!contentArea) {
+                return; // Abort if .content-area is not found
+            }
+        
+            let winScroll     = window.scrollY || document.documentElement.scrollTop;
+            let contentTop    = contentArea.offsetTop;
+            let contentHeight = contentArea.clientHeight;
+            let height        = contentTop + contentHeight - window.innerHeight;
+            let scrolled      = Math.min((winScroll / height) * 100, 100); // Ensure it doesn't exceed 100%
+        
             let progressBar = document.getElementById("blogProgressBar");
         
-            if(progressBar){
+            if (progressBar) {
                 progressBar.style.width = scrolled + "%";
                 progressBar.innerHTML = Math.round(scrolled) + "%";
             }
-            
         }
-
+        
 
         /* =============================
             Searchform for Service
@@ -216,7 +226,7 @@
                 type: 'POST',
                 url: ajax_object.ajax_url,
                 data: {
-                    action: 'bbs_service_ajax_search',
+                    action: 'bbs_project_ajax_search',
                     'bbsservice': searchQuery,
                     'bbssearchcat': searchSelect,
                 },

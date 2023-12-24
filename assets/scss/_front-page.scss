@@ -334,6 +334,26 @@
     position: relative;
     cursor: url('../img/watchvideo.png'), auto;
     .hero-video{
+        position: relative;
+        &::before{
+            content: '\f144';
+            display: block;
+            clear: both;
+            font-family: 'Font Awesome 5 Free';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            font-size: 80px;
+            color: $bbsWhiteColor;
+            text-align: center;
+            transform: translateX(-50%) translateY(-50%); 
+            @media(max-width: 992px){
+                font-size: 60px;
+            }
+            @media(max-width: 768px){
+                font-size: 50px;
+            }
+        }
         video{
             width: 100%;
             border-radius: 369px 40px 369px 369px;
@@ -357,6 +377,15 @@
     }
     video::-webkit-media-controls-panel {
         opacity: 0 !important;
+    }
+}
+div#hero-magic-video{
+    img{
+        cursor: url('../img/watchvideo.png'), auto;
+        object-fit: contain;
+    }
+    .elementor-custom-embed-play{
+        cursor: url('../img/watchvideo.png'), auto;
     }
 }
 

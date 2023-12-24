@@ -68,7 +68,7 @@ get_header(); ?>
 			<ul class="career-items">
 				<?php 
 				$career = new WP_Query([
-					'post_type'      => 'career',
+					'post_type'      => 'bbs-career',
 					'posts_per_page' => 10, //10 items will show
 				]);
 				if($career->have_posts()) :

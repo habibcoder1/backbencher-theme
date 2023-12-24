@@ -90,7 +90,7 @@ get_header(); ?>
                                             <!-- title -->
                                             <div class="post-title">
                                                 <a href="<?php the_permalink(); ?>" class="text-decoration-none">
-                                                    <h2 class="text-uppercase"><?php echo wp_trim_words(get_the_title(), 3, ''); ?> </h2>
+                                                    <h2 class="text-uppercase"><?php the_title(); ?> </h2>
                                                 </a>
                                             </div>
                                             <!-- reading time -->
@@ -111,13 +111,11 @@ get_header(); ?>
                                             ?>
                                             </div>
                                         </article>
-                                    <?php endwhile;
-                                    wp_reset_postdata();
+                                    <?php endwhile; wp_reset_postdata();
                                 endif; ?>
                             </div>
                         <?php endif;
-                    endforeach;
-                    ?>
+                    endforeach; ?>
                 </div>
             </div>
         </div>

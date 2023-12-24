@@ -37,7 +37,7 @@ class Bbs_Home_Video_Portfolio_Widget_Dev extends \Elementor\Widget_Base {
 	}
 	// for scripts load
 	public function get_script_depends() {
-		return ['bbs-portfolio-video-script']; //array key from enqueue script
+		return []; //array key from enqueue script
 	}
 	// for stylesheet load
 	public function get_style_depends() {

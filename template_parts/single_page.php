@@ -40,7 +40,14 @@ if(have_posts()) :
             <div class="thumb_date-area">
                 <!-- thumb -->
                 <div class="blog-thumbnail">
-                    <?php the_post_thumbnail(); ?>
+                    <?php $bannerimg = get_post_meta(get_the_ID(), '_defaultpost_banner-image', true);
+                    if(!empty($bannerimg)) : ?>
+                        <img src="<?php echo $bannerimg; ?>" alt="post-banner-image">
+                    <?php 
+                    else: 
+                        the_post_thumbnail();
+
+                    endif; ?>
                 </div>
                 <!-- user, date -->
                 <div class="user-date">
@@ -97,9 +104,6 @@ if(have_posts()) :
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <?php 
-                        $table_ids = get_post_meta(get_the_ID(), '_tableofcontent', true);
-                        if (!empty($table_ids)) : ?>
                         <!-- table of content -->
                         <div class="tableofcontent-readingprogressbar">
                             <div class="tableofcontent">
@@ -118,7 +122,6 @@ if(have_posts()) :
                                 <div class="progress-bar" id="blogProgressBar"  role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
-                        <?php endif; ?>
                         <!-- reading time -->
                         <div class="reading-time">
                             <div class="readingtime-bar"></div>
@@ -184,7 +187,7 @@ if(have_posts()) :
                     <!-- title -->
                     <div class="post-title">
                         <a href="<?php the_permalink(); ?>" class="text-decoration-none">
-                            <h2 class="text-uppercase"><?php echo wp_trim_words( get_the_title(), 3, '' ); ?> </h2>
+                            <h2 class="text-uppercase"><?php the_title(); ?> </h2>
                         </a>
                     </div>
                     <!-- category -->

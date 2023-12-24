@@ -3,7 +3,7 @@
  * @package Backbencher Studio
  * Version: 1.0.0
  * 
- * Template for displaying Service Single Page
+ * Template for displaying Project Single Page
  * */
 
 if (!defined('ABSPATH')) {
@@ -13,6 +13,6 @@ if (!defined('ABSPATH')) {
 
 get_header(); ?>
 
-    <?php get_template_part('template_parts/single_service'); ?>
+    <?php echo get_template_part('template_parts/single_project'); ?>
     
 <?php get_footer(); ?>

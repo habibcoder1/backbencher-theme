@@ -55,3 +55,9 @@ $custom_search = dirname(__FILE__).'/inc/functions/custom_search.php';
 if(file_exists($custom_search)){
     require_once($custom_search);
 }
+
+// Custom Metabox
+$custom_metabox = dirname(__FILE__).'/inc/functions/custom_metabox.php';
+if(file_exists($custom_metabox)){
+    require_once($custom_metabox);
+}

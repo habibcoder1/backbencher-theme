@@ -679,7 +679,8 @@
                         font-size: 20px;
                     }
                     &::before{
-                        @media(max-width: 768px){
+                        top: 8px;
+                        @media(max-width: 1400px){
                             top: 3px;
                         }
                     }
@@ -962,6 +963,15 @@
             color: $bbsPrimaryColor;
         }
     }
+    #webdevelopment-service_img{
+        a{
+            border-radius: 30px;
+            -webkit-border-radius: 30px;
+            -moz-border-radius: 30px;
+            -ms-border-radius: 30px;
+            -o-border-radius: 30px;
+        }
+    }
     
 }
 
@@ -975,4 +985,12 @@
     @media(max-width: 768px){
         top: 5px;
     }
+}
+
+
+
+// uiux/development/branding service
+div#uiuxservice-workprocess .dot-title::before {
+    left: 0;
+    background: $bbsPrimaryColor !important;
 }

@@ -15,16 +15,16 @@ if(!defined('ABSPATH')){
 /* ================================
 	for service search with ajax
 ================================ */
-add_action('wp_ajax_bbs_service_ajax_search', 'bbs_service_ajax_search');
-add_action('wp_ajax_nopriv_bbs_service_ajax_search', 'bbs_service_ajax_search');
+add_action('wp_ajax_bbs_project_ajax_search', 'bbs_project_ajax_search');
+add_action('wp_ajax_nopriv_bbs_project_ajax_search', 'bbs_project_ajax_search');
 
-function bbs_service_ajax_search() {
+function bbs_project_ajax_search() {
     $search_query      = isset($_POST['bbsservice']) ? $_POST['bbsservice'] : '';
     $selected_category = isset($_POST['bbssearchcat']) ? $_POST['bbssearchcat'] : 'all';
 
     // argument for input
     $args = array(
-        'post_type'      => 'bbs-service',
+        'post_type'      => 'bbs-project',
         'posts_per_page' => -1,
         's'              => $search_query,
     );
@@ -32,7 +32,7 @@ function bbs_service_ajax_search() {
     if ($selected_category !== 'all') {
         $args['tax_query'] = array(
             array(
-                'taxonomy' => 'bbsservice_tax',  //taxonomy id
+                'taxonomy' => 'bbsproject_tax',  //taxonomy id
                 'field'    => 'slug',
                 'terms'    => $selected_category,
             ),
@@ -54,14 +54,14 @@ function bbs_service_ajax_search() {
                     <!-- category -->
                     <div class="categories">
                         <?php 
-                        $post_categories = get_the_terms(get_the_ID(), 'bbsservice_tax');
+                        $post_categories = get_the_terms(get_the_ID(), 'bbsproject_tax');
 
                         if (!empty($post_categories)) {
                             $main_category = '';
 
                             foreach ($post_categories as $post_category) {
                                 if ($post_category->parent) {
-                                    $category_hierarchy = get_term_parents_list($post_category->term_id, 'bbsservice_tax', array('separator' => ' / ', 'link' => false));
+                                    $category_hierarchy = get_term_parents_list($post_category->term_id, 'bbsproject_tax', array('separator' => ' / ', 'link' => false));
                 
                                     $hierarchy_array = explode(' / ', $category_hierarchy);
                                     $main_category   = reset($hierarchy_array);
@@ -107,7 +107,7 @@ function bbs_job_ajax_search() {
 
     // argument for input
     $args = array(
-        'post_type'      => 'career',
+        'post_type'      => 'bbs-career',
         'posts_per_page' => -1,
         's'              => $job_search_query,
     );

@@ -30,7 +30,14 @@ if(have_posts()) : ?>
                         <!-- thumb -->
                         <div class="thumb-img">
                             <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
-                                <?php the_post_thumbnail(); ?>
+                                <?php $bannerimg = get_post_meta(get_the_ID(), '_defaultpost_banner-image', true);
+                                if(!empty($bannerimg)) : ?>
+                                    <img src="<?php echo $bannerimg; ?>" alt="post-banner-image">
+                                <?php 
+                                else: 
+                                    the_post_thumbnail();
+
+                                endif; ?>
                             </a>
                         </div>
                         <!-- title -->
