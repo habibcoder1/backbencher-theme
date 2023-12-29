@@ -155,6 +155,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
+<<<<<<< HEAD
 
 // Image upload for default post banner //
 let postBannerImgUploader;
@@ -227,6 +228,9 @@ jQuery('#bbbs_project-metabox .add_remove-btn .remove-image').on('click', functi
 
 
 // Image upload for problem, solution solution //
+=======
+// Image upload for problem solution //
+>>>>>>> c188289d4da0ed3c0fb0acf2056a762e472684f7
 let customUploader;
 jQuery('.problem_solution-img .add-image').on('click', function(e) {
     e.preventDefault();
@@ -259,6 +263,7 @@ jQuery('.problem_solution-img .add_remove-btn .remove-image').on('click', functi
     jQuery('#problemsolution-image').val(' ');
     jQuery('#problemsolutionimagetag').attr('src', ' ');
 });
+<<<<<<< HEAD
 
 
 // Image upload for Branding //
@@ -395,3 +400,5 @@ jQuery(document).ready(function($){
     });
 
 });
+=======
+>>>>>>> c188289d4da0ed3c0fb0acf2056a762e472684f7

@@ -146,6 +146,7 @@
     font-weight: 500;
 }   
 .bbs_service_problemsolution-metabox .problem_solution-img img{
+<<<<<<< HEAD
     height: 250px;
     width: 480px;
     border: 1px solid #ccc;
@@ -157,11 +158,22 @@
 }   
 .bbs_service_problemsolution-metabox .problem_solution-img .add_remove-btn{
     margin-left: 330px;
+=======
+    height: 150px;
+    width: 280px;
+    border: 1px solid #ccc;
+    display: block;
+    margin: auto;
+}   
+.bbs_service_problemsolution-metabox .problem_solution-img .add_remove-btn{
+    text-align: center;
+>>>>>>> c188289d4da0ed3c0fb0acf2056a762e472684f7
 }
 .bbs_service_problemsolution-metabox .problem_solution-img .add_remove-btn button{
     display: inline-block;
     margin-left: auto;
 }
+<<<<<<< HEAD
 #bbs_brandingtypographyprocess-metabox .add_remove-btn{
     margin-left: 250px;
 }
@@ -212,6 +224,9 @@
     background-color: #50B800;
     color: #fff;
 }
+=======
+
+>>>>>>> c188289d4da0ed3c0fb0acf2056a762e472684f7
 
 @media(max-width: 1400px){
     .bbs_service_problemsolution-metabox button{

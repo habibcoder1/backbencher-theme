@@ -73,6 +73,7 @@ function bbs_all_enqueue_backend(){
     wp_enqueue_script('bbs-admin', get_template_directory_uri().'/assets/js/admin.js', ['jquery'], '1.0.0', true);
     wp_enqueue_script('media-upload'); //for custom media upload
 	wp_enqueue_script('thickbox');
+<<<<<<< HEAD
 
     // script for tinymce
     wp_enqueue_script('editor');
@@ -83,4 +84,6 @@ function bbs_all_enqueue_backend(){
     wp_enqueue_script('wp-element');
     wp_enqueue_editor();
 
+=======
+>>>>>>> c188289d4da0ed3c0fb0acf2056a762e472684f7
 }
