@@ -197,7 +197,7 @@ class Bbs_Home_Image_Portfolio_Widget_Dev extends \Elementor\Widget_Base {
 								<?php $subtarget   = $settings['subtitle_link']['is_external'] ? 'target="_blank"' : '';
 									$subnofollow = $settings['subtitle_link']['nofollow'] ? 'rel="nofollow"' : '';
 									$suburl      = $settings['subtitle_link']['url'] ? $settings['subtitle_link']['url'] : ''; ?>
-								<a href="<?php echo esc_url($suburl); ?>" <?php echo esc_attr($subnofollow).' '. esc_attr($subtarget); ?> ><h3 class="text-capitalize"><?php echo $settings['port_subtitle']; ?></h3></a>
+								<a href="<?php echo esc_url($suburl); ?>" <?php echo esc_attr($subnofollow).' '. esc_attr($subtarget); ?> ><h3><?php echo $settings['port_subtitle']; ?></h3></a>
 							</div>
 							<div class="service-title">
 								<?php $sebtarget   = $settings['title_link']['is_external'] ? 'target="_blank"' : '';

@@ -83,6 +83,9 @@
                     font-size: 60px;
                     letter-spacing: -4px;
                 }
+                @media(max-width: 400px){
+                    margin-bottom: 0;
+                }
             }
             h1{
                 font-family: $bbsFontFamily;
@@ -617,6 +620,9 @@ div#hero-magic-video{
             @media(max-width: 992px){
                 margin-bottom: 50px;
             }
+            @media(max-width: 768px){
+                margin-bottom: 30px;
+            }
             li{
                 margin-bottom: 15px;
                 @media(max-width: 992px){
@@ -777,8 +783,9 @@ div#hero-magic-video{
                                 padding: 10px 20px;
                             }
                             @media(max-width: 768px){
-                                font-size: 25px;
+                                font-size: 22px;
                                 letter-spacing: normal;
+                                padding: 5px 15px;
                             }
                             @media(max-width: 550px){
                                 font-size: 22px;
@@ -814,6 +821,9 @@ div#hero-magic-video{
     // testi details
     .testimonial-details{
         padding: 30px 0 100px;
+        @media(max-width: 768px){
+            padding: 30px 0 30px;
+        }
         .testimonial-title{
             h4{
                 font-size: 38px;
@@ -836,6 +846,9 @@ div#hero-magic-video{
         .testimonial-authordetails{
             @media(max-width: 768px){
                 margin-left: 50px;
+            }
+            @media(max-width: 570px){
+                margin-left: 15px;
             }
             .author-img{
                 img{
@@ -881,6 +894,10 @@ div#hero-magic-video{
     .testimonial-video{
         img{
             width: 100%;
+            @media(min-width: 576px) and (max-width: 992px){ 
+                width: 90%;
+                margin: auto;
+            }
         }
     }
     .single-testimonial{
@@ -921,6 +938,20 @@ div#hero-magic-video{
     }
 }
 
+// dot title customize
+.dot-title.home-aboutustitle{
+    &::before{
+        @media(max-width: 1024px){
+            top: 0;
+        }
+        @media(max-width: 768px){
+            top: 7px;
+            left: -22px;
+        }
+    }
+}
+
+
 
 // text white
 .textcolor-white .service-subtitle h3{
@@ -954,7 +985,11 @@ div#hero-magic-video{
     }
 }
 .bbsbehance-portfolio_section{
-
+    @media(max-width: 768px){
+        .col-md-6:last-child{
+            display: none;
+        }
+    }
     .service-image{
         a{
             border-radius: 300px 50px 50px 300px !important;
@@ -1019,9 +1054,59 @@ div#hero-magic-video{
             cursor: url(../img/explore-site.png),auto;
         }
     }
+    .service-content .service-subtitle a h3{
+        text-transform: capitalize !important;
+    }
 }
 .dot-title.dot-title-green{
     &::before{
         background-color: #50B800;
+    }
+}
+div#hero-magic-video{
+    svg{
+        border-radius: 50%;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        -ms-border-radius: 50%;
+        -o-border-radius: 50%;
+    }
+    .elementor-custom-embed-play {
+        visibility: hidden;
+    }
+    .elementor-custom-embed-play::before {
+        content: '';
+        display: block;
+        clear: both;
+        background: url(http://localhost/backbencher/wp-content/uploads/2023/12/play-icon.png);
+        height: 100px;
+        width: 100px;
+        z-index: 15;
+        background-repeat: no-repeat;
+        background-position: 10% 10%;
+        background-size: 100%;
+        visibility: visible;
+        @media(max-width: 768px){
+            height: 70px;
+            width: 70px;
+        }
+        @media(max-width: 500px){
+            height: 50px;
+            width: 50px;
+        }
+    }
+    
+}
+div#sectionformobile{
+    h2 a,
+    h3 a{
+        &:hover{
+            color: $bbsPrimaryColor;
+        }
+    }
+    .dot-title.bbs-greencolor::before{
+        top: 0;
+        background: $bbsPrimaryColor !important;
+        left: 0;
     }
 }

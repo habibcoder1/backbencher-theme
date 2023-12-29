@@ -73,4 +73,14 @@ function bbs_all_enqueue_backend(){
     wp_enqueue_script('bbs-admin', get_template_directory_uri().'/assets/js/admin.js', ['jquery'], '1.0.0', true);
     wp_enqueue_script('media-upload'); //for custom media upload
 	wp_enqueue_script('thickbox');
+
+    // script for tinymce
+    wp_enqueue_script('editor');
+    wp_enqueue_script('wp-editor');
+    wp_enqueue_script('wp-components');
+    wp_enqueue_script('wp-blocks');
+    wp_enqueue_script('wp-i18n');
+    wp_enqueue_script('wp-element');
+    wp_enqueue_editor();
+
 }

@@ -37,8 +37,8 @@ get_header(); ?>
 				<!-- tab menu item -->
 				<ul class="tab-menuitem">
 					<li data-filter="all"><?php _e('all', 'backbencher'); ?></li>
-					<li data-filter=".mobile-app"><?php _e('mobile app', 'backbencher'); ?></li>
 					<li data-filter=".website"><?php _e('website', 'backbencher'); ?></li>
+					<li data-filter=".mobile-app"><?php _e('mobile app', 'backbencher'); ?></li>
 				</ul>
 				<!-- search filter --> 
 				<div class="search-filter">

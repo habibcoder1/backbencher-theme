@@ -54,7 +54,7 @@ get_header(); ?>
 								$parent_category    = get_term_by('slug', 'ui-ux-design', 'bbsproject_tax');
 								$parent_category_id = $parent_category->term_id;
 
-								$subcategories = get_terms(array(
+								$subcategories = get_terms(array( 
 									'taxonomy' => 'bbsproject_tax',
 									'parent'   => $parent_category_id,
 								));

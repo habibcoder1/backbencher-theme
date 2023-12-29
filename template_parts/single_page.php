@@ -184,12 +184,6 @@ if(have_posts()) :
                             <?php the_post_thumbnail(); ?>
                         </a>
                     </div>
-                    <!-- title -->
-                    <div class="post-title">
-                        <a href="<?php the_permalink(); ?>" class="text-decoration-none">
-                            <h2 class="text-uppercase"><?php the_title(); ?> </h2>
-                        </a>
-                    </div>
                     <!-- category -->
                     <div class="categories">
                     <?php
@@ -202,6 +196,12 @@ if(have_posts()) :
                             echo '<h3 class="text-uppercase dot-title">' . implode(' / ', $category_names) . '</h3>';
                         }
                     ?>
+                    </div>
+                    <!-- title -->
+                    <div class="post-title">
+                        <a href="<?php the_permalink(); ?>" class="text-decoration-none">
+                            <h2 class="text-uppercase"><?php the_title(); ?> </h2>
+                        </a>
                     </div>
                 </article>
                 <?php endwhile; wp_reset_postdata(); //end loop & reset ?>

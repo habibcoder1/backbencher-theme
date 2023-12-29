@@ -70,7 +70,7 @@ if(!defined('ABSPATH')){
                 <div class="col-md-6 text-end">
                     <div class="footer-social">
                         <ul>
-                            <?php $bbsf_dribbble = get_theme_mod('bbs_footer_dribbble') ? get_theme_mod('bbs_footer_dribbble') : 'werbackbenchers'; 
+                            <?php $bbsf_dribbble = get_theme_mod('bbs_footer_dribbble') ? get_theme_mod('bbs_footer_dribbble') : 'backbencherstudio'; 
                             if($bbsf_dribbble) : ?>
                             <li><a href="<?php echo esc_url('https://dribbble.com/'.$bbsf_dribbble.''); ?>" target="_blank" class="text-capitalize" title="Dribbble"><?php esc_html_e('dribbble', 'backbencher'); ?></a></li>
                             <?php endif;

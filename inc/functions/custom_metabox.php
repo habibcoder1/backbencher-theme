@@ -669,13 +669,13 @@ function save_bbs_jobboard_metabox($post_id) {
 
     // job about company
     if (isset($_POST['jobabout-company'])) {
-        $jobaboutcompany = sanitize_textarea_field($_POST['jobabout-company']);
+        $jobaboutcompany = wp_kses($_POST['jobabout-company'], wp_kses_allowed_html('post'));
         update_post_meta($post_id, '_jobabout-company', $jobaboutcompany);
-    }
+    }    
 
     // about role
     if (isset($_POST['jobwhat-role'])) {
-        $jobrole = sanitize_textarea_field($_POST['jobwhat-role']);
+        $jobrole = wp_kses($_POST['jobwhat-role'], wp_kses_allowed_html('post'));
         update_post_meta($post_id, '_jobwhat-role', $jobrole);
     }
 

@@ -364,3 +364,34 @@ jQuery('.branding_typography_workprocess .workprocess-image .add_remove-btn .rem
     jQuery('#workprocess-image').val(' ');
     jQuery('#workprocessimagetag').attr('src', ' ');
 });
+
+
+/* ==========================
+    Tinymce Editor 
+========================== */
+jQuery(document).ready(function($){
+    // Initialize TinyMCE for job about company
+    wp.editor.initialize('jobabout-company', {  // 'jobabout-company' is textarea id
+        tinymce: {
+            wpautop: true,
+            plugins: 'wordpress,wpautoresize,wpeditimage,wpgallery,wplink,wpdialogs,wpview,lists',
+            toolbar1: 'formatselect,bold,italic,bullist,numlist,blockquote,alignleft,aligncenter,alignright,link,unlink',
+            toolbar2: 'fullscreen,wp_adv',
+            toolbar3: '',
+        },
+        quicktags: true
+    });
+
+    // Initialize TinyMCE for textarea#jobwhat-role
+    wp.editor.initialize('jobwhat-role', {
+        tinymce: {
+            wpautop: true,
+            plugins: 'wordpress,wpautoresize,wpeditimage,wpgallery,wplink,wpdialogs,wpview,lists',
+            toolbar1: 'formatselect,bold,italic,bullist,numlist,blockquote,alignleft,aligncenter,alignright,link,unlink',
+            toolbar2: 'fullscreen,wp_adv',
+            toolbar3: '',
+        },
+        quicktags: true
+    });
+
+});

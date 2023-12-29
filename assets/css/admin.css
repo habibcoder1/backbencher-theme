@@ -224,14 +224,48 @@
 }
 
 @media(max-width: 1200px){
-
+    #bbs_brandingtypographyprocess-metabox .branding_typography_workprocess .branding-image p,
+    #bbs_brandingtypographyprocess-metabox .branding_typography_workprocess .typography-image p,
+    #bbs_brandingtypographyprocess-metabox .add_remove-btn,
+    .bbs_service_problemsolution-metabox .problem_solution-img .add_remove-btn,
+    .bbs_service_problemsolution-metabox .problem_solution-img p,
+    .bbs_service-metabox .service_banner-img .add_remove-btn,
+    .bbs_service-metabox .service_banner-img p{
+        margin-left: 25%;
+    }
+    
+    #bbs_brandingtypographyprocess-metabox .branding_typography_workprocess img,
+    #bbs_brandingtypographyprocess-metabox .typography-content textarea, #bbs_brandingtypographyprocess-metabox .workprocess-content textarea, #bbs_brandingtypographyprocess-metabox .branding-content textarea,
+    .bbs_service_problemsolution-metabox .problem_solution-img img,
+    .bbs_service_problemsolution-metabox input,
+    .bbs_service_problemsolution-metabox textarea,
+    .bbs_service_problemsolution-metabox input,
+    .bbs_service_problemsolution-metabox input#service-problemitemtitle, 
+    .bbs_service-metabox input#discuss-projectlink,
+    .bbs_service-metabox textarea,
+    .bbs_service-metabox input#service-contactbtnllink,
+    .bbs_service-metabox .service_banner-img img{
+        width: 80%;
+        margin-left: 13px;
+    }
+    .bbs_service-metabox .service_banner-img img,
+    .bbs_service_problemsolution-metabox .problem_solution-img img,
+    #bbs_brandingtypographyprocess-metabox .branding_typography_workprocess .workprocess-image img,
+    #bbs_brandingtypographyprocess-metabox .branding_typography_workprocess img{
+        height: auto;
+    }
+    div#bbs_brandingtypographyprocess-metabox label,
+    .bbs_service-metabox label{
+        margin-bottom: 6px;
+        display: block;
+    }
+    .bbs_service_problemsolution-metabox button{
+        display: block;
+        margin-right: 8%;
+        margin-left: auto;
+    }
 }
-@media(max-width: 992px){
 
-}
-@media(max-width: 768px){
-
-}
 
 /* style for job board */
 #bbs_job_board_metabox .postbox-header h2{
@@ -267,36 +301,32 @@
 }
 #bbs_job_board_metabox .bbs_jobboard_metabox_details textarea#jobabout-company{
     display: block;
-    width: 70%;
-    margin-left: 170px;
+    width: 100%;
     height: 140px;
     margin-top: 8px;
+    margin-left: 0;
 }
-@media(max-width: 768px){
-    #bbs_job_board_metabox .bbs_jobboard_metabox_details textarea#jobabout-company{
-        height: 100px;
-    }
+#bbs_job_board_metabox #wp-jobwhat-role-wrap input,
+#bbs_job_board_metabox #wp-jobabout-company-wrap input {
+    padding: 0 10px ;
+    margin-left: 0 ;
 }
 #bbs_job_board_metabox .bbs_jobboard_metabox_details textarea#jobwhat-role{
-    width: 70%;
     display: block;
-    margin-left: 170px;
+    width: 100%;
     height: 140px;
     margin-top: 8px;
+    margin-left: 0;
 }
-@media(max-width: 768px){
-    #bbs_job_board_metabox .bbs_jobboard_metabox_details textarea#jobwhat-role{
-        height: 100px;
-    }
-}
+
 #bbs_job_board_metabox .bbs_jobboard_metabox_details input#jobneedbegood_0 {
     margin-left: 73px;
 }
 #bbs_job_board_metabox .bbs_jobboard_metabox_details .job-benefit p,
 #bbs_job_board_metabox .bbs_jobboard_metabox_details .job-allskills p,
 #bbs_job_board_metabox .bbs_jobboard_metabox_details .needtobegood p{
-    font-size: 16px;
-    font-weight: 500;
+    font-size: 18px;
+    font-weight: 600;
     margin-bottom: 8px;
 }
 #bbs_job_board_metabox .bbs_jobboard_metabox_details input:focus{
@@ -357,11 +387,37 @@
     cursor: pointer;
     padding: 6px;
 }
+@media(max-width: 1200px){
+    #bbs_job_board_metabox .bbs_jobboard_metabox_details label{
+        margin-bottom: 6px;
+        display: block;
+    }
+    #bbs_job_board_metabox .bbs_jobboard_metabox_details textarea, 
+    #bbs_job_board_metabox .bbs_jobboard_metabox_details input,
+    #bbs_job_board_metabox .bbs_jobboard_metabox_details input#jobneedbegood_0,
+    #bbs_job_board_metabox .bbs_jobboard_metabox_details .jobbenefitid input,
+    #bbs_job_board_metabox .bbs_jobboard_metabox_details .jobskillid input,
+    #bbs_job_board_metabox #needbegood-container input,
+    #bbs_job_board_metabox .bbs_jobboard_metabox_details textarea#jobwhat-role,
+    #bbs_job_board_metabox .bbs_jobboard_metabox_details textarea#jobabout-company,
+    #bbs_job_board_metabox .bbs_jobboard_metabox_details input#jobdeadline,
+    #bbs_job_board_metabox .bbs_jobboard_metabox_details input#jobsalary-range,
+    #bbs_job_board_metabox .bbs_jobboard_metabox_details input#jobaddress{
+        width: 80%;
+        margin-left: 13px;
+    }
+}
 
 .tableofcontent-noticeadmin{
     width: 40%;
     margin: -12px auto !important;
     border-left-color: #b80029;
+}
+@media only screen and (max-width: 1400px){
+    .tableofcontent-noticeadmin{
+        width: 60%;
+        margin: 0 auto !important;
+    }
 }
 
 .tableofcontent-noticeadmin p{

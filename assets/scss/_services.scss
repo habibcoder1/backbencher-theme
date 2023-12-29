@@ -250,7 +250,7 @@
             }
         }
         .service-content{
-            margin-left: 80px;
+            margin-left: 65px;
             @media(max-width: 1400px){
                 margin-left: 40px;
             }
@@ -297,6 +297,7 @@
                         font-size: 48px;
                         font-weight: 600;
                         letter-spacing: -1.68px;
+                        text-transform: uppercase;
                         transition: .4s ease all;
                         -webkit-transition: .4s ease all;
                         -moz-transition: .4s ease all;
@@ -728,6 +729,7 @@
     .tab-menu-searchfilter{
         display: flex;
         justify-content: space-between;
+        margin-bottom: 60px;
         @media(max-width: 1200px){
             display: block;
             text-align: center;
@@ -758,6 +760,10 @@
                     @media(max-width: 1400px){
                         width: 220px;
                         font-size: 25px;
+                    }
+                    @media(max-width: 500px){
+                        display: block;
+                        margin: 5px auto 10px;
                     }
                 }
                 label{
@@ -974,16 +980,28 @@
     }
     
 }
+div#bbsdevelopment-service_items{
+    .dot-title{
+        &::before{
+            @media(max-width: 1024px){
+                top: 4px;
+            }
+        }
+    }
+}
 
 #service-howwe-work .dot-title.dot-title-green::before {
     left: 0px;
     top: 9px;
+    @media(max-width: 768px){
+        top: 5px !important;
+    }
 }
 
 // dot for page heading
 .dot-title.page-heading::before {
     @media(max-width: 768px){
-        top: 5px;
+        top: 5px !important;
     }
 }
 
@@ -993,4 +1011,30 @@
 div#uiuxservice-workprocess .dot-title::before {
     left: 0;
     background: $bbsPrimaryColor !important;
+    @media(max-width: 992px){
+        top: 10px;
+    }
+}
+div#our-expertise{
+    .e-child:first-child .elementor-image-box-img img{
+        border-radius: 300px 50px 300px 300px;
+        -webkit-border-radius: 300px 50px 300px 300px;
+        -moz-border-radius: 300px 50px 300px 300px;
+        -ms-border-radius: 300px 50px 300px 300px;
+        -o-border-radius: 300px 50px 300px 300px;
+    }
+    .e-child:nth-child(2) .elementor-image-box-img img{
+        border-radius: 150px;
+        -webkit-border-radius: 150px;
+        -moz-border-radius: 150px;
+        -ms-border-radius: 150px;
+        -o-border-radius: 150px;
+    }
+    .e-child:last-child .elementor-image-box-img img{
+        border-radius: 300px 300px 300px 50px;
+        -webkit-border-radius: 300px 300px 300px 50px;
+        -moz-border-radius: 300px 300px 300px 50px;
+        -ms-border-radius: 300px 300px 300px 50px;
+        -o-border-radius: 300px 300px 300px 50px;
+    }
 }
